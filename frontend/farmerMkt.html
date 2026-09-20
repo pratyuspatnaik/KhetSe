@@ -18,24 +18,23 @@
   <header class="w-full max-w-7xl mx-auto px-4 pt-4 sticky top-0 z-50">
     <div class="bg-card text-card-foreground rounded-3xl md:rounded-full shadow-lg border border-border px-4 md:px-6 py-3 flex flex-wrap items-center justify-between transition-all">
       <!-- Brand Logo -->
-      <div class="flex items-center gap-2 order-1">
+      <a href="index.html" class="flex items-center gap-2 order-1 text-inherit no-underline">
         <div class="bg-primary/10 p-2 rounded-full flex items-center justify-center">
           <iconify-icon icon="lucide:zap" class="text-primary text-2xl"></iconify-icon>
         </div>
         <span class="font-heading font-bold text-xl tracking-tight text-foreground flex items-center">
           Agri<span class="text-primary ml-0.5">Link</span>
         </span>
-      </div>
+      </a>
 
       <!-- Navigation Links -->
       <nav class="flex items-center justify-center gap-4 md:gap-6 w-full md:w-auto order-3 md:order-2 mt-3 md:mt-0 pt-3 md:pt-0 border-t md:border-t-0 border-border/50 overflow-x-auto">
-        <a href="page1.html" data-uxm-link="Farmer Marketplace - Listed" class="text-sm font-semibold text-primary flex items-center gap-1.5 shrink-0">
+        <a href="farmerMkt.html" class="text-sm font-semibold text-primary flex items-center gap-1.5 shrink-0">
           <span class="h-2 w-2 rounded-full bg-primary"></span>
           Marketplace
         </a>
-        <a href="#" data-uxm-link="Buyer Marketplace" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors shrink-0">Profile</a>
-        <a href="#" data-uxm-link="Orders" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors shrink-0">Contact Us</a>
-        
+        <a href="orders.html" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors shrink-0">Orders</a>
+        <a href="contact.html" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors shrink-0">Contact Us</a>
       </nav>
 
       <!-- Utility Icons & User Actions -->
@@ -47,7 +46,7 @@
         </button>
 
         <!-- Cart Icon with Badge -->
-        <a href="#" data-uxm-link="Cart" class="relative p-2 text-muted-foreground hover:text-foreground transition-colors">
+        <a href="cart.html" data-uxm-link="Cart" class="relative p-2 text-muted-foreground hover:text-foreground transition-colors">
           <iconify-icon icon="lucide:shopping-cart" class="text-xl"></iconify-icon>
           <span class="absolute top-1.5 right-1.5 h-4 w-4 bg-primary text-primary-foreground text-[10px] font-bold rounded-full flex items-center justify-center">2</span>
         </a>
@@ -1201,6 +1200,39 @@
     </section>
 
   </main>
+
+  <!-- Persistent Footer -->
+  <footer style="background-color: #10243E; color: #ffffff; padding: 60px 20px 20px; margin-top: 60px;">
+    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 1.4rem; font-weight: 700; margin-bottom: 14px;">
+          <span style="color: #2F9E44;">🌱</span>
+          <span>Agri<strong style="color: #2F9E44;">Link</strong></span>
+        </div>
+        <p style="color: #ccc; font-size: 0.9rem; line-height: 1.6; max-width: 320px;">Connecting farmers directly with buyers for fairer, faster, and more transparent agricultural trade without middlemen.</p>
+      </div>
+      <div>
+        <h4 style="font-size: 1.1rem; margin-bottom: 18px; font-weight: 600;">Navigation</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;">
+          <li><a href="index.html" style="color: #ccc; text-decoration: none;">Home</a></li>
+          <li><a href="farmerMkt.html" style="color: #2F9E44; text-decoration: none; font-weight: 600;">Marketplace</a></li>
+          <li><a href="orders.html" style="color: #ccc; text-decoration: none;">Orders</a></li>
+          <li><a href="contact.html" style="color: #ccc; text-decoration: none;">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size: 1.1rem; margin-bottom: 18px; font-weight: 600;">Legal & Transparency</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;">
+          <li><a href="privacy.html" style="color: #ccc; text-decoration: none;">Privacy Policy</a></li>
+          <li><a href="terms.html" style="color: #ccc; text-decoration: none;">Terms of Use</a></li>
+          <li><a href="contact.html#regional-hubs" style="color: #ccc; text-decoration: none;">Regional Mandi Hubs</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="max-width: 1240px; margin: 0 auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: #888; font-size: 0.85rem;">
+      <p>&copy; 2026 AgriLink. All rights reserved.</p>
+    </div>
+  </footer>
 </div>
 
     <script src="farmerMkt.js"></script>

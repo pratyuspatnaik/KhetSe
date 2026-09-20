@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - AgriLink</title>
+    <meta name="description" content="Get in touch with AgriLink's customer support, farmer help desk, and regional agricultural hubs. Zero middlemen, direct support.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Persistent Navbar -->
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <div class="logo">
+                <i data-lucide="leaf" class="text-green"></i>
+                <span><strong class="text-dark-blue">Agri</strong><strong class="text-green">Link</strong></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="farmerMkt.html" class="nav-link">Marketplace</a></li>
+                <li><a href="orders.html" class="nav-link">Orders</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="icon-badge cart-icon" title="Shopping Cart">
+                    <i data-lucide="shopping-cart"></i>
+                    <span class="badge green-badge">2</span>
+                </div>
+                <div class="icon-badge bell-icon" title="Notifications">
+                    <i data-lucide="bell"></i>
+                    <span class="badge yellow-badge">3</span>
+                </div>
+                <div class="nav-divider"></div>
+                <a href="login.html" class="login-link">Log In</a>
+                <a href="signup.html" class="btn btn-dark">Sign Up</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Subpage Hero -->
+    <header class="subpage-hero">
+        <div class="container subpage-header-content">
+            <div class="subpage-badge">
+                <i data-lucide="message-square"></i> We're Here to Help
+            </div>
+            <h1 class="subpage-title">Get in Touch with the <span class="text-green">AgriLink</span> Team</h1>
+            <p class="subpage-desc">Whether you are a grower looking to list your harvest, a commercial buyer sourcing in bulk, or a delivery partner, our dedicated regional teams are ready to assist you.</p>
+        </div>
+    </header>
+
+    <!-- Main Contact Section -->
+    <main class="contact-section">
+        <div class="container">
+            <div class="contact-layout">
+                
+                <!-- Left: Interactive Contact Form -->
+                <div class="contact-card">
+                    <h2 class="contact-card-title">Send us a Message</h2>
+                    <p class="contact-card-subtitle">Fill in your details below and our team will get back to you within 2-4 business hours.</p>
+
+                    <form id="contactForm" class="contact-form" novalidate>
+                        
+                        <!-- Role Selection Chips -->
+                        <div class="form-group">
+                            <label class="form-label">I am a: <span class="required-star">*</span></label>
+                            <div class="role-options">
+                                <label class="role-chip">
+                                    <input type="radio" name="userRole" value="farmer" checked>
+                                    <span><i data-lucide="sprout"></i> Farmer / Producer</span>
+                                </label>
+                                <label class="role-chip">
+                                    <input type="radio" name="userRole" value="buyer">
+                                    <span><i data-lucide="shopping-bag"></i> Wholesale Buyer</span>
+                                </label>
+                                <label class="role-chip">
+                                    <input type="radio" name="userRole" value="retailer">
+                                    <span><i data-lucide="store"></i> Retailer / Supermarket</span>
+                                </label>
+                                <label class="role-chip">
+                                    <input type="radio" name="userRole" value="logistics">
+                                    <span><i data-lucide="truck"></i> Logistics Partner</span>
+                                </label>
+                                <label class="role-chip">
+                                    <input type="radio" name="userRole" value="other">
+                                    <span><i data-lucide="user"></i> Other</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Full Name & Email Row -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName" class="form-label">
+                                    Full Name <span class="required-star">*</span>
+                                </label>
+                                <div class="input-container">
+                                    <span class="input-icon-left"><i data-lucide="user"></i></span>
+                                    <input type="text" id="fullName" name="fullName" class="contact-input" placeholder="e.g. Ramesh Patel" required>
+                                </div>
+                                <span id="nameError" class="field-error-msg">Please enter your full name</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="emailAddress" class="form-label">
+                                    Email Address <span class="required-star">*</span>
+                                </label>
+                                <div class="input-container">
+                                    <span class="input-icon-left"><i data-lucide="mail"></i></span>
+                                    <input type="email" id="emailAddress" name="emailAddress" class="contact-input" placeholder="name@example.com" required>
+                                </div>
+                                <span id="emailError" class="field-error-msg">Please enter a valid email address</span>
+                            </div>
+                        </div>
+
+                        <!-- Phone Number & Order Reference Row -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phoneNumber" class="form-label">
+                                    Phone Number <span class="required-star">*</span>
+                                </label>
+                                <div class="input-phone-group">
+                                    <span class="phone-prefix">+91</span>
+                                    <div class="input-container" style="flex: 1;">
+                                        <input type="tel" id="phoneNumber" name="phoneNumber" class="contact-input phone-input" placeholder="98765 43210" maxlength="14" required>
+                                    </div>
+                                </div>
+                                <span id="phoneError" class="field-error-msg">Please enter a valid 10-digit phone number</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="orderRef" class="form-label">
+                                    Order / Listing ID <span>(Optional)</span>
+                                </label>
+                                <div class="input-container">
+                                    <span class="input-icon-left"><i data-lucide="hash"></i></span>
+                                    <input type="text" id="orderRef" name="orderRef" class="contact-input" placeholder="e.g. AG-98421">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subject / Topic Dropdown -->
+                        <div class="form-group">
+                            <label for="inquiryCategory" class="form-label">
+                                Inquiry Topic <span class="required-star">*</span>
+                            </label>
+                            <div class="input-container">
+                                <span class="input-icon-left"><i data-lucide="help-circle"></i></span>
+                                <select id="inquiryCategory" name="inquiryCategory" class="contact-select" required>
+                                    <option value="" disabled selected>Select a subject topic</option>
+                                    <option value="harvest_listing">Harvest Listing & Pricing Guidance</option>
+                                    <option value="order_tracking">Order Status, Transit & Delivery Support</option>
+                                    <option value="payout_billing">Farmer 48h Fast Payout & Bank Verification</option>
+                                    <option value="produce_quality">Produce Quality Inspection & Grievances</option>
+                                    <option value="bulk_partnership">Commercial Bulk Sourcing & Long-Term Contracts</option>
+                                    <option value="logistics_carrier">Fleet Onboarding & Cold-Chain Logistics</option>
+                                    <option value="other_feedback">General Inquiry, Technical Bug or Feedback</option>
+                                </select>
+                            </div>
+                            <span id="categoryError" class="field-error-msg">Please select an inquiry topic</span>
+                        </div>
+
+                        <!-- Message Textarea -->
+                        <div class="form-group">
+                            <label for="contactMessage" class="form-label">
+                                How can we help you? <span class="required-star">*</span>
+                            </label>
+                            <textarea id="contactMessage" name="contactMessage" class="contact-textarea" maxlength="500" placeholder="Please describe your query with relevant details, crop varieties, quantities, or delivery location..." required></textarea>
+                            <div class="textarea-footer">
+                                <span>Minimum 15 characters</span>
+                                <div><span id="charCount">0</span> / 500 characters</div>
+                            </div>
+                            <span id="messageError" class="field-error-msg">Please provide at least 15 characters explaining your query</span>
+                        </div>
+
+                        <!-- File Upload (Optional) -->
+                        <div class="form-group">
+                            <label class="form-label">Attach File or Crop Photo <span>(Optional)</span></label>
+                            <div class="file-upload-box">
+                                <input type="file" id="attachment" name="attachment" accept="image/*,.pdf,.doc">
+                                <div class="file-upload-content">
+                                    <i data-lucide="paperclip"></i>
+                                    <span>Drag and drop crop images, receipts, or documents (up to 10MB)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" id="contactSubmitBtn" class="btn-submit-contact">
+                            <i data-lucide="loader-2" class="spinner-icon"></i>
+                            <span class="btn-text">Send Message</span>
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right: Contact Cards Sidebar -->
+                <aside class="contact-sidebar">
+                    
+                    <!-- Farmer Hotline Card -->
+                    <div class="info-card">
+                        <div class="info-icon-wrapper">
+                            <i data-lucide="phone-call"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>24/7 Farmer Hotline</h4>
+                            <p>Direct priority line for farmers requiring urgent harvest listing or payout assistance.</p>
+                            <a href="tel:18005552474" class="info-link">
+                                1800-555-AGRI (Toll Free) <i data-lucide="chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Email Inquiries Card -->
+                    <div class="info-card">
+                        <div class="info-icon-wrapper yellow">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Direct Email Desks</h4>
+                            <p>For procurement tenders, bulk orders, and business queries.</p>
+                            <a href="mailto:support@agrilink.in" class="info-link">
+                                support@agrilink.in <i data-lucide="chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Regional Mandi Hubs Card -->
+                    <div class="info-card">
+                        <div class="info-icon-wrapper blue">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>National Headquarters</h4>
+                            <p>AgriLink Tower, Plot 42, Sector 18, Institutional Area, New Delhi - 110001, India.</p>
+                            <a href="#regional-hubs" class="info-link">
+                                View Regional Hubs <i data-lucide="chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Operating Hours -->
+                    <div class="operating-hours-box">
+                        <h4><i data-lucide="clock" class="text-green"></i> Operating & Mandi Hours</h4>
+                        <div class="operating-hours-list">
+                            <div class="operating-hours-item">
+                                <span>Farmer Desk (All Days):</span>
+                                <strong>6:00 AM - 10:00 PM</strong>
+                            </div>
+                            <div class="operating-hours-item">
+                                <span>Buyer & B2B Desk:</span>
+                                <strong>8:00 AM - 8:00 PM (Mon-Sat)</strong>
+                            </div>
+                            <div class="operating-hours-item">
+                                <span>Logistics Coordination:</span>
+                                <strong>24 Hours Active</strong>
+                            </div>
+                            <div class="operating-hours-item" style="border-bottom: none;">
+                                <span>Average Response Time:</span>
+                                <strong class="text-green">&lt; 45 Minutes</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                </aside>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Regional Agricultural Hubs -->
+    <section id="regional-hubs" class="hubs-section">
+        <div class="container">
+            <div class="subpage-badge">
+                <i data-lucide="map"></i> Pan-Country Presence
+            </div>
+            <h2>Our Regional Agri & Mandi Hubs</h2>
+            <p class="section-desc">Our physical grading centers and aggregation depots ensure quality testing, cold-chain handover, and immediate payouts.</p>
+            
+            <div class="hubs-grid">
+                <div class="hub-card">
+                    <span class="hub-badge">North Hub</span>
+                    <h3 class="hub-city">Chandigarh</h3>
+                    <p class="hub-address">Agri Logistics Park, NH 1, GT Road, Ambala-Chandigarh Corridor, Punjab - 140603</p>
+                    <div class="hub-contact"><i data-lucide="phone"></i> +91 172 489 2001</div>
+                </div>
+
+                <div class="hub-card">
+                    <span class="hub-badge">West Hub</span>
+                    <h3 class="hub-city">Pune</h3>
+                    <p class="hub-address">Krishi Cold Storage complex, Sector 12, Bhosari MIDC, Pune, Maharashtra - 411026</p>
+                    <div class="hub-contact"><i data-lucide="phone"></i> +91 20 6790 3340</div>
+                </div>
+
+                <div class="hub-card">
+                    <span class="hub-badge">South Hub</span>
+                    <h3 class="hub-city">Bengaluru</h3>
+                    <p class="hub-address">Electronic City Phase 2 & Hosur Road Agricultural Transit Depot, Karnataka - 560100</p>
+                    <div class="hub-contact"><i data-lucide="phone"></i> +91 80 4122 8900</div>
+                </div>
+
+                <div class="hub-card">
+                    <span class="hub-badge">Central Hub</span>
+                    <h3 class="hub-city">Indore</h3>
+                    <p class="hub-address">Soybean & Grain Exchange Cluster, Sanwer Road Industrial Area, MP - 452015</p>
+                    <div class="hub-contact"><i data-lucide="phone"></i> +91 731 502 1144</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frequently Asked Questions -->
+    <section class="faq-section bg-white">
+        <div class="container">
+            <div class="subpage-badge">
+                <i data-lucide="help-circle"></i> Quick Answers
+            </div>
+            <h2>Frequently Asked Questions</h2>
+            <p class="section-desc">Have a quick question? The answers to the most common queries are right below.</p>
+
+            <div class="faq-container">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>How fast do farmers receive payouts after delivering crops?</span>
+                        <div class="faq-icon"><i data-lucide="chevron-down"></i></div>
+                    </div>
+                    <div class="faq-body">
+                        AgriLink guarantees payouts within 48 hours of lot inspection at pickup or delivery. Funds are deposited directly into the farmer's verified bank account or UPI without any middleman cuts or hidden commission deductions.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>How does AgriLink verify produce quality and freshness?</span>
+                        <div class="faq-icon"><i data-lucide="chevron-down"></i></div>
+                    </div>
+                    <div class="faq-body">
+                        Every listing is cataloged with standardized grading metrics (moisture content, size grading, pesticide residue clearance, and harvest date). Our regional quality specialists perform random sampling checks at farmgate handover before cold-chain dispatch.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>What happens if a buyer receives substandard or damaged produce?</span>
+                        <div class="faq-icon"><i data-lucide="chevron-down"></i></div>
+                    </div>
+                    <div class="faq-body">
+                        Buyers have a 24-hour inspection window upon delivery. If the consignment deviates from the agreed lot specifications, our digital grievance portal enables immediate photo submission, dispute mediation, and automatic escrow hold or replacement.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>Can buyers request customized recurring delivery schedules?</span>
+                        <div class="faq-icon"><i data-lucide="chevron-down"></i></div>
+                    </div>
+                    <div class="faq-body">
+                        Yes! Supermarkets, restaurant chains, and institutional procurement teams can set up weekly recurring farm contracts with fixed delivery windows through our dedicated B2B procurement desk.
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>How can cold-chain and freight operators partner with AgriLink?</span>
+                        <div class="faq-icon"><i data-lucide="chevron-down"></i></div>
+                    </div>
+                    <div class="faq-body">
+                        Transport providers with reefer trucks or farm pickup vehicles can apply via the form above (selecting "Logistics Partner"). Our transport onboarding team verifies vehicle telematics, GPS, and cold storage calibration within 48 hours.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Confirmation Modal -->
+    <div id="contactSuccessModal" class="modal-backdrop">
+        <div class="modal-box">
+            <div class="modal-icon">
+                <i data-lucide="check-circle-2"></i>
+            </div>
+            <h3 class="modal-title">Message Received!</h3>
+            <p class="modal-text">Thank you for reaching out to AgriLink. We have assigned ticket <strong>#AG-TKT<span id="ticketId">8492</span></strong> to your inquiry. A dedicated specialist will contact you shortly.</p>
+            <button id="closeModalBtn" class="btn btn-green" style="width: 100%;">
+                Done & Return to Site
+            </button>
+        </div>
+    </div>
+
+    <!-- Persistent Footer -->
+    <footer class="bg-dark-blue text-white">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <div class="logo text-white">
+                    <i data-lucide="leaf" class="text-green"></i>
+                    <span>Agri<strong>Link</strong></span>
+                </div>
+                <p>Connecting farmers directly with buyers for fairer, faster, and more transparent agricultural trade without middlemen.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="index.html#why-choose">About Us</a></li>
+                    <li><a href="farmerMkt.html">Marketplace</a></li>
+                    <li><a href="orders.html">Orders</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2026 AgriLink. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
