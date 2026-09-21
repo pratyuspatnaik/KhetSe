@@ -302,4 +302,20 @@ document.addEventListener("DOMContentLoaded", () => {
             window.print();
         });
     });
+
+    // Global Log Out Redirection
+    document.addEventListener('click', (e) => {
+        const logoutEl = e.target.closest('#logoutBtn, .logout-btn, [data-uxm-link="Login"]');
+        if (logoutEl) {
+            e.preventDefault();
+            window.location.href = 'index.html';
+            return;
+        }
+
+        // Global Farmer Profile Image Redirection
+        const farmerAvatar = e.target.closest('img[src*="portraits/men/12"], img[alt*="Sukhdev"], .farmer-avatar');
+        if (farmerAvatar) {
+            window.location.href = 'sellerProfile.html';
+        }
+    });
 });

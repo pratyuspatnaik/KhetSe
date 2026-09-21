@@ -666,7 +666,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Redirect after showing Account Created success message
         setTimeout(() => {
             if (selectedRole === "farmer" || selectedRole === "seller") {
-                window.location.href = "farmerMkt.html";
+                window.location.href = "sellerDashboard.html";
             } else {
                 window.location.href = "index.html";
             }
