@@ -6,6 +6,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitBtn = document.getElementById("submitBtn");
     const loginForm = document.getElementById("loginForm");
     const togglePasswordBtn = document.getElementById("togglePasswordBtn");
+    const roleOptions = document.querySelectorAll(".role-option");
+
+    let selectedRole = "buyer"; // Default role
+
+    // Handle role selection (Buyer, Seller, Transporter)
+    roleOptions.forEach(option => {
+        option.addEventListener("click", () => {
+            roleOptions.forEach(opt => opt.classList.remove("active"));
+            option.classList.add("active");
+            selectedRole = option.dataset.role;
+        });
+    });
 
     // Toggle password visibility
     togglePasswordBtn.addEventListener("click", () => {
@@ -39,7 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        // Redirect to index (homepage) on successful login
-        window.location.href = "index.html";
+        // If seller is selected, open farmerMkt.html; otherwise open index.html
+        if (selectedRole === "seller") {
+            window.location.href = "farmerMkt.html";
+        } else {
+            window.location.href = "index.html";
+        }
     });
 });
