@@ -51,9 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        // If seller is selected, open sellerDashboard.html; otherwise open index.html
+        // If seller is selected, open sellerDashboard.html; if buyer, open buyerMarketplace.html
         if (selectedRole === "seller") {
             window.location.href = "sellerDashboard.html";
+        } else if (selectedRole === "buyer") {
+            window.location.href = "buyerMarketplace.html";
         } else {
             window.location.href = "index.html";
         }

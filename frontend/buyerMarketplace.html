@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Screen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@100..900&family=Fira+Code:wght@300..700&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <link id="theme-fonts" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="buyerMarketplace.css">
+    <script src="buyerMarketplace.js"></script>
+</head>
+  <body>
+<div class="min-h-screen w-full bg-background flex flex-col relative font-sans text-foreground">
+  <!-- FLOATING NAVIGATION PILL HEADER -->
+  <div class="w-full px-4 pt-4 md:px-6 md:pt-6 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto bg-card text-card-foreground rounded-3xl md:rounded-full shadow-lg border border-border px-4 py-2.5 md:px-6 flex flex-wrap items-center justify-between transition-all">
+      <!-- Logo -->
+      <div class="flex items-center gap-2 cursor-pointer order-1" data-uxm-link="Buyer Marketplace">
+        <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground">
+          <iconify-icon icon="lucide:zap" class="text-xl text-white"></iconify-icon>
+        </div>
+        <span class="font-heading font-bold text-lg md:text-xl tracking-tight text-foreground">
+          Agri<span class="text-primary">Link</span>
+        </span>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="flex items-center justify-center gap-4 md:gap-6 text-sm font-medium w-full md:w-auto order-3 md:order-2 mt-3 md:mt-0 pt-3 md:pt-0 border-t md:border-t-0 border-border/50 overflow-x-auto">
+        <!-- <a class="text-primary font-semibold flex items-center gap-1.5" data-uxm-link="Buyer Marketplace">
+          <iconify-icon icon="lucide:globe"></iconify-icon> Marketplace
+        </a> -->
+        <a href="#" class="text-sm font-medium text-primary hover:text-primary/80 transition-colors border-b-2 border-primary pb-1 shrink-0">Marketplace</a>
+        <a class="text-muted-foreground hover:text-foreground transition-colors cursor-pointer" data-uxm-link="Orders" href="orders.html">
+          Orders
+        </a>
+        <a class="text-muted-foreground hover:text-foreground transition-colors cursor-pointer" data-uxm-link="Orders" href="buyerProfile.html">
+          Profile
+        </a>
+        <a class="text-muted-foreground hover:text-foreground transition-colors cursor-pointer" data-uxm-link="Orders" href="contact.html">
+          Contact Us
+        </a>
+        <!-- Profiles Dropdown / Toggle -->
+        <!-- <div class="relative group">
+          <button class="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+            Profiles <iconify-icon icon="lucide:chevron-down" class="text-xs"></iconify-icon>
+          </button>
+          <!-- Hover Dropdown -->
+          <!-- <div class="absolute left-0 mt-2 w-48 bg-card rounded-xl shadow-xl border border-border py-2 hidden group-hover:block z-50">
+            <a class="block px-4 py-2 text-xs text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer" data-uxm-link="Farmer Profile">Farmer Profile</a>
+            <a class="block px-4 py-2 text-xs text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer" data-uxm-link="FPO Profile">FPO Profile</a>
+            <a class="block px-4 py-2 text-xs text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer" data-uxm-link="Bulk Buyer Profile">Bulk Buyer Profile</a>
+            <a class="block px-4 py-2 text-xs text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer" data-uxm-link="Community Buyer Profile">Community Profile</a>
+            <a class="block px-4 py-2 text-xs text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer" data-uxm-link="Transporter Profile">Transporter Profile</a>
+          </div>
+        </div> -->
+        <!-- <a class="text-muted-foreground hover:text-foreground transition-colors cursor-pointer" data-uxm-link="Farmer Marketplace">
+          Farmer Portal
+        </a> -->
+      </nav>
+
+      <!-- Utility & Actions -->
+      <div class="flex items-center gap-3 md:gap-4 order-2 md:order-3">
+        <!-- Notification Icon -->
+        <button class="relative p-1.5 text-muted-foreground hover:text-foreground transition-colors">
+          <iconify-icon icon="lucide:bell" class="text-xl"></iconify-icon>
+          <span class="absolute -top-1 -right-1 bg-secondary text-secondary-foreground text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+        </button>
+
+        <!-- Cart Icon -->
+        <a href="cart.html">
+          <button class="relative p-1.5 text-muted-foreground hover:text-foreground transition-colors" data-uxm-link="Cart">
+          <iconify-icon icon="lucide:shopping-cart" class="text-xl"></iconify-icon>
+          <span class="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
+        </button>
+        </a>
+
+        <div class="h-6 w-px bg-border hidden sm:block"></div>
+
+        <!-- Auth / Profile -->
+        <!-- <div class="flex items-center gap-2">
+          <a class="text-sm font-medium text-muted-foreground hover:text-foreground hidden sm:inline-block cursor-pointer" data-uxm-link="Login">Log In</a>
+          <a class="bg-primary text-primary-foreground px-4 py-2 rounded-full text-xs font-semibold shadow hover:bg-opacity-90 transition-all cursor-pointer" data-uxm-link="Login">Get Started</a>
+        </div> -->
+        <div class="flex items-center gap-3">
+          <a href="buyerProfile.html" class="flex items-center gap-2.5 text-left text-foreground hover:opacity-90 transition-opacity cursor-pointer user-details" style="text-decoration: none;">
+            <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Bulk Buyer Vikram Malhotra" class="w-9 h-9 rounded-full border-2 border-primary object-cover">
+            <div class="text-left">
+              <p class="text-xs font-semibold leading-none">Vikram Malhotra</p>
+              <span class="text-[10px] text-primary font-medium">Bulk Buyer</span>
+            </div>
+          </a>
+          <a href="index.html">
+            <button data-uxm-link="Login" class="text-xs text-muted-foreground hover:text-destructive transition-colors ml-2 hidden sm:block cursor-pointer">Log Out</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto w-full px-4 py-6 md:px-6 flex flex-col gap-6 flex-grow">
+    
+    <!-- RESPONSIVE SEARCH SPACE -->
+    <!-- Single horizontal row on desktop, stacked vertical column on mobile -->
+    <div class="bg-card rounded-2xl border border-border p-4 md:p-6 shadow-sm">
+      <h2 class="text-sm font-heading font-semibold text-muted-foreground mb-3 uppercase tracking-wider">Find Fresh Crops Direct From Farmers</h2>
+      <div class="flex flex-col lg:flex-row items-stretch gap-3">
+        
+        <!-- Crop Dropdown Selection -->
+        <div class="flex-1 min-w-[200px]">
+          <label class="block text-xs font-medium text-muted-foreground mb-1">Crop Name</label>
+          <div class="relative">
+            <select class="w-full bg-background border border-input rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary appearance-none text-foreground">
+              <option value="sweet-corn">Sweet Corn</option>
+              <option value="heirloom-tomatoes">Heirloom Tomatoes</option>
+              <option value="sujata-wheat">Premium Sujata Wheat</option>
+              <option value="jyoti-potatoes">Organic Jyoti Potatoes</option>
+              <option value="basmati-rice">Basmati Rice</option>
+              <option value="red-onions">Red Onions</option>
+            </select>
+            <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-muted-foreground">
+              <iconify-icon icon="lucide:chevron-down"></iconify-icon>
+            </div>
+          </div>
+        </div>
+
+        <!-- Crop Species Text Field -->
+        <div class="flex-1 min-w-[180px]">
+          <label class="block text-xs font-medium text-muted-foreground mb-1">Crop Species / Variety</label>
+          <input type="text" value="Sugar-7" placeholder="e.g. Sugar-7, Kalyan Sona" class="w-full bg-background border border-input rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-foreground">
+        </div>
+
+        <!-- Location Selection -->
+        <div class="flex-1 min-w-[180px]">
+          <label class="block text-xs font-medium text-muted-foreground mb-1">Sourcing Hub / Location</label>
+          <div class="relative">
+            <input type="text" value="Nashik, Maharashtra" placeholder="Enter city or state" class="w-full bg-background border border-input rounded-xl pl-9 pr-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-foreground">
+            <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-muted-foreground">
+              <iconify-icon icon="lucide:map-pin" class="text-base"></iconify-icon>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quantity Filter (Optional) -->
+        <div class="w-full lg:w-40">
+          <label class="block text-xs font-medium text-muted-foreground mb-1">Min. Qty (Tons)</label>
+          <input type="number" value="2" placeholder="Min. Tons" class="w-full bg-background border border-input rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-foreground">
+        </div>
+
+        <!-- Search CTA -->
+        <div class="flex items-end">
+          <button class="w-full lg:w-auto bg-primary text-primary-foreground font-semibold px-6 py-2.5 rounded-xl hover:bg-opacity-95 transition-all flex items-center justify-center gap-2 shadow h-[42px]">
+            <iconify-icon icon="lucide:search" class="text-lg"></iconify-icon>
+            <span>Search Deals</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CONTENT GRID WITH STICKY SIDEBAR ON LEFT -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+      
+      <!-- STICKY LIVE MANDI PRICES SIDEBAR (1 Col on Desktop) - PLACED ON THE LEFT -->
+      <div class="lg:col-span-1 lg:sticky lg:top-24 flex flex-col gap-4 order-2 lg:order-1">
+        <div class="bg-card rounded-2xl border border-border p-4 md:p-5 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-destructive animate-pulse"></span>
+              <h3 class="font-heading font-bold text-foreground text-sm uppercase tracking-wider">Live Mandi Prices</h3>
+            </div>
+            <span class="text-[10px] bg-muted text-muted-foreground px-2 py-0.5 rounded font-medium">APMC Live</span>
+          </div>
+
+          <!-- Mini search within prices -->
+          <div class="relative mb-4">
+            <input type="text" placeholder="Search Mandi rates..." class="w-full bg-background border border-input rounded-xl pl-9 pr-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-primary text-foreground">
+            <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-muted-foreground">
+              <iconify-icon icon="lucide:search" class="text-sm"></iconify-icon>
+            </div>
+          </div>
+
+          <!-- Price List -->
+          <div class="flex flex-col gap-3">
+            
+            <!-- Potato -->
+            <div class="p-3 bg-background rounded-xl border border-border flex items-center justify-between hover:border-primary transition-all">
+              <div>
+                <p class="text-xs font-bold text-foreground">Jyoti Potatoes</p>
+                <p class="text-[10px] text-muted-foreground">Hooghly APMC • Today</p>
+              </div>
+              <div class="text-right">
+                <p class="text-xs font-bold text-foreground">₹15,200/T</p>
+                <span class="text-[10px] text-primary font-bold flex items-center justify-end gap-0.5">
+                  <iconify-icon icon="lucide:arrow-up" class="text-[10px]"></iconify-icon> +2.4%
+                </span>
+              </div>
+            </div>
+
+            <!-- Tomato -->
+            <div class="p-3 bg-background rounded-xl border border-border flex items-center justify-between hover:border-primary transition-all">
+              <div>
+                <p class="text-xs font-bold text-foreground">Heirloom Tomatoes</p>
+                <p class="text-[10px] text-muted-foreground">Pimpalgaon APMC</p>
+              </div>
+              <div class="text-right">
+                <p class="text-xs font-bold text-foreground">₹32,000/T</p>
+                <span class="text-[10px] text-destructive font-bold flex items-center justify-end gap-0.5">
+                  <iconify-icon icon="lucide:arrow-down" class="text-[10px]"></iconify-icon> -1.8%
+                </span>
+              </div>
+            </div>
+
+            <!-- Wheat -->
+            <div class="p-3 bg-background rounded-xl border border-border flex items-center justify-between hover:border-primary transition-all">
+              <div>
+                <p class="text-xs font-bold text-foreground">Sujata Wheat</p>
+                <p class="text-[10px] text-muted-foreground">Indore APMC</p>
+              </div>
+              <div class="text-right">
+                <p class="text-xs font-bold text-foreground">₹27,800/T</p>
+                <span class="text-[10px] text-primary font-bold flex items-center justify-end gap-0.5">
+                  <iconify-icon icon="lucide:arrow-up" class="text-[10px]"></iconify-icon> +0.9%
+                </span>
+              </div>
+            </div>
+
+            <!-- Sweet Corn -->
+            <div class="p-3 bg-background rounded-xl border border-border flex items-center justify-between hover:border-primary transition-all">
+              <div>
+                <p class="text-xs font-bold text-foreground">Sweet Corn</p>
+                <p class="text-[10px] text-muted-foreground">Nashik APMC</p>
+              </div>
+              <div class="text-right">
+                <p class="text-xs font-bold text-foreground">₹21,500/T</p>
+                <span class="text-[10px] text-primary font-bold flex items-center justify-end gap-0.5">
+                  <iconify-icon icon="lucide:arrow-up" class="text-[10px]"></iconify-icon> +4.1%
+                </span>
+              </div>
+            </div>
+
+            <!-- Red Onions -->
+            <div class="p-3 bg-background rounded-xl border border-border flex items-center justify-between hover:border-primary transition-all">
+              <div>
+                <p class="text-xs font-bold text-foreground">Red Onions</p>
+                <p class="text-[10px] text-muted-foreground">Lasalgaon APMC</p>
+              </div>
+              <div class="text-right">
+                <p class="text-xs font-bold text-foreground">₹24,000/T</p>
+                <span class="text-[10px] text-destructive font-bold flex items-center justify-end gap-0.5">
+                  <iconify-icon icon="lucide:arrow-down" class="text-[10px]"></iconify-icon> -3.2%
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Price Alert Insight Card -->
+          <div class="mt-4 bg-accent bg-opacity-30 rounded-xl p-3 border border-accent flex flex-col gap-1.5">
+            <div class="flex items-center gap-1.5 text-accent-text">
+              <iconify-icon icon="lucide:info" class="text-base"></iconify-icon>
+              <span class="text-xs font-bold text-accent-foreground">Mandi Sourcing Insight</span>
+            </div>
+            <p class="text-[11px] text-muted-foreground leading-relaxed">
+              Sweet Corn prices in Nashik APMC are trending upward due to rising demand from food processing groups. Lock in active farm deals today for optimal savings.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- AVAILABLE DEALS (3 Cols on Desktop) - PLACED ON THE RIGHT -->
+      <div class="lg:col-span-3 flex flex-col gap-6 order-1 lg:order-2">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <h1 class="text-xl md:text-2xl font-heading font-bold text-foreground">Available Farmer Deals</h1>
+            <span class="bg-accent text-accent-foreground text-xs px-2.5 py-1 rounded-full font-semibold">12 Verified Deals</span>
+          </div>
+          <!-- Sort filters -->
+          <div class="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <span>Sort by:</span>
+            <select class="bg-transparent font-semibold text-foreground focus:outline-none cursor-pointer">
+              <option>Lowest Price</option>
+              <option>Highest Rating</option>
+              <option>Nearest Sourcing</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Deals Stack - Horizontally Laid Out Cards -->
+        <div class="flex flex-col gap-6">
+          
+          <!-- DEAL CARD 1: Sweet Corn -->
+          <div class="bg-card rounded-2xl border border-border shadow-sm overflow-hidden flex flex-col md:flex-row">
+            <div class="relative w-full md:w-72 md:shrink-0 bg-muted aspect-[4/3] md:aspect-auto">
+              <img src="https://uxmagic.blob.core.windows.net/public/agent-images/sweet-corn-1789453772827-r6p3y0lp5e.png" alt="Fresh Organic Sweet Corn" class="w-full h-full object-cover">
+              <div class="absolute top-3 left-3 bg-primary text-primary-foreground text-xs px-2.5 py-1 rounded-full font-semibold shadow-sm">
+                In Stock
+              </div>
+              <div class="absolute bottom-3 right-3 bg-black bg-opacity-60 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-sm">
+                Nashik Hub
+              </div>
+            </div>
+            
+            <div class="p-5 flex flex-col flex-1 gap-3 justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-xs font-semibold text-primary uppercase tracking-wider">Maize / Sweet Corn</span>
+                  <span class="text-xs text-muted-foreground">Moisture: 14%</span>
+                </div>
+                <h3 class="text-lg md:text-xl font-heading font-bold text-foreground">Organic Sweet Corn (Dozen)</h3>
+                <p class="text-xs text-muted-foreground mt-1">Species: <span class="font-semibold text-foreground">Sugar-7</span></p>
+              </div>
+
+              <!-- Farmer Info & Reviews -->
+              <div class="bg-background rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="flex items-center gap-2 shrink-0">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rajesh Kumar" class="w-8 h-8 rounded-full object-cover">
+                  <div>
+                    <p class="text-xs font-bold text-foreground">Rajesh Kumar</p>
+                    <p class="text-[10px] text-muted-foreground">Verified Farmer • FPO Member</p>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <p class="text-[11px] text-muted-foreground italic line-clamp-2">
+                    "Excellent moisture, sweet harvest. Plump kernels perfectly graded for corporate dispatch."
+                  </p>
+                </div>
+                <!-- Rating Badge -->
+                <div class="flex items-center gap-1 bg-secondary bg-opacity-20 text-secondary-text px-2 py-1 rounded text-xs font-bold shrink-0 self-start sm:self-center">
+                  <iconify-icon icon="lucide:star" class="text-secondary text-xs"></iconify-icon>
+                  <span class="text-secondary-foreground">4.8</span>
+                  <span class="text-[10px] text-secondary-foreground font-normal">(42)</span>
+                </div>
+              </div>
+
+              <!-- Quantity & Price & Actions -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-border">
+                <div class="flex items-center gap-6">
+                  <div>
+                    <span class="text-[10px] text-muted-foreground block">Available Qty</span>
+                    <span class="text-sm font-bold text-foreground">5.4 Tons</span>
+                  </div>
+                  <div>
+                    <span class="text-[10px] text-muted-foreground block">Expected Price</span>
+                    <span class="text-base font-bold text-primary">₹22,000 <span class="text-xs text-muted-foreground font-normal">/ Ton</span></span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto shrink-0">
+                  <button class="flex-1 sm:flex-none bg-background hover:bg-muted text-foreground border border-border font-semibold px-4 py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer" data-uxm-link="Cart">
+                    <iconify-icon icon="lucide:shopping-cart" class="text-sm"></iconify-icon>
+                    <span>Add to Cart</span>
+                  </button>
+                  <button class="flex-1 sm:flex-none bg-primary text-primary-foreground font-semibold px-5 py-2 rounded-xl text-xs flex items-center justify-center gap-1 hover:bg-opacity-95 transition-all shadow-sm cursor-pointer" data-uxm-link="Cart">
+                    <span>Place Order</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DEAL CARD 2: Heirloom Tomatoes -->
+          <div class="bg-card rounded-2xl border border-border shadow-sm overflow-hidden flex flex-col md:flex-row">
+            <div class="relative w-full md:w-72 md:shrink-0 bg-muted aspect-[4/3] md:aspect-auto">
+              <img src="https://uxmagic.blob.core.windows.net/public/agent-images/heirloom-tomatoes-1789453783677-pnmtqewjvi8.png" alt="Assorted Heirloom Tomatoes" class="w-full h-full object-cover">
+              <div class="absolute top-3 left-3 bg-primary text-primary-foreground text-xs px-2.5 py-1 rounded-full font-semibold shadow-sm">
+                In Stock
+              </div>
+              <div class="absolute bottom-3 right-3 bg-black bg-opacity-60 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-sm">
+                Pune Hub
+              </div>
+            </div>
+            
+            <div class="p-5 flex flex-col flex-1 gap-3 justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-xs font-semibold text-primary uppercase tracking-wider">Vegetables / Tomatoes</span>
+                  <span class="text-xs text-muted-foreground">Grade: A++</span>
+                </div>
+                <h3 class="text-lg md:text-xl font-heading font-bold text-foreground">Heirloom Tomatoes (3 lbs)</h3>
+                <p class="text-xs text-muted-foreground mt-1">Species: <span class="font-semibold text-foreground">Assorted Heritage</span></p>
+              </div>
+
+              <!-- Farmer Info & Reviews -->
+              <div class="bg-background rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="flex items-center gap-2 shrink-0">
+                  <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sita Sharma" class="w-8 h-8 rounded-full object-cover">
+                  <div>
+                    <p class="text-xs font-bold text-foreground">Sita Sharma</p>
+                    <p class="text-[10px] text-muted-foreground">Organic Certified • Lead Coordinator</p>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <p class="text-[11px] text-muted-foreground italic line-clamp-2">
+                    "Perfect grading, zero damage. Hand-harvested and securely packed in reusable crates."
+                  </p>
+                </div>
+                <!-- Rating Badge -->
+                <div class="flex items-center gap-1 bg-secondary bg-opacity-20 text-secondary-text px-2 py-1 rounded text-xs font-bold shrink-0 self-start sm:self-center">
+                  <iconify-icon icon="lucide:star" class="text-secondary text-xs"></iconify-icon>
+                  <span class="text-secondary-foreground">4.9</span>
+                  <span class="text-[10px] text-secondary-foreground font-normal">(28)</span>
+                </div>
+              </div>
+
+              <!-- Quantity & Price & Actions -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-border">
+                <div class="flex items-center gap-6">
+                  <div>
+                    <span class="text-[10px] text-muted-foreground block">Available Qty</span>
+                    <span class="text-sm font-bold text-foreground">3.2 Tons</span>
+                  </div>
+                  <div>
+                    <span class="text-[10px] text-muted-foreground block">Expected Price</span>
+                    <span class="text-base font-bold text-primary">₹34,000 <span class="text-xs text-muted-foreground font-normal">/ Ton</span></span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto shrink-0">
+                  <button class="flex-1 sm:flex-none bg-background hover:bg-muted text-foreground border border-border font-semibold px-4 py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer" data-uxm-link="Cart">
+                    <iconify-icon icon="lucide:shopping-cart" class="text-sm"></iconify-icon>
+                    <span>Add to Cart</span>
+                  </button>
+                  <button class="flex-1 sm:flex-none bg-primary text-primary-foreground font-semibold px-5 py-2 rounded-xl text-xs flex items-center justify-center gap-1 hover:bg-opacity-95 transition-all shadow-sm cursor-pointer" data-uxm-link="Cart">
+                    <span>Place Order</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DEAL CARD 3: Sujata Wheat -->
+          <div class="bg-card rounded-2xl border border-border shadow-sm overflow-hidden flex flex-col md:flex-row">
+            <div class="relative w-full md:w-72 md:shrink-0 bg-muted aspect-[4/3] md:aspect-auto">
+              <img src="https://uxmagic.blob.core.windows.net/public/agent-images/sujata-wheat-1789453797564-i6n3i0xzgds.png" alt="Premium Sujata Wheat" class="w-full h-full object-cover">
+              <div class="absolute top-3 left-3 bg-primary text-primary-foreground text-xs px-2.5 py-1 rounded-full font-semibold shadow-sm">
+                In Stock
+              </div>
+              <div class="absolute bottom-3 right-3 bg-black bg-opacity-60 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-sm">
+                Indore Hub
+              </div>
+            </div>
+            
+            <div class="p-5 flex flex-col flex-1 gap-3 justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-xs font-semibold text-primary uppercase tracking-wider">Grains / Wheat</span>
+                  <span class="text-xs text-muted-foreground">Moisture: 11%</span>
+                </div>
+                <h3 class="text-lg md:text-xl font-heading font-bold text-foreground">Premium Sujata Wheat</h3>
+                <p class="text-xs text-muted-foreground mt-1">Species: <span class="font-semibold text-foreground">Sujata Premium</span></p>
+              </div>
+
+              <!-- Farmer Info & Reviews -->
+              <div class="bg-background rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="flex items-center gap-2 shrink-0">
+                  <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Devendra Patel" class="w-8 h-8 rounded-full object-cover">
+                  <div>
+                    <p class="text-xs font-bold text-foreground">Devendra Patel</p>
+                    <p class="text-[10px] text-muted-foreground">Narmada FPO Director</p>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <p class="text-[11px] text-muted-foreground italic line-clamp-2">
+                    "Highly nutritious Sharbati-grade wheat. Cleaned, machine-sorted and packaged in 50kg jute bags."
+                  </p>
+                </div>
+                <!-- Rating Badge -->
+                <div class="flex items-center gap-1 bg-secondary bg-opacity-20 text-secondary-text px-2 py-1 rounded text-xs font-bold shrink-0 self-start sm:self-center">
+                  <iconify-icon icon="lucide:star" class="text-secondary text-xs"></iconify-icon>
+                  <span class="text-secondary-foreground">4.7</span>
+                  <span class="text-[10px] text-secondary-foreground font-normal">(56)</span>
+                </div>
+              </div>
+
+              <!-- Quantity & Price & Actions -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-border">
+                <div class="flex items-center gap-6">
+                  <div>
+                    <span class="text-[10px] text-muted-foreground block">Available Qty</span>
+                    <span class="text-sm font-bold text-foreground">15.0 Tons</span>
+                  </div>
+                  <div>
+                    <span class="text-[10px] text-muted-foreground block">Expected Price</span>
+                    <span class="text-base font-bold text-primary">₹28,500 <span class="text-xs text-muted-foreground font-normal">/ Ton</span></span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto shrink-0">
+                  <button class="flex-1 sm:flex-none bg-background hover:bg-muted text-foreground border border-border font-semibold px-4 py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer" data-uxm-link="Cart">
+                    <iconify-icon icon="lucide:shopping-cart" class="text-sm"></iconify-icon>
+                    <span>Add to Cart</span>
+                  </button>
+                  <button class="flex-1 sm:flex-none bg-primary text-primary-foreground font-semibold px-5 py-2 rounded-xl text-xs flex items-center justify-center gap-1 hover:bg-opacity-95 transition-all shadow-sm cursor-pointer" data-uxm-link="Cart">
+                    <span>Place Order</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DEAL CARD 4: Jyoti Potatoes -->
+          <div class="bg-card rounded-2xl border border-border shadow-sm overflow-hidden flex flex-col md:flex-row">
+            <div class="relative w-full md:w-72 md:shrink-0 bg-muted aspect-[4/3] md:aspect-auto">
+              <img src="https://uxmagic.blob.core.windows.net/public/agent-images/jyoti-potatoes-1789453807563-0bbqzwrw9ed6.png" alt="Organic Jyoti Potatoes" class="w-full h-full object-cover">
+              <div class="absolute top-3 left-3 bg-primary text-primary-foreground text-xs px-2.5 py-1 rounded-full font-semibold shadow-sm">
+                In Stock
+              </div>
+              <div class="absolute bottom-3 right-3 bg-black bg-opacity-60 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-sm">
+                Hooghly Hub
+              </div>
+            </div>
+            
+            <div class="p-5 flex flex-col flex-1 gap-3 justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-xs font-semibold text-primary uppercase tracking-wider">Tubers / Potatoes</span>
+                  <span class="text-xs text-muted-foreground">Certified Organic</span>
+                </div>
+                <h3 class="text-lg md:text-xl font-heading font-bold text-foreground">Organic Jyoti Potatoes</h3>
+                <p class="text-xs text-muted-foreground mt-1">Species: <span class="font-semibold text-foreground">Jyoti Premium</span></p>
+              </div>
+
+              <!-- Farmer Info & Reviews -->
+              <div class="bg-background rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="flex items-center gap-2 shrink-0">
+                  <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Animesh Ghosh" class="w-8 h-8 rounded-full object-cover">
+                  <div>
+                    <p class="text-xs font-bold text-foreground">Animesh Ghosh</p>
+                    <p class="text-[10px] text-muted-foreground">Bengal Agri Cooperative</p>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <p class="text-[11px] text-muted-foreground italic line-clamp-2">
+                    "Freshly dug, healthy thin-skinned Jyoti potatoes. Excellent shelf life and high starch quality."
+                  </p>
+                </div>
+                <!-- Rating Badge -->
+                <div class="flex items-center gap-1 bg-secondary bg-opacity-20 text-secondary-text px-2 py-1 rounded text-xs font-bold shrink-0 self-start sm:self-center">
+                  <iconify-icon icon="lucide:star" class="text-secondary text-xs"></iconify-icon>
+                  <span class="text-secondary-foreground">4.6</span>
+                  <span class="text-[10px] text-secondary-foreground font-normal">(31)</span>
+                </div>
+              </div>
+
+              <!-- Quantity & Price & Actions -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-border">
+                <div class="flex items-center gap-6">
+                  <div>
+                    <span class="text-[10px] text-muted-foreground block">Available Qty</span>
+                    <span class="text-sm font-bold text-foreground">8.0 Tons</span>
+                  </div>
+                  <div>
+                    <span class="text-[10px] text-muted-foreground block">Expected Price</span>
+                    <span class="text-base font-bold text-primary">₹16,500 <span class="text-xs text-muted-foreground font-normal">/ Ton</span></span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto shrink-0">
+                  <button class="flex-1 sm:flex-none bg-background hover:bg-muted text-foreground border border-border font-semibold px-4 py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer" data-uxm-link="Cart">
+                    <iconify-icon icon="lucide:shopping-cart" class="text-sm"></iconify-icon>
+                    <span>Add to Cart</span>
+                  </button>
+                  <button class="flex-1 sm:flex-none bg-primary text-primary-foreground font-semibold px-5 py-2 rounded-xl text-xs flex items-center justify-center gap-1 hover:bg-opacity-95 transition-all shadow-sm cursor-pointer" data-uxm-link="Cart">
+                    <span>Place Order</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Pagination or Load More -->
+        <div class="flex justify-center py-4">
+          <button class="bg-card text-foreground font-semibold px-6 py-2.5 rounded-xl border border-border hover:bg-muted transition-all text-xs flex items-center gap-2 shadow-sm cursor-pointer">
+            <span>Load More Deals</span>
+            <iconify-icon icon="lucide:refresh-cw" class="text-xs"></iconify-icon>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-card text-card-foreground border-t border-border py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+      <p>© 2026 Agri Link Platform. Connecting Indian Agriculture.</p>
+      <div class="flex gap-4">
+        <a class="hover:text-foreground transition-colors cursor-pointer">Privacy Policy</a>
+        <a class="hover:text-foreground transition-colors cursor-pointer">Terms of Service</a>
+        <a class="hover:text-foreground transition-colors cursor-pointer">Support Helpline</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</body></html>

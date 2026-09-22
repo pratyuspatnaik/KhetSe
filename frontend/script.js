@@ -317,5 +317,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (farmerAvatar) {
             window.location.href = 'sellerProfile.html';
         }
+
+        // Global Buyer Profile Image & User Details Redirection
+        const buyerAvatar = e.target.closest('img[src*="portraits/men/46"], img[alt*="Vikram"], .buyer-avatar, .user-details');
+        if (buyerAvatar) {
+            window.location.href = 'buyerProfile.html';
+        }
     });
 });

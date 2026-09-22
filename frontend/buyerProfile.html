@@ -1,0 +1,871 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Poppins:wght@100..900&amp;family=Fira+Code:wght@300..700&amp;family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link id="theme-fonts" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <link id="google-font-Poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap"><link id="google-font-JetBrains-Mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap"><link rel="stylesheet" href="buyerProfile.css">
+    <script src="buyerProfile.js"></script>
+</head>
+  <body>
+<div class="min-h-screen w-full bg-background flex flex-col relative font-sans text-foreground pb-16">
+  <!-- Top Floating Navigation Bar -->
+  <div class="w-full max-w-7xl mx-auto px-4 pt-6 pb-2 sticky top-0 z-50">
+    <div class="bg-card shadow-lg rounded-3xl md:rounded-full px-4 md:px-6 py-3 flex flex-wrap items-center justify-between border border-border/40 backdrop-blur-md bg-opacity-95 transition-all">
+      <!-- Logo -->
+      <div class="flex items-center gap-2 cursor-pointer order-1" data-uxm-link="Cart">
+        <div class="bg-primary/10 p-1.5 rounded-full flex items-center justify-center">
+          <iconify-icon icon="lucide:leaf" class="text-primary text-xl"></iconify-icon>
+        </div>
+        <span class="font-heading font-bold text-xl tracking-tight text-foreground">Agri <span class="text-primary">Link</span></span>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="flex items-center justify-center gap-4 md:gap-8 w-full md:w-auto order-3 md:order-2 mt-3 md:mt-0 pt-3 md:pt-0 border-t md:border-t-0 border-border/50 overflow-x-auto">
+        <a href="buyerMarketplace.html" data-uxm-link="Cart" class="text-sm font-medium text-foreground hover:text-primary transition-colors shrink-0">Marketplace</a>
+        <a href="orders.html" data-uxm-link="Orders" class="text-sm font-medium text-foreground hover:text-primary transition-colors shrink-0">Orders</a>
+        <a href="#" class="text-sm font-medium text-primary hover:text-primary/80 transition-colors border-b-2 border-primary pb-1 shrink-0">Profile</a>
+        <a href="contact.html" data-uxm-link="Orders" class="text-sm font-medium text-foreground hover:text-primary transition-colors shrink-0">Contact Us</a>
+      </div>
+
+      <!-- Actions, Icons & Auth -->
+      <div class="flex items-center gap-3 md:gap-6 order-2 md:order-3">
+        <!-- Shopping Cart Icon with Badge -->
+        <div class="relative cursor-pointer hover:text-primary transition-colors" data-uxm-link="Cart">
+          <iconify-icon icon="lucide:shopping-cart" class="text-2xl text-foreground/80"></iconify-icon>
+          <span class="absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-card">3</span>
+        </div>
+
+        <!-- Notification Bell with Badge -->
+        <div class="relative cursor-pointer hover:text-primary transition-colors">
+          <iconify-icon icon="lucide:bell" class="text-2xl text-foreground/80"></iconify-icon>
+          <span class="absolute -top-1.5 -right-1.5 bg-secondary text-foreground text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-card">2</span>
+        </div>
+
+        <!-- Vertical Divider -->
+        <div class="h-6 w-px bg-border hidden sm:block"></div>
+
+        <!-- User Profile Avatar and Sign Out -->
+        <div class="flex items-center gap-3">
+          <a href="buyerProfile.html" class="flex items-center gap-2.5 text-left text-foreground hover:opacity-90 transition-opacity cursor-pointer user-details" style="text-decoration: none;">
+            <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Bulk Buyer Vikram Malhotra" class="w-9 h-9 rounded-full border-2 border-primary object-cover">
+            <div class="text-left">
+              <p class="text-xs font-semibold leading-none">Vikram Malhotra</p>
+              <span class="text-[10px] text-primary font-medium">Bulk Buyer</span>
+            </div>
+          </a>
+          <button onclick="window.location.href='index.html'" class="text-xs text-muted-foreground hover:text-destructive transition-colors ml-2 hidden sm:block cursor-pointer">Log Out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Wrapper -->
+  <main class="w-full max-w-7xl mx-auto px-4 mt-8 flex-grow">
+    <div id="communityBuyerView" style="display: block;">
+<!-- Page Header & Breadcrumbs -->
+    <div class="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+          <a href="#" data-uxm-link="Cart" class="hover:text-primary">Marketplace</a>
+          <iconify-icon icon="lucide:chevron-right" class="text-xs"></iconify-icon>
+          <span class="text-foreground font-medium">Buyer Profile</span>
+        </div>
+        <h1 class="text-3xl font-heading font-bold text-foreground flex items-center gap-3">
+          Buyer Registration &amp; Dashboard
+          <span class="text-xs font-sans font-normal bg-accent text-accent-foreground px-3 py-1 rounded-full flex items-center gap-1">
+            <iconify-icon icon="lucide:circle-check" class="text-primary"></iconify-icon> Community Verified
+          </span>
+        </h1>
+      </div>
+      
+      <!-- Buyer Type Selector -->
+      <div class="flex bg-muted/40 p-1 rounded-xl border border-border/40">
+        
+        <button id="btnCommunity_inCommunity" class="bg-card text-foreground shadow-sm px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+          <iconify-icon icon="lucide:layers" class="text-primary text-xs"></iconify-icon>
+          Community Group
+        </button>
+        <button id="btnBulk_inCommunity" class="text-muted-foreground hover:text-foreground px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors">
+          <iconify-icon icon="lucide:shield" class="text-xs"></iconify-icon>
+          Bulk / Corporate
+        </button>
+      </div>
+    </div>
+
+    <!-- Dashboard Grid Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+      
+      <!-- Left Vertical Sidebar (Navigation category tabs) -->
+      <aside class="hidden lg:block lg:col-span-1 space-y-3 bg-card p-5 rounded-2xl border border-border/30 shadow-sm sticky top-28">
+        <div class="pb-3 border-b border-border/40 mb-2">
+          <p class="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Profile Sections</p>
+        </div>
+        
+        <a href="#coordinator-details" class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-primary/10 text-primary font-semibold text-sm transition-all">
+          <div class="flex items-center gap-2.5">
+            <iconify-icon icon="lucide:user" class="text-lg"></iconify-icon>
+            <span>Coordinator Details</span>
+          </div>
+          <iconify-icon icon="lucide:circle-check" class="text-primary text-base"></iconify-icon>
+        </a>
+
+        <a href="#group-members" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-muted/30 hover:text-foreground font-medium text-sm transition-all">
+          <div class="flex items-center gap-2.5">
+            <iconify-icon icon="lucide:users" class="text-lg"></iconify-icon>
+            <span>Group Members</span>
+          </div>
+          <span class="bg-secondary/20 text-secondary-foreground text-[10px] font-bold px-1.5 py-0.5 rounded-md">8 Members</span>
+        </a>
+
+        <a href="#delivery-logistics" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-muted/30 hover:text-foreground font-medium text-sm transition-all">
+          <div class="flex items-center gap-2.5">
+            <iconify-icon icon="lucide:map-pin" class="text-lg"></iconify-icon>
+            <span>Drop-off Address</span>
+          </div>
+          <iconify-icon icon="lucide:circle-check" class="text-primary text-base"></iconify-icon>
+        </a>
+
+        <a href="#purchasing-preferences" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-muted/30 hover:text-foreground font-medium text-sm transition-all">
+          <div class="flex items-center gap-2.5">
+            <iconify-icon icon="lucide:shopping-cart" class="text-lg"></iconify-icon>
+            <span>Preferences &amp; Volume</span>
+          </div>
+          <iconify-icon icon="lucide:circle-check" class="text-primary text-base"></iconify-icon>
+        </a>
+
+        <a href="#payments-escrow" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-muted/30 hover:text-foreground font-medium text-sm transition-all">
+          <div class="flex items-center gap-2.5">
+            <iconify-icon icon="lucide:credit-card" class="text-lg"></iconify-icon>
+            <span>Shared Payments</span>
+          </div>
+          <iconify-icon icon="lucide:circle-check" class="text-primary text-base"></iconify-icon>
+        </a>
+
+        <!-- Completeness Meter -->
+        <div class="pt-4 border-t border-border/40 mt-4 space-y-2">
+          <div class="flex justify-between items-center text-xs">
+            <span class="text-muted-foreground">Profile Completeness</span>
+            <span class="font-bold text-primary">100%</span>
+          </div>
+          <div class="w-full bg-muted rounded-full h-2 overflow-hidden">
+            <div class="bg-primary h-full rounded-full w-full"></div>
+          </div>
+          <p class="text-[10px] text-muted-foreground">Community buyer profile is fully active. You are unlocked for collective discounts.</p>
+        </div>
+      </aside>
+
+      <!-- Right Main Panel Workspace (Detailed Forms) -->
+      <div class="lg:col-span-3 space-y-8">
+        
+        <!-- Form Section 1: Coordinator & Group Details -->
+        <section id="coordinator-details" class="bg-card rounded-2xl p-6 shadow-sm border border-border/30 scroll-mt-28">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-border/40">
+            <div class="bg-primary/10 p-2 rounded-xl text-primary">
+              <iconify-icon icon="lucide:user" class="text-xl"></iconify-icon>
+            </div>
+            <div>
+              <h2 class="text-xl font-heading font-bold text-foreground">Coordinator &amp; Group Details</h2>
+              <p class="text-xs text-muted-foreground">Primary contact and group identification details</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Group Name -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Community Buying Group Name <span class="text-destructive">*</span></label>
+              <input type="text" value="Green Meadows Housing Society Club" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="Enter group name">
+            </div>
+
+            <!-- Group Coordinator Name -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Group Coordinator Name <span class="text-destructive">*</span></label>
+              <input type="text" value="Aruna Sharma" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="Enter coordinator's full name">
+            </div>
+
+            <!-- Mobile Number -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Coordinator Mobile <span class="text-destructive">*</span></label>
+              <div class="relative">
+                <input type="tel" value="+91 98223 45678" class="w-full bg-muted/20 border border-border rounded-xl pl-4 pr-24 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="Enter mobile number">
+                <span class="absolute right-3 top-2.5 bg-primary/10 text-primary text-[10px] font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1">
+                  <iconify-icon icon="lucide:circle-check" class="text-xs"></iconify-icon> Verified
+                </span>
+              </div>
+            </div>
+
+            <!-- PAN / Aadhaar (For Verification) -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Coordinator ID (Aadhaar or PAN) <span class="text-destructive">*</span></label>
+              <div class="relative">
+                <input type="text" value="**** **** 8899" class="w-full bg-muted/20 border border-border rounded-xl pl-4 pr-24 py-3 text-sm focus:outline-none focus:border-primary font-mono tracking-wider font-medium" placeholder="12-digit Aadhaar / 10-char PAN">
+                <span class="absolute right-3 top-2.5 bg-primary/10 text-primary text-[10px] font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1">
+                  <iconify-icon icon="lucide:shield" class="text-xs"></iconify-icon> Verified
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Form Section 2: Group Members (Core request feature) -->
+        <section id="group-members" class="bg-card rounded-2xl p-6 shadow-sm border border-border/30 scroll-mt-28">
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-border/40">
+            <div class="flex items-center gap-3">
+              <div class="bg-primary/10 p-2 rounded-xl text-primary">
+                <iconify-icon icon="lucide:users" class="text-xl"></iconify-icon>
+              </div>
+              <div>
+                <h2 class="text-xl font-heading font-bold text-foreground">Group Members Management</h2>
+                <p class="text-xs text-muted-foreground">Add and manage active members participating in the collective pool</p>
+              </div>
+            </div>
+            <span class="text-xs font-sans font-semibold bg-accent text-accent-foreground px-3 py-1 rounded-full">
+              8 Members Active
+            </span>
+          </div>
+
+          <!-- Add Member Panel -->
+          <div class="bg-background rounded-xl p-4 border border-border/40 mb-6">
+            <h4 class="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">Add New Member</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <input type="text" class="bg-card border border-border rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-primary font-medium" placeholder="Member's Full Name">
+              <input type="tel" class="bg-card border border-border rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-primary font-medium" placeholder="Mobile Number (For SMS OTP)">
+              <button class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-all">
+                <iconify-icon icon="lucide:plus" class="text-sm"></iconify-icon>
+                <span>Add Member</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Active Members List -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Member 1 -->
+            <div class="bg-background rounded-xl p-3 border border-border/40 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Amit Patel" class="w-8 h-8 rounded-full object-cover">
+                <div>
+                  <p class="text-xs font-semibold leading-none">Amit Patel</p>
+                  <span class="text-[10px] text-muted-foreground">+91 98765 11223</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-bold text-primary-foreground bg-primary/10 px-2 py-0.5 rounded-full">Active</span>
+                <button class="text-muted-foreground hover:text-destructive p-1 transition-colors">
+                  <iconify-icon icon="lucide:trash-2" class="text-sm"></iconify-icon>
+                </button>
+              </div>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="bg-background rounded-xl p-3 border border-border/40 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sita Sharma" class="w-8 h-8 rounded-full object-cover">
+                <div>
+                  <p class="text-xs font-semibold leading-none">Sita Sharma</p>
+                  <span class="text-[10px] text-muted-foreground">+91 98765 22334</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-bold text-primary-foreground bg-primary/10 px-2 py-0.5 rounded-full">Active</span>
+                <button class="text-muted-foreground hover:text-destructive p-1 transition-colors">
+                  <iconify-icon icon="lucide:trash-2" class="text-sm"></iconify-icon>
+                </button>
+              </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="bg-background rounded-xl p-3 border border-border/40 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Rahul Deshmukh" class="w-8 h-8 rounded-full object-cover">
+                <div>
+                  <p class="text-xs font-semibold leading-none">Rahul Deshmukh</p>
+                  <span class="text-[10px] text-muted-foreground">+91 98765 33445</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-bold text-primary-foreground bg-primary/10 px-2 py-0.5 rounded-full">Active</span>
+                <button class="text-muted-foreground hover:text-destructive p-1 transition-colors">
+                  <iconify-icon icon="lucide:trash-2" class="text-sm"></iconify-icon>
+                </button>
+              </div>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="bg-background rounded-xl p-3 border border-border/40 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Kiran Joshi" class="w-8 h-8 rounded-full object-cover">
+                <div>
+                  <p class="text-xs font-semibold leading-none">Kiran Joshi</p>
+                  <span class="text-[10px] text-muted-foreground">+91 98765 44556</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-bold text-primary-foreground bg-primary/10 px-2 py-0.5 rounded-full">Active</span>
+                <button class="text-muted-foreground hover:text-destructive p-1 transition-colors">
+                  <iconify-icon icon="lucide:trash-2" class="text-sm"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Form Section 3: Delivery & Drop-off Address -->
+        <section id="delivery-logistics" class="bg-card rounded-2xl p-6 shadow-sm border border-border/30 scroll-mt-28">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-border/40">
+            <div class="bg-primary/10 p-2 rounded-xl text-primary">
+              <iconify-icon icon="lucide:map-pin" class="text-xl"></iconify-icon>
+            </div>
+            <div>
+              <h2 class="text-xl font-heading font-bold text-foreground">Consolidated Drop-off Address</h2>
+              <p class="text-xs text-muted-foreground">Specify the single drop-off point where all group orders will be delivered</p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Drop-off Address -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Default Delivery Address <span class="text-destructive">*</span></label>
+              <textarea rows="2" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="Enter full delivery address">Community Center Gate, Green Meadows Housing Society, Sector 15, Vashi, Navi Mumbai, Maharashtra</textarea>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <!-- Pincode -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Pincode <span class="text-destructive">*</span></label>
+                <input type="text" value="400703" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="6-digit PIN">
+              </div>
+
+              <!-- Geo-coordinates -->
+              <div class="md:col-span-2">
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Geo-Coordinates (Latitude, Longitude) <span class="text-destructive">*</span></label>
+                <div class="flex gap-2">
+                  <input type="text" value="19.0748° N, 73.0012° E" class="flex-grow bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-mono text-xs font-medium" placeholder="e.g. 18.5204, 73.8567">
+                  <button class="bg-accent text-accent-foreground hover:bg-accent/80 px-4 py-3 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                    <iconify-icon icon="lucide:map-pin" class="text-sm"></iconify-icon>
+                    <span>Detect</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+              <!-- Drop-off Accessibility -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Drop-off Accessibility <span class="text-destructive">*</span></label>
+                <select class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium">
+                  <option selected="">Residential Street (Truck Parking Space Available)</option>
+                  <option>Gated Society (Security Guard Clearance Required)</option>
+                  <option>Main Road Drop-off Only</option>
+                  <option>Elevator / Hand-Truck Access to Doorstep</option>
+                </select>
+              </div>
+
+              <!-- Delivery Notes / Instructions -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Gate Code / Delivery Instructions</label>
+                <input type="text" value="Leave at the Community Center front desk. Guard on duty 24/7." class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="e.g. Gate 2, Ring bell">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Form Section 4: Commodity Interests & Purchasing Preferences -->
+        <section id="purchasing-preferences" class="bg-card rounded-2xl p-6 shadow-sm border border-border/30 scroll-mt-28">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-border/40">
+            <div class="bg-primary/10 p-2 rounded-xl text-primary">
+              <iconify-icon icon="lucide:shopping-cart" class="text-xl"></iconify-icon>
+            </div>
+            <div>
+              <h2 class="text-xl font-heading font-bold text-foreground">Commodity Interests &amp; Volume Requirements</h2>
+              <p class="text-xs text-muted-foreground">Select products, volume requirements, and purchasing frequencies</p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Commodity Interests Checklist -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-3 uppercase tracking-wider">Group Commodity Interests <span class="text-destructive">*</span></label>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" checked="" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🌽 Sweet Corn</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" checked="" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🍅 Tomatoes</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" checked="" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🧅 Onions</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" checked="" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🥔 Potatoes</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🌾 Wheat / Grains</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🟢 Pulses</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🌶️ Spices</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" checked="" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🍯 Honey</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Volume Requirements -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Group Volume Requirements (Per Week) <span class="text-destructive">*</span></label>
+                <div class="relative">
+                  <input type="number" value="3.5" class="w-full bg-muted/20 border border-border rounded-xl pl-4 pr-24 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="e.g. 1.0">
+                  <span class="absolute right-4 top-3.5 text-xs text-muted-foreground font-semibold">Quintals (350 kg)</span>
+                </div>
+              </div>
+
+              <!-- Purchasing Frequency -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Purchasing Frequency <span class="text-destructive">*</span></label>
+                <select class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium">
+                  <option selected="">Bi-Weekly Deliveries (Every Wed &amp; Sat)</option>
+                  <option>Weekly Deliveries (Every Sunday)</option>
+                  <option>Monthly Bulk Orders</option>
+                  <option>Seasonal Harvest Crop Orders</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Form Section 5: Shared Group Payments -->
+        <section id="payments-escrow" class="bg-card rounded-2xl p-6 shadow-sm border border-border/30 scroll-mt-28">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-border/40">
+            <div class="bg-primary/10 p-2 rounded-xl text-primary">
+              <iconify-icon icon="lucide:credit-card" class="text-xl"></iconify-icon>
+            </div>
+            <div>
+              <h2 class="text-xl font-heading font-bold text-foreground">Group Payments &amp; Shared Escrow</h2>
+              <p class="text-xs text-muted-foreground">Setup bank details and shared escrow links for split payments</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Account Number -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Group Pool Account Number <span class="text-destructive">*</span></label>
+              <input type="password" value="123456789012" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-mono tracking-wider font-medium" placeholder="Enter bank account number">
+            </div>
+
+            <!-- IFSC Code -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">IFSC Code <span class="text-destructive">*</span></label>
+              <input type="text" value="ICIC0000456" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-mono tracking-wider font-medium" placeholder="e.g. ICIC0000456">
+            </div>
+
+            <!-- Escrow Mandate / Pool Limit -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Shared Escrow / Pool Mandate</label>
+              <div class="relative">
+                <input type="text" value="₹ 1,20,000 Group Pool Balance" class="w-full bg-muted/10 border border-border/50 rounded-xl px-4 py-3 text-sm focus:outline-none text-muted-foreground font-medium" readonly="">
+                <span class="absolute right-3 top-2.5 bg-primary/10 text-primary text-[10px] font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1">
+                  <iconify-icon icon="lucide:shield-check" class="text-xs"></iconify-icon> Mandate Active
+                </span>
+              </div>
+            </div>
+
+            <!-- Group UPI ID -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Group Shared UPI ID</label>
+              <input type="text" value="greenmeadowsclub@okicici" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="username@upi">
+            </div>
+          </div>
+        </section>
+
+        <!-- Persistent Save & Actions Bar -->
+        <div class="bg-card rounded-2xl p-4 shadow-md border border-border/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-2 text-xs text-muted-foreground">
+            <iconify-icon icon="lucide:info" class="text-primary text-base"></iconify-icon>
+            <span>All group orders are shipped consolidated to the drop-off address for maximum savings.</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <button class="px-5 py-2.5 rounded-xl text-sm font-semibold text-foreground hover:bg-muted/40 transition-colors">Cancel</button>
+            <button class="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm transition-all flex items-center gap-2">
+              <iconify-icon icon="lucide:circle-check" class="text-sm"></iconify-icon>
+              <span>Save &amp; Update Group Profile</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    </div>
+    <div id="bulkBuyerView" style="display: none;">
+<!-- Page Header & Breadcrumbs -->
+    <div class="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+          <a href="#" data-uxm-link="Cart" class="hover:text-primary">Marketplace</a>
+          <iconify-icon icon="lucide:chevron-right" class="text-xs"></iconify-icon>
+          <span class="text-foreground font-medium">Buyer Profile</span>
+        </div>
+        <h1 class="text-3xl font-heading font-bold text-foreground flex items-center gap-3">
+          Buyer Registration &amp; Dashboard
+          <span class="text-xs font-sans font-normal bg-accent text-accent-foreground px-3 py-1 rounded-full flex items-center gap-1">
+            <iconify-icon icon="lucide:circle-check" class="text-primary"></iconify-icon> Corporate Verified
+          </span>
+        </h1>
+      </div>
+      
+      <!-- Buyer Type Selector -->
+      <div class="flex bg-muted/40 p-1 rounded-xl border border-border/40">
+        
+        <button id="btnCommunity_inBulk" class="text-muted-foreground hover:text-foreground px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors">
+          <iconify-icon icon="lucide:layers" class="text-xs"></iconify-icon>
+          Community Group
+        </button>
+        <button id="btnBulk_inBulk" class="bg-card text-foreground shadow-sm px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+          <iconify-icon icon="lucide:shield" class="text-primary text-xs"></iconify-icon>
+          Bulk / Corporate
+        </button>
+      </div>
+    </div>
+
+    <!-- Dashboard Grid Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+      
+      <!-- Left Vertical Sidebar (Navigation category tabs) -->
+      <aside class="hidden lg:block lg:col-span-1 space-y-3 bg-card p-5 rounded-2xl border border-border/30 shadow-sm sticky top-28">
+        <div class="pb-3 border-b border-border/40 mb-2">
+          <p class="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Profile Sections</p>
+        </div>
+        
+        <a href="#corporate-details" class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-primary/10 text-primary font-semibold text-sm transition-all">
+          <div class="flex items-center gap-2.5">
+            <iconify-icon icon="lucide:shield" class="text-lg"></iconify-icon>
+            <span>Company &amp; Compliance</span>
+          </div>
+          <iconify-icon icon="lucide:circle-check" class="text-primary text-base"></iconify-icon>
+        </a>
+
+        <a href="#delivery-logistics" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-muted/30 hover:text-foreground font-medium text-sm transition-all">
+          <div class="flex items-center gap-2.5">
+            <iconify-icon icon="lucide:map-pin" class="text-lg"></iconify-icon>
+            <span>Logistics &amp; Address</span>
+          </div>
+          <iconify-icon icon="lucide:circle-check" class="text-primary text-base"></iconify-icon>
+        </a>
+
+        <a href="#purchasing-preferences" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-muted/30 hover:text-foreground font-medium text-sm transition-all">
+          <div class="flex items-center gap-2.5">
+            <iconify-icon icon="lucide:shopping-cart" class="text-lg"></iconify-icon>
+            <span>Commodity Interests</span>
+          </div>
+          <span class="bg-secondary/20 text-secondary-foreground text-[10px] font-bold px-1.5 py-0.5 rounded-md">Active</span>
+        </a>
+
+        <a href="#payments-escrow" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-muted/30 hover:text-foreground font-medium text-sm transition-all">
+          <div class="flex items-center gap-2.5">
+            <iconify-icon icon="lucide:credit-card" class="text-lg"></iconify-icon>
+            <span>Payments &amp; Escrow</span>
+          </div>
+          <iconify-icon icon="lucide:circle-check" class="text-primary text-base"></iconify-icon>
+        </a>
+
+        <!-- Completeness Meter -->
+        <div class="pt-4 border-t border-border/40 mt-4 space-y-2">
+          <div class="flex justify-between items-center text-xs">
+            <span class="text-muted-foreground">Profile Completeness</span>
+            <span class="font-bold text-primary">95%</span>
+          </div>
+          <div class="w-full bg-muted rounded-full h-2 overflow-hidden">
+            <div class="bg-primary h-full rounded-full w-[95%]"></div>
+          </div>
+          <p class="text-[10px] text-muted-foreground">FSSAI License is verified. You are cleared for bulk food processing orders.</p>
+        </div>
+      </aside>
+
+      <!-- Right Main Panel Workspace (Detailed Forms) -->
+      <div class="lg:col-span-3 space-y-8">
+        
+        <!-- Form Section 1: Company & Compliance Details -->
+        <section id="corporate-details" class="bg-card rounded-2xl p-6 shadow-sm border border-border/30 scroll-mt-28">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-border/40">
+            <div class="bg-primary/10 p-2 rounded-xl text-primary">
+              <iconify-icon icon="lucide:shield" class="text-xl"></iconify-icon>
+            </div>
+            <div>
+              <h2 class="text-xl font-heading font-bold text-foreground">Company &amp; Compliance Details</h2>
+              <p class="text-xs text-muted-foreground">Corporate tax and regulatory credentials for bulk procurement</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Full Name / Corporate Name -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Company / Corporate Name <span class="text-destructive">*</span></label>
+              <input type="text" value="Sahyadri Agro Processing Pvt. Ltd." class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="Enter company name">
+            </div>
+
+            <!-- Authorized Representative -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Authorized Buyer Name <span class="text-destructive">*</span></label>
+              <input type="text" value="Vikram Malhotra" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="Enter full name">
+            </div>
+
+            <!-- Mobile Number -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Mobile Number <span class="text-destructive">*</span></label>
+              <div class="relative">
+                <input type="tel" value="+91 91234 56789" class="w-full bg-muted/20 border border-border rounded-xl pl-4 pr-24 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="Enter mobile number">
+                <span class="absolute right-3 top-2.5 bg-primary/10 text-primary text-[10px] font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1">
+                  <iconify-icon icon="lucide:circle-check" class="text-xs"></iconify-icon> Verified
+                </span>
+              </div>
+            </div>
+
+            <!-- GSTIN -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">GSTIN <span class="text-destructive">*</span></label>
+              <div class="relative">
+                <input type="text" value="27AAACS1234A1Z5" class="w-full bg-muted/20 border border-border rounded-xl pl-4 pr-24 py-3 text-sm focus:outline-none focus:border-primary font-mono tracking-wider font-medium" placeholder="15-character GSTIN">
+                <span class="absolute right-3 top-2.5 bg-primary/10 text-primary text-[10px] font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1">
+                  <iconify-icon icon="lucide:circle-check" class="text-xs"></iconify-icon> Validated
+                </span>
+              </div>
+            </div>
+
+            <!-- PAN Card Number -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Company PAN <span class="text-destructive">*</span></label>
+              <input type="text" value="AAACS1234A" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-mono tracking-wider font-medium" placeholder="10-character PAN card">
+            </div>
+
+            <!-- FSSAI License -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">FSSAI License Number <span class="text-muted-foreground">(Optional)</span></label>
+              <div class="relative">
+                <input type="text" value="12345678901234" class="w-full bg-muted/20 border border-border rounded-xl pl-4 pr-24 py-3 text-sm focus:outline-none focus:border-primary font-mono tracking-wider font-medium" placeholder="14-digit FSSAI number">
+                <span class="absolute right-3 top-2.5 bg-primary/10 text-primary text-[10px] font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1">
+                  <iconify-icon icon="lucide:circle-check" class="text-xs"></iconify-icon> Active
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Form Section 2: Delivery & Logistics -->
+        <section id="delivery-logistics" class="bg-card rounded-2xl p-6 shadow-sm border border-border/30 scroll-mt-28">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-border/40">
+            <div class="bg-primary/10 p-2 rounded-xl text-primary">
+              <iconify-icon icon="lucide:map-pin" class="text-xl"></iconify-icon>
+            </div>
+            <div>
+              <h2 class="text-xl font-heading font-bold text-foreground">Logistics &amp; Delivery Address</h2>
+              <p class="text-xs text-muted-foreground">Specify the drop-off facility and heavy-vehicle accessibility</p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Corporate Delivery Address -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Default Delivery Address <span class="text-destructive">*</span></label>
+              <textarea rows="2" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="Enter full delivery warehouse address">Warehouse No. 4B, Sahyadri Logistics Park, Chakan Industrial Area Phase II, Pune, Maharashtra</textarea>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <!-- Pincode -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Pincode <span class="text-destructive">*</span></label>
+                <input type="text" value="410501" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="6-digit PIN">
+              </div>
+
+              <!-- Geo-coordinates -->
+              <div class="md:col-span-2">
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Geo-Coordinates (Latitude, Longitude) <span class="text-destructive">*</span></label>
+                <div class="flex gap-2">
+                  <input type="text" value="18.7712° N, 73.8510° E" class="flex-grow bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-mono text-xs font-medium" placeholder="e.g. 18.5204, 73.8567">
+                  <button class="bg-accent text-accent-foreground hover:bg-accent/80 px-4 py-3 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                    <iconify-icon icon="lucide:map-pin" class="text-sm"></iconify-icon>
+                    <span>Detect</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+              <!-- Drop-off Accessibility -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Drop-off Accessibility <span class="text-destructive">*</span></label>
+                <select class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium">
+                  <option selected="">Heavy Truck Access (16+ Wheeler / Multi-axle)</option>
+                  <option>Medium Truck Access (6-10 Wheeler)</option>
+                  <option>Small Commercial Vehicle (Tata Ace/Pickup)</option>
+                  <option>Forklift Loading Dock Available</option>
+                </select>
+              </div>
+
+              <!-- Gate Entry / Delivery Notes -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Delivery Instructions &amp; Gate Code</label>
+                <input type="text" value="Gate No. 3, Call supervisor at +91 98765 00112 before arrival" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="e.g. Gate 2, Ring bell">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Form Section 3: Commodity Interests & Volume Requirements -->
+        <section id="purchasing-preferences" class="bg-card rounded-2xl p-6 shadow-sm border border-border/30 scroll-mt-28">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-border/40">
+            <div class="bg-primary/10 p-2 rounded-xl text-primary">
+              <iconify-icon icon="lucide:shopping-cart" class="text-xl"></iconify-icon>
+            </div>
+            <div>
+              <h2 class="text-xl font-heading font-bold text-foreground">Commodity Interests &amp; Volume Requirements</h2>
+              <p class="text-xs text-muted-foreground">Indicate products, monthly volumes, and procurement frequencies</p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Commodity Interests Checklist -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-3 uppercase tracking-wider">Commodity Interests <span class="text-destructive">*</span></label>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" checked="" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🌽 Sweet Corn</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" checked="" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🍅 Tomatoes</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🧅 Onions</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🥔 Potatoes</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" checked="" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🌾 Wheat / Grains</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🟢 Pulses</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🌶️ Spices</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-background border border-border/40 cursor-pointer hover:border-primary transition-all">
+                  <input type="checkbox" checked="" class="rounded border-border text-primary focus:ring-primary h-4 w-4">
+                  <span class="text-xs font-medium">🍯 Honey</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Volume Requirements -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Volume Requirements (Per Month) <span class="text-destructive">*</span></label>
+                <div class="relative">
+                  <input type="number" value="150" class="w-full bg-muted/20 border border-border rounded-xl pl-4 pr-24 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="e.g. 50">
+                  <span class="absolute right-4 top-3.5 text-xs text-muted-foreground font-semibold">Tons (1500 Qt)</span>
+                </div>
+              </div>
+
+              <!-- Purchasing Frequency -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Purchasing Frequency <span class="text-destructive">*</span></label>
+                <select class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium">
+                  <option selected="">Weekly Deliveries</option>
+                  <option>Bi-Weekly Deliveries</option>
+                  <option>Monthly Bulk Orders</option>
+                  <option>Seasonal / Crop Harvest Cycles</option>
+                  <option>Ad-hoc / Spot Market Purchases</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Form Section 4: Bank Account & Escrow Details -->
+        <section id="payments-escrow" class="bg-card rounded-2xl p-6 shadow-sm border border-border/30 scroll-mt-28">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-border/40">
+            <div class="bg-primary/10 p-2 rounded-xl text-primary">
+              <iconify-icon icon="lucide:credit-card" class="text-xl"></iconify-icon>
+            </div>
+            <div>
+              <h2 class="text-xl font-heading font-bold text-foreground">Payments &amp; Escrow Mandate</h2>
+              <p class="text-xs text-muted-foreground">Setup secure business payments and buyer escrow accounts</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Bank Account Number -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Corporate Account Number <span class="text-destructive">*</span></label>
+              <input type="password" value="987654321098" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-mono tracking-wider font-medium" placeholder="Enter bank account number">
+            </div>
+
+            <!-- IFSC Code -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Corporate IFSC Code <span class="text-destructive">*</span></label>
+              <input type="text" value="HDFC0000123" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-mono tracking-wider font-medium" placeholder="e.g. HDFC0000123">
+            </div>
+
+            <!-- E-Wallet / Escrow Mandate -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">E-Wallet / Escrow Mandate</label>
+              <div class="relative">
+                <input type="text" value="₹ 15,00,000 Authorized Escrow Limit" class="w-full bg-muted/10 border border-border/50 rounded-xl px-4 py-3 text-sm focus:outline-none text-muted-foreground font-medium" readonly="">
+                <span class="absolute right-3 top-2.5 bg-primary/10 text-primary text-[10px] font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1">
+                  <iconify-icon icon="lucide:shield-check" class="text-xs"></iconify-icon> Mandate Active
+                </span>
+              </div>
+            </div>
+
+            <!-- UPI Business ID -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Business UPI ID</label>
+              <input type="text" value="sahyadriagro@okhdfcbank" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="username@upi">
+            </div>
+          </div>
+        </section>
+
+        <!-- Persistent Save & Actions Bar -->
+        <div class="bg-card rounded-2xl p-4 shadow-md border border-border/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-2 text-xs text-muted-foreground">
+            <iconify-icon icon="lucide:info" class="text-primary text-base"></iconify-icon>
+            <span>All corporate changes are subject to verification via Ministry of Corporate Affairs (MCA).</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <button class="px-5 py-2.5 rounded-xl text-sm font-semibold text-foreground hover:bg-muted/40 transition-colors">Cancel</button>
+            <button class="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm transition-all flex items-center gap-2">
+              <iconify-icon icon="lucide:circle-check" class="text-sm"></iconify-icon>
+              <span>Save &amp; Update Corporate Profile</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    </div>
+</main>
+</div>
+</body></html>

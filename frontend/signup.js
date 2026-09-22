@@ -667,6 +667,8 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             if (selectedRole === "farmer" || selectedRole === "seller") {
                 window.location.href = "sellerDashboard.html";
+            } else if (selectedRole === "buyer") {
+                window.location.href = "buyerMarketplace.html";
             } else {
                 window.location.href = "index.html";
             }
