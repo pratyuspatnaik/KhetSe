@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Screen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@100..900&family=Fira+Code:wght@300..700&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link id="theme-fonts" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="transporterProfile.css">
+    <script src="transporterProfile.js"></script>
+</head>
+  <body>
+<div class="min-h-screen w-full bg-background flex flex-col relative font-sans text-foreground pb-16">
+  <!-- Top Floating Navigation Bar -->
+  <div class="w-full max-w-7xl mx-auto px-4 pt-6 pb-2 sticky top-0 z-50">
+    <div class="bg-card shadow-lg rounded-3xl md:rounded-full px-4 md:px-6 py-3 flex flex-wrap items-center justify-between border border-border/40 backdrop-blur-md bg-opacity-95 transition-all">
+      <!-- Logo -->
+      <div class="flex items-center gap-2 cursor-pointer order-1" data-uxm-link="Cart">
+        <div class="bg-primary/10 p-1.5 rounded-full flex items-center justify-center">
+          <iconify-icon icon="lucide:leaf" class="text-primary text-xl"></iconify-icon>
+        </div>
+        <span class="font-heading font-bold text-xl tracking-tight text-foreground">Agri <span class="text-primary">Link</span></span>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="flex items-center justify-center gap-4 md:gap-8 w-full md:w-auto order-3 md:order-2 mt-3 md:mt-0 pt-3 md:pt-0 border-t md:border-t-0 border-border/50 overflow-x-auto">
+        <a href="transporterDashboard.html" data-uxm-link="Cart" class="text-sm font-medium text-foreground hover:text-primary transition-colors shrink-0">Dashboard</a>
+        
+        <a href="#" class="text-sm font-medium text-primary hover:text-primary/80 transition-colors border-b-2 border-primary pb-1 shrink-0">Profile</a>
+        <a href="contact.html" data-uxm-link="Orders" class="text-sm font-medium text-foreground hover:text-primary transition-colors shrink-0">Contact Us</a>
+      </div>
+
+      <!-- Actions, Icons & Auth -->
+      <div class="flex items-center gap-3 md:gap-6 order-2 md:order-3">
+        <!-- Shopping Cart Icon with Badge -->
+        <!-- <div class="relative cursor-pointer hover:text-primary transition-colors" data-uxm-link="Cart">
+          <iconify-icon icon="lucide:shopping-cart" class="text-2xl text-foreground/80"></iconify-icon>
+          <span class="absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-card">3</span>
+        </div> -->
+
+        <!-- Notification Bell with Badge -->
+        <div class="relative cursor-pointer hover:text-primary transition-colors">
+          <iconify-icon icon="lucide:bell" class="text-2xl text-foreground/80"></iconify-icon>
+          <span class="absolute -top-1.5 -right-1.5 bg-secondary text-foreground text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-card">2</span>
+        </div>
+
+        <!-- Vertical Divider -->
+        <div class="h-6 w-px bg-border hidden sm:block"></div>
+
+        <!-- User Profile Avatar and Sign Out -->
+        <div class="flex items-center gap-3">
+          <a href="transporterProfile.html" class="flex items-center gap-2.5 text-left text-foreground hover:opacity-90 transition-opacity cursor-pointer user-details" style="text-decoration: none;">
+            <img src="https://randomuser.me/api/portraits/men/64.jpg" alt="Transporter Sukhdev Singh" class="w-9 h-9 rounded-full border-2 border-primary object-cover">
+            <div class="text-left">
+              <p class="text-xs font-semibold leading-none">Sukhdev Singh</p>
+              <span class="text-[10px] text-primary font-medium">Verified Logistics Partner</span>
+            </div>
+          </a>
+          <a href="index.html">
+            <button data-uxm-link="Login" class="text-xs text-muted-foreground hover:text-destructive transition-colors ml-2 hidden sm:block cursor-pointer">Log Out</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Wrapper -->
+  <main class="w-full max-w-7xl mx-auto px-4 mt-8 flex-grow">
+    <!-- Page Header & Breadcrumbs -->
+    <div class="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+          <a href="#" data-uxm-link="Cart" class="hover:text-primary">Marketplace</a>
+          <iconify-icon icon="lucide:chevron-right" class="text-xs"></iconify-icon>
+          <span class="text-foreground font-medium">Transporter Profile</span>
+        </div>
+        <h1 class="text-3xl font-heading font-bold text-foreground flex items-center gap-3">
+          Transporter Dashboard &amp; Profile
+          <span class="text-xs font-sans font-normal bg-accent text-accent-foreground px-3 py-1 rounded-full flex items-center gap-1">
+            <iconify-icon icon="lucide:circle-check" class="text-primary"></iconify-icon> Verified Logistics
+          </span>
+        </h1>
+      </div>
+      
+      <!-- Role Switcher -->
+      <!-- <div class="flex bg-muted/40 p-1 rounded-xl border border-border/40">
+        <button data-uxm-link="Farmer Profile" class="text-muted-foreground hover:text-foreground px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors">
+          <iconify-icon icon="lucide:user" class="text-muted-foreground"></iconify-icon>
+          Farmer
+        </button>
+        <button data-uxm-link="Bulk Buyer Profile" class="text-muted-foreground hover:text-foreground px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors">
+          <iconify-icon icon="lucide:shopping-cart" class="text-muted-foreground"></iconify-icon>
+          Buyer
+        </button>
+        <button class="bg-card text-foreground shadow-sm px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+          <iconify-icon icon="lucide:zap" class="text-primary"></iconify-icon>
+          Transporter
+        </button>
+      </div> -->
+    </div>
+
+    <!-- Dashboard Grid Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+      
+      <!-- Left Vertical Sidebar (Navigation category tabs) -->
+      <aside class="hidden lg:block lg:col-span-1 space-y-3 bg-card p-5 rounded-2xl border border-border/30 shadow-sm sticky top-28">
+        <div class="pb-3 border-b border-border/40 mb-2">
+          <p class="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Logistics Sections</p>
+        </div>
+        
+        <a href="#identity-verification" class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-primary/10 text-primary font-semibold text-sm transition-all">
+          <div class="flex items-center gap-2.5">
+            <iconify-icon icon="lucide:user" class="text-lg"></iconify-icon>
+            <span>Identity &amp; Agency</span>
+          </div>
+          <iconify-icon icon="lucide:circle-check" class="text-primary text-base"></iconify-icon>
+        </a>
+
+        <a href="#vehicle-capability" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-muted/30 hover:text-foreground font-medium text-sm transition-all">
+          <div class="flex items-center gap-2.5">
+            <iconify-icon icon="lucide:truck" class="text-lg"></iconify-icon>
+            <span>Vehicle Specifications</span>
+          </div>
+          <iconify-icon icon="lucide:circle-check" class="text-primary text-base"></iconify-icon>
+        </a>
+
+        <a href="#service-routes" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-muted/30 hover:text-foreground font-medium text-sm transition-all">
+          <div class="flex items-center gap-2.5">
+            <iconify-icon icon="lucide:map-pin" class="text-lg"></iconify-icon>
+            <span>Service &amp; Routes</span>
+          </div>
+          <span class="bg-secondary/20 text-secondary-foreground text-[10px] font-bold px-1.5 py-0.5 rounded-md">Update</span>
+        </a>
+
+        <a href="#payout-details" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-muted/30 hover:text-foreground font-medium text-sm transition-all">
+          <div class="flex items-center gap-2.5">
+            <iconify-icon icon="lucide:credit-card" class="text-lg"></iconify-icon>
+            <span>Bank &amp; Payouts</span>
+          </div>
+          <iconify-icon icon="lucide:circle-check" class="text-primary text-base"></iconify-icon>
+        </a>
+
+        <!-- Completeness Meter -->
+        <div class="pt-4 border-t border-border/40 mt-4 space-y-2">
+          <div class="flex justify-between items-center text-xs">
+            <span class="text-muted-foreground">Profile Completeness</span>
+            <span class="font-bold text-primary">90%</span>
+          </div>
+          <div class="w-full bg-muted rounded-full h-2 overflow-hidden">
+            <div class="bg-primary h-full rounded-full" style="width: 90%;"></div>
+          </div>
+          <p class="text-[10px] text-muted-foreground">Add preferred delivery corridors to unlock premium long-haul dispatches.</p>
+        </div>
+      </aside>
+
+      <!-- Right Main Panel Workspace (Detailed Forms) -->
+      <div class="lg:col-span-3 space-y-8">
+        
+        <!-- Form Section 1: Identity & Agency Details -->
+        <section id="identity-verification" class="bg-card rounded-2xl p-6 shadow-sm border border-border/30 scroll-mt-28">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-border/40">
+            <div class="bg-primary/10 p-2 rounded-xl text-primary">
+              <iconify-icon icon="lucide:user" class="text-xl"></iconify-icon>
+            </div>
+            <div>
+              <h2 class="text-xl font-heading font-bold text-foreground">Driver, Owner &amp; Agency Details</h2>
+              <p class="text-xs text-muted-foreground">Verify your commercial credentials for direct crop transport dispatches</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Driver/Owner Name -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Driver / Owner Full Name <span class="text-destructive">*</span></label>
+              <input type="text" value="Sukhdev Singh" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="Enter driver or owner name">
+            </div>
+
+            <!-- Mobile Number -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Mobile Number (OTP Verified) <span class="text-destructive">*</span></label>
+              <div class="relative">
+                <input type="tel" value="+91 94123 45678" class="w-full bg-muted/20 border border-border rounded-xl pl-4 pr-24 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="Enter mobile number">
+                <span class="absolute right-3 top-2.5 bg-primary/10 text-primary text-[10px] font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1">
+                  <iconify-icon icon="lucide:circle-check" class="text-xs"></iconify-icon> Verified
+                </span>
+              </div>
+            </div>
+
+            <!-- Aadhaar Number -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Aadhaar Card Number <span class="text-destructive">*</span></label>
+              <div class="relative">
+                <input type="text" value="**** **** 7890" class="w-full bg-muted/20 border border-border rounded-xl pl-4 pr-24 py-3 text-sm focus:outline-none focus:border-primary font-mono tracking-wider font-medium" placeholder="12-digit Aadhaar number">
+                <span class="absolute right-3 top-2.5 bg-primary/10 text-primary text-[10px] font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1">
+                  <iconify-icon icon="lucide:shield" class="text-xs"></iconify-icon> e-KYC OK
+                </span>
+              </div>
+            </div>
+
+            <!-- Commercial DL -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Commercial Driving License No. <span class="text-destructive">*</span></label>
+              <div class="relative">
+                <input type="text" value="DL-1420210089456" class="w-full bg-muted/20 border border-border rounded-xl pl-4 pr-24 py-3 text-sm focus:outline-none focus:border-primary font-mono tracking-wider font-medium" placeholder="Enter commercial license number">
+                <span class="absolute right-3 top-2.5 bg-primary/10 text-primary text-[10px] font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1">
+                  <iconify-icon icon="lucide:circle-check" class="text-xs"></iconify-icon> Active
+                </span>
+              </div>
+            </div>
+
+            <!-- Transport Agency Reg -->
+            <div class="md:col-span-2">
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Transport Agency Registration / Name (Optional)</label>
+              <input type="text" value="Sher-E-Punjab Logistics Ltd." class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="Enter agency name if associated with a fleet">
+            </div>
+          </div>
+        </section>
+
+        <!-- Form Section 2: Vehicle & Capability -->
+        <section id="vehicle-capability" class="bg-card rounded-2xl p-6 shadow-sm border border-border/30 scroll-mt-28">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-border/40">
+            <div class="bg-primary/10 p-2 rounded-xl text-primary">
+              <iconify-icon icon="lucide:truck" class="text-xl"></iconify-icon>
+            </div>
+            <div>
+              <h2 class="text-xl font-heading font-bold text-foreground">Vehicle Specifications &amp; Capabilities</h2>
+              <p class="text-xs text-muted-foreground">Register vehicle properties to match appropriate harvest volume logistics</p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <!-- Vehicle Registration No. -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Vehicle Registration No. <span class="text-destructive">*</span></label>
+                <input type="text" value="MH-12-QW-8845" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-mono tracking-wider font-medium" placeholder="e.g. MH-12-AB-1234">
+              </div>
+
+              <!-- Vehicle Type -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Vehicle Type <span class="text-destructive">*</span></label>
+                <select class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium">
+                  <option selected="">LCV (Light Commercial Vehicle)</option>
+                  <option>HCV (Heavy Commercial Vehicle)</option>
+                  <option>Mini Truck (Chota Hathi)</option>
+                  <option>Tractor Trolley</option>
+                </select>
+              </div>
+
+              <!-- Payload Capacity -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Payload Capacity (Tons) <span class="text-destructive">*</span></label>
+                <div class="relative">
+                  <input type="number" step="0.1" value="4.5" class="w-full bg-muted/20 border border-border rounded-xl pl-4 pr-16 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="e.g. 5.0">
+                  <span class="absolute right-4 top-3.5 text-xs text-muted-foreground font-semibold">Tons</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Toggles and Custom Radio Buttons -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+              <!-- Cold Chain Enabled -->
+              <div class="bg-background rounded-xl p-4 border border-border/40">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <iconify-icon icon="lucide:snowflake" class="text-primary text-lg"></iconify-icon>
+                    <div>
+                      <p class="text-xs font-bold text-foreground">Cold Chain Enabled</p>
+                      <p class="text-[10px] text-muted-foreground">For perishables &amp; fruits</p>
+                    </div>
+                  </div>
+                  <!-- Custom Switch -->
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" class="sr-only peer" checked="">
+                    <div class="w-11 h-6 bg-muted peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-border after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- GPS Tracking -->
+              <div class="bg-background rounded-xl p-4 border border-border/40">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <iconify-icon icon="lucide:map" class="text-primary text-lg"></iconify-icon>
+                    <div>
+                      <p class="text-xs font-bold text-foreground">Live GPS Tracking</p>
+                      <p class="text-[10px] text-muted-foreground">Enables real-time tracking</p>
+                    </div>
+                  </div>
+                  <!-- Custom Switch -->
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" class="sr-only peer" checked="">
+                    <div class="w-11 h-6 bg-muted peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-border after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Covered/Open Body -->
+              <div class="bg-background rounded-xl p-4 border border-border/40">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <iconify-icon icon="lucide:shield" class="text-primary text-lg"></iconify-icon>
+                    <div>
+                      <p class="text-xs font-bold text-foreground">Cargo Body Cover</p>
+                      <p class="text-[10px] text-muted-foreground">Covered / Open Body</p>
+                    </div>
+                  </div>
+                  <!-- Custom Switch (Checked = Covered) -->
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" class="sr-only peer" checked="">
+                    <div class="w-11 h-6 bg-muted peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-border after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Form Section 3: Service Area & Route Preferences -->
+        <section id="service-routes" class="bg-card rounded-2xl p-6 shadow-sm border border-border/30 scroll-mt-28">
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-border/40">
+            <div class="flex items-center gap-3">
+              <div class="bg-primary/10 p-2 rounded-xl text-primary">
+                <iconify-icon icon="lucide:map-pin" class="text-xl"></iconify-icon>
+              </div>
+              <div>
+                <h2 class="text-xl font-heading font-bold text-foreground">Service Coverage &amp; Route Preferences</h2>
+                <p class="text-xs text-muted-foreground">Define your operational radius and primary highway corridors</p>
+              </div>
+            </div>
+            <button class="bg-primary text-primary-foreground hover:bg-primary/90 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition-colors">
+              <iconify-icon icon="lucide:plus" class="text-sm"></iconify-icon>
+              <span>Add Route</span>
+            </button>
+          </div>
+
+          <div class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Base Location -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Base Location / City <span class="text-destructive">*</span></label>
+                <div class="relative">
+                  <input type="text" value="Pune, Maharashtra" class="w-full bg-muted/20 border border-border rounded-xl pl-4 pr-12 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="Enter base city">
+                  <iconify-icon icon="lucide:map-pin" class="absolute right-4 top-3.5 text-muted-foreground text-lg"></iconify-icon>
+                </div>
+              </div>
+
+              <!-- Serviceable Radius -->
+              <div>
+                <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Serviceable Radius (km) <span class="text-destructive">*</span></label>
+                <div class="relative">
+                  <input type="number" value="250" class="w-full bg-muted/20 border border-border rounded-xl pl-4 pr-16 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="e.g. 100">
+                  <span class="absolute right-4 top-3.5 text-xs text-muted-foreground font-semibold">km</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Active Corridors List -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-3 uppercase tracking-wider">Preferred Routes &amp; Corridors</label>
+              <div class="space-y-3">
+                <!-- Corridor 1 -->
+                <div class="bg-background rounded-xl p-4 border border-border/40 flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="bg-primary/10 text-primary p-2 rounded-lg flex items-center justify-center">
+                      <iconify-icon icon="lucide:navigation" class="text-lg"></iconify-icon>
+                    </div>
+                    <div>
+                      <h4 class="font-heading font-bold text-sm text-foreground">Pune - Mumbai Expressway</h4>
+                      <p class="text-xs text-muted-foreground">Primary Corridor · High Frequency</p>
+                    </div>
+                  </div>
+                  <button class="text-muted-foreground hover:text-destructive p-1.5 transition-colors">
+                    <iconify-icon icon="lucide:trash-2" class="text-lg"></iconify-icon>
+                  </button>
+                </div>
+
+                <!-- Corridor 2 -->
+                <div class="bg-background rounded-xl p-4 border border-border/40 flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="bg-primary/10 text-primary p-2 rounded-lg flex items-center justify-center">
+                      <iconify-icon icon="lucide:navigation" class="text-lg"></iconify-icon>
+                    </div>
+                    <div>
+                      <h4 class="font-heading font-bold text-sm text-foreground">Pune - Nashik Highway (NH-60)</h4>
+                      <p class="text-xs text-muted-foreground">Secondary Corridor · Weekly Harvest Drops</p>
+                    </div>
+                  </div>
+                  <button class="text-muted-foreground hover:text-destructive p-1.5 transition-colors">
+                    <iconify-icon icon="lucide:trash-2" class="text-lg"></iconify-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Form Section 4: Bank Account & Payout Details -->
+        <section id="payout-details" class="bg-card rounded-2xl p-6 shadow-sm border border-border/30 scroll-mt-28">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-border/40">
+            <div class="bg-primary/10 p-2 rounded-xl text-primary">
+              <iconify-icon icon="lucide:credit-card" class="text-xl"></iconify-icon>
+            </div>
+            <div>
+              <h2 class="text-xl font-heading font-bold text-foreground">Bank Account &amp; Payout Details</h2>
+              <p class="text-xs text-muted-foreground">Secure direct bank payouts for completed transportation orders</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Account Number -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Bank Account Number <span class="text-destructive">*</span></label>
+              <input type="password" value="*********4567" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-mono tracking-wider font-medium" placeholder="Enter bank account number">
+            </div>
+
+            <!-- IFSC Code -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">IFSC Code <span class="text-destructive">*</span></label>
+              <input type="text" value="HDFC0000104" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-mono tracking-wider font-medium" placeholder="e.g. HDFC0000104">
+            </div>
+
+            <!-- UPI ID -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">UPI ID (For Quick Payouts)</label>
+              <input type="text" value="sukhdev@okhdfc" class="w-full bg-muted/20 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary font-medium" placeholder="username@upi">
+            </div>
+
+            <!-- Bank Branch Details (Auto-filled) -->
+            <div>
+              <label class="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Bank Branch &amp; Name</label>
+              <input type="text" value="HDFC Bank, Shivaji Nagar, Pune" class="w-full bg-muted/10 border border-border/50 rounded-xl px-4 py-3 text-sm focus:outline-none text-muted-foreground font-medium" readonly="">
+            </div>
+          </div>
+        </section>
+
+        <!-- Persistent Save & Actions Bar -->
+        <div class="bg-card rounded-2xl p-4 shadow-md border border-border/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-2 text-xs text-muted-foreground">
+            <iconify-icon icon="lucide:info" class="text-primary text-base"></iconify-icon>
+            <span>Your commercial DL and vehicle registration are verified with VAHAN records.</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <button class="px-5 py-2.5 rounded-xl text-sm font-semibold text-foreground hover:bg-muted/40 transition-colors">Cancel</button>
+            <button class="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm transition-all flex items-center gap-2">
+              <iconify-icon icon="lucide:circle-check" class="text-sm"></iconify-icon>
+              <span>Save &amp; Update Profile</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+</div>
+</body></html>
+

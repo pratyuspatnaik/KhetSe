@@ -56,6 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "sellerDashboard.html";
         } else if (selectedRole === "buyer") {
             window.location.href = "buyerMarketplace.html";
+        }
+        else if (selectedRole === "transporter") {
+            window.location.href = "transporterDashboard.html";
         } else {
             window.location.href = "index.html";
         }

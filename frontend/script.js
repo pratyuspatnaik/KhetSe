@@ -319,9 +319,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Global Buyer Profile Image & User Details Redirection
-        const buyerAvatar = e.target.closest('img[src*="portraits/men/46"], img[alt*="Vikram"], .buyer-avatar, .user-details');
+        const buyerAvatar = e.target.closest('img[src*="portraits/men/46"], img[alt*="Vikram"], .buyer-avatar');
         if (buyerAvatar) {
             window.location.href = 'buyerProfile.html';
+        }
+
+        // Global Transporter Profile Image & User Details Redirection
+        const transporterAvatar = e.target.closest('img[src*="portraits/men/64"], img[alt*="Transporter"], .transporter-avatar');
+        if (transporterAvatar) {
+            window.location.href = 'transporterProfile.html';
         }
     });
 });
