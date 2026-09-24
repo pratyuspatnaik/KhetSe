@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const subtotalEl = document.getElementById('subtotal-val');
     const taxEl = document.getElementById('tax-val');
     const totalEl = document.getElementById('total-val');
-    const deliveryFee = 5.00;
+    const deliveryFee = 400.00;
     const taxRate = 0.05; // 5%
 
     function calculateTotal() {
@@ -44,9 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const total = subtotal + tax + deliveryFee;
 
         // Update DOM
-        if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-        if (taxEl) taxEl.textContent = `$${tax.toFixed(2)}`;
-        if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
+        if (subtotalEl) subtotalEl.textContent = `₹${subtotal.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        if (taxEl) taxEl.textContent = `₹${tax.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        if (totalEl) totalEl.textContent = `₹${total.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
     }
 
     // Attach event listeners to buttons

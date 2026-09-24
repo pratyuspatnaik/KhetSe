@@ -121,6 +121,12 @@ ul {
     font-weight: 600;
     cursor: pointer;
 }
+.logo img, .brand-logo-img {
+    height: 34px;
+    width: 34px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
 .logo strong.text-dark-blue { color: var(--color-dark-blue); }
 .logo strong.text-green { color: var(--color-green); font-weight: 600; }
 .logo.text-white strong { color: var(--color-white); }
@@ -444,14 +450,14 @@ ul {
     width: 16px;
 }
 
-.agrilink-node {
+.khetse-node {
     background: var(--color-green);
     color: var(--color-white);
     padding: 16px 20px;
     border-radius: 8px;
 }
 
-.agrilink-node span {
+.khetse-node span {
     color: var(--color-white);
     font-weight: 600;
 }
@@ -1001,10 +1007,10 @@ button, input, textarea, select { font: inherit; }
         transform: rotate(0deg); 
         width: 12px;
     }
-    .agrilink-node {
+    .khetse-node {
         padding: 8px 10px;
     }
-    .agrilink-node span {
+    .khetse-node span {
         font-size: 0.7rem;
     }
 
