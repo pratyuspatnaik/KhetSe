@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const translations = {
         english: {
             title: 'Welcome Back',
-            subtitle: 'Log in to your KrishiMandi portal',
+            subtitle: 'Log in to your KhetSe portal',
             mobileLabel: 'Mobile Number',
             passTab: 'Password',
             otpTab: 'OTP Code',

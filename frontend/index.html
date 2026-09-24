@@ -20,16 +20,16 @@
                 <span><strong class="text-dark-blue">Khet</strong><strong class="text-green">Se</strong></span>
             </div>
             <ul class="nav-links">
-                <li><a href="login.html" class="nav-link">Marketplace</a></li>
-                <li><a href="login.html" class="nav-link">Orders</a></li>
+                <li><a href="buyerMarketplace.html" class="nav-link">Marketplace</a></li>
+                <li><a href="orders.html" class="nav-link">Orders</a></li>
                 <li><a href="contact.html" class="nav-link">Contact Us</a></li>
             </ul>
             <div class="nav-actions">
-                <div class="icon-badge cart-icon">
+                <a href="cart.html" class="icon-badge cart-icon" title="Shopping Cart">
                     <i data-lucide="shopping-cart"></i>
-                    <span class="badge green-badge">0</span>
-                </div>
-                <div class="icon-badge bell-icon">
+                    <span class="badge green-badge">2</span>
+                </a>
+                <div class="icon-badge bell-icon" title="Notifications">
                     <i data-lucide="bell"></i>
                     <span class="badge yellow-badge">0</span>
                 </div>
@@ -44,45 +44,79 @@
         <div class="container hero-content">
             <div class="hero-text">
                 <div class="hero-label">
-                    <span class="dot"></span> No commissions. No middlemen. Ever.
+                    <span class="dot"></span> Zero Middlemen • 100% Direct Agricultural Trade
                 </div>
-                <h1>Farm to Buyer,<br><span class="text-green">Zero Extra Cost.</span></h1>
+                <h1>Direct From Farm,<br><span class="text-green">Zero Extra Cost.</span></h1>
                 <div class="hero-buttons">
-                    <div class="hero-btn btn-farmer" >
+                    <a href="signup.html" class="hero-btn btn-farmer" style="text-decoration: none;">
                         <i data-lucide="sprout"></i>
                         <div class="btn-text">I'm a<br><strong>Seller</strong></div>
-                    </div>
-                    <div class="hero-btn btn-buyer" >
-                        <i data-lucide="truck"></i>
+                    </a>
+                    <a href="buyerMarketplace.html" class="hero-btn btn-buyer" style="text-decoration: none;">
+                        <i data-lucide="shopping-bag"></i>
                         <div class="btn-text">I'm a<br><strong>Buyer</strong></div>
-                    </div>
+                    </a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
                         <h3>3,200+</h3>
-                        <p>Farmers earning more</p>
+                        <p>Verified Farmers &amp; FPOs</p>
                     </div>
                     <div class="stat">
                         <h3>48h</h3>
-                        <p>Average payout time</p>
+                        <p>Guaranteed Payout Settlement</p>
                     </div>
                     <div class="stat">
                         <h3>28 States</h3>
-                        <p>Pan-country coverage</p>
+                        <p>Pan-India Mandi Network</p>
                     </div>
                 </div>
             </div>
             <div class="hero-image-wrapper">
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800" alt="Farm field"> 
+                <div class="hero-showcase-container">
+                    <img src="hero-bg.jpg" alt="KhetSe Direct Farm Trade" class="hero-showcase-bg" width="480" height="380">
+                    <div class="hero-showcase-overlay"></div>
+                    
+                    <!-- Top Floating Origin Tag -->
+                    <div class="hero-badge-top">
+                        <span class="badge-pulse"></span>
+                        <i data-lucide="shield-check"></i>
+                        <span>100% Direct Farm Origin • Zero Middlemen</span>
+                    </div>
+
+                    <!-- Bottom Floating Live Batch Trade Card -->
+                    <div class="hero-batch-card">
+                        <div class="batch-card-header">
+                            <div class="batch-crop-info">
+                                <span class="batch-chip">Live Verified Harvest</span>
+                                <h4 class="batch-crop-title">Sharbati Gold Wheat (Grade-A)</h4>
+                            </div>
+                            <div class="batch-price-tag">
+                                <span class="batch-rate">₹24,500</span>
+                                <span class="batch-unit">/ Ton</span>
+                            </div>
+                        </div>
+                        
+                        <div class="batch-route">
+                            <span class="route-point"><i data-lucide="map-pin"></i> Ludhiana Mandi</span>
+                            <i data-lucide="arrow-right" class="route-arrow"></i>
+                            <span class="route-point"><i data-lucide="building"></i> FreshMart Warehouse</span>
+                        </div>
+
+                        <div class="batch-pills">
+                            <span class="batch-pill green-pill"><i data-lucide="zap"></i> 48h Direct Payout</span>
+                            <span class="batch-pill blue-pill"><i data-lucide="check"></i> 0% Commission</span>
+                            <span class="batch-pill yellow-pill"><i data-lucide="lock"></i> Escrow Protected</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="old-way container text-center">
-        <h2>The Old Way Was Broken.</h2>
-        <p class="section-desc">Every extra hand in the chain adds cost, delay, and distance from<br>the truth. We cut it out.</p>
+        <h2>The Traditional Agri Supply Chain Was Broken.</h2>
+        <p class="section-desc">Every intermediary extracts commission, introduces transit delay, and obscures quality.<br>KhetSe connects producers directly with institutional buyers.</p>
         
         <div class="comparison-cards">
             <div class="card before-card">
@@ -98,7 +132,7 @@
                     <i data-lucide="arrow-right" class="arrow"></i>
                     <div class="chain-item"><i data-lucide="shopping-cart"></i><span>Buyer</span></div>
                 </div>
-                <div class="value-lost">-30% value lost</div>
+                <div class="value-lost">-30% Value Lost to Commission &amp; Spoilage</div>
             </div>
             
             <div class="card after-card">
@@ -113,40 +147,40 @@
                     <i data-lucide="arrow-right" class="arrow"></i>
                     <div class="chain-item"><i data-lucide="shopping-cart"></i><span>Buyer</span></div>
                 </div>
-                <div class="value-gained">+30% more value, 100% traceable</div>
+                <div class="value-gained">+30% Realized Margin, 100% Traceable</div>
             </div>
         </div>
     </section>
 
-    <section class="why-choose bg-off-white">
+    <section class="why-choose bg-off-white" id="why-choose">
         <div class="container text-center">
-            <h2>Why They Choose KhetSe</h2>
+            <h2>Why Modern Agriculture Chooses KhetSe</h2>
             <div class="features">
                 <div class="feature-card white-card text-left">
                     <div class="feature-label text-green">
-                        <i data-lucide="sprout"></i> BUILT FOR FARMERS WHO DESERVE BETTER
+                        <i data-lucide="sprout"></i> BUILT FOR FARMERS &amp; FPOS
                     </div>
-                    <h3>Fair prices, fast payouts, zero hassle</h3>
+                    <h3>Fair market prices, guaranteed 48-hour payouts</h3>
                     <ul class="check-list green-checks">
-                        <li><i data-lucide="check-circle-2"></i> Fair, transparent prices set by real demand — no hidden deductions</li>
-                        <li><i data-lucide="check-circle-2"></i> Fast payouts within 48 hours, straight to mobile money or bank</li>
-                        <li><i data-lucide="check-circle-2"></i> List your harvest in under 2 minutes from any phone</li>
-                        <li><i data-lucide="check-circle-2"></i> Direct relationships with repeat institutional buyers</li>
+                        <li><i data-lucide="check-circle-2"></i> Direct market pricing set by real demand — absolutely no hidden mandi deductions</li>
+                        <li><i data-lucide="check-circle-2"></i> Guaranteed payout settlements within 48 hours straight to your bank account or UPI</li>
+                        <li><i data-lucide="check-circle-2"></i> List your harvest in under two minutes from any smartphone</li>
+                        <li><i data-lucide="check-circle-2"></i> Build direct, recurring trade relationships with verified corporate buyers &amp; retail chains</li>
                     </ul>
-                    <a href="signup.html" class="link text-green">Start Selling <i data-lucide="arrow-right"></i></a>
+                    <a href="signup.html" class="link text-green">Start Selling as Farmer <i data-lucide="arrow-right"></i></a>
                 </div>
                 <div class="feature-card green-card text-left">
                     <div class="feature-label text-dark-blue">
-                        <i data-lucide="shopping-cart"></i> BUILT FOR BUYERS WHO DEMAND BETTER
+                        <i data-lucide="shopping-cart"></i> BUILT FOR BUYERS &amp; INSTITUTIONAL SOURCING
                     </div>
-                    <h3 class="text-white">Consistent supply, full traceability</h3>
+                    <h3 class="text-white">Consistent supply, full batch traceability</h3>
                     <ul class="check-list yellow-checks text-white">
-                        <li><i data-lucide="check-circle-2"></i> Verified quality and food-safety standards on every lot</li>
-                        <li><i data-lucide="check-circle-2"></i> Bulk ordering with consistent, scheduled supply</li>
-                        <li><i data-lucide="check-circle-2"></i> Full farm-to-door traceability and batch tracking</li>
-                        <li><i data-lucide="check-circle-2"></i> Dedicated account support for recurring sourcing</li>
+                        <li><i data-lucide="check-circle-2"></i> Rigorous quality grading and food-safety verification across every harvest lot</li>
+                        <li><i data-lucide="check-circle-2"></i> Bulk procurement with scheduled harvests and regional cold-chain transport</li>
+                        <li><i data-lucide="check-circle-2"></i> Full farm-to-warehouse traceability and digital batch documentation</li>
+                        <li><i data-lucide="check-circle-2"></i> Dedicated account support, contract dispute protection, and priority sourcing</li>
                     </ul>
-                    <a href="#" class="link text-dark-blue">Start Sourcing <i data-lucide="arrow-right"></i></a>
+                    <a href="buyerMarketplace.html" class="link text-dark-blue">Explore Buyer Marketplace <i data-lucide="arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -160,8 +194,8 @@
                     <i data-lucide="list"></i>
                 </div>
                 <div class="step-badge badge-1">Step 1</div>
-                <h4>List or Browse</h4>
-                <p>Farmers list their harvest with photos and price. Buyers browse verified listings by crop, volume, and location.</p>
+                <h4>1. List or Discover Crops</h4>
+                <p>Farmers list harvested lots with grade specifications and photos. Buyers discover verified mandi listings by crop, volume, and state.</p>
             </div>
             
             <div class="step-item">
@@ -169,8 +203,8 @@
                     <i data-lucide="handshake"></i>
                 </div>
                 <div class="step-badge badge-2">Step 2</div>
-                <h4>Connect & Agree</h4>
-                <p>Chat, negotiate, and confirm order terms directly in-app. No brokers, no side deals, everything recorded.</p>
+                <h4>2. Connect &amp; Lock Terms Direct</h4>
+                <p>Negotiate and confirm order quantities and pricing directly in-app. Transparent digital contracts with zero broker commissions.</p>
             </div>
             
             <div class="step-item">
@@ -178,122 +212,122 @@
                     <i data-lucide="truck"></i>
                 </div>
                 <div class="step-badge badge-3">Step 3</div>
-                <h4>Deliver, Track & Get Paid</h4>
-                <p>Logistics tracked end-to-end. Farmer gets paid automatically on delivery confirmation. Buyer gets full traceability.</p>
+                <h4>3. Track Dispatch &amp; Instant Payout</h4>
+                <p>Logistics tracked end-to-end with real-time updates. Farmer receives automated payout on delivery verification within 48 hours.</p>
             </div>
         </div>
     </section>
 
     <section class="trusted bg-off-white">
         <div class="container text-center">
-            <h2>Trusted on Both Sides of the Table</h2>
+            <h2>Trusted Across India's Agricultural Ecosystem</h2>
             <div class="trust-badges">
-                <span><i data-lucide="shield-check" class="text-green"></i> Quality Verified</span>
-                <span><i data-lucide="lock" class="text-green"></i> Secure Payments</span>
-                <span><i data-lucide="database" class="text-green"></i> Data Protected</span>
-                <span><i data-lucide="check-circle" class="text-green"></i> ISO Standards</span>
+                <span><i data-lucide="shield-check" class="text-green"></i> Quality Verified Batches</span>
+                <span><i data-lucide="lock" class="text-green"></i> 48h Escrow Protection</span>
+                <span><i data-lucide="database" class="text-green"></i> Zero Commission Guarantee</span>
+                <span><i data-lucide="check-circle" class="text-green"></i> Pan-India Mandi Logistics</span>
             </div>
             <div class="marquee-container">
                 <div class="marquee-content">
                     <!-- Original 5 -->
                     <div class="testimonial text-left left-border-green">
-                        <p class="quote">"For the first time I sell direct to a supermarket chain and get paid in two days. My margin went up 28% in one season."</p>
+                        <p class="quote">"For the first time I sell direct to retail chains and get paid in two days. My realized margin went up 28% in one season."</p>
                         <div class="author">
                             <div class="avatar bg-blue-light"><i data-lucide="user"></i></div>
                             <div>
                                 <strong>Pratyush Kanungo</strong>
-                                <span>Maize Farmer, Nakuru</span>
+                                <span>Wheat &amp; Maize Farmer, Ludhiana, Punjab</span>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial text-left left-border-blue">
-                        <p class="quote">"We source 80% of our fresh produce through KhetSe now. Consistent quality, full traceability, and no middleman markups."</p>
+                        <p class="quote">"We source 80% of our fresh produce through KhetSe now. Consistent quality, full traceability, and zero middleman markups."</p>
                         <div class="author">
                             <div class="avatar bg-blue-light"><i data-lucide="user"></i></div>
                             <div>
                                 <strong>Om Debadutta</strong>
-                                <span>Head of Procurement, FreshMart</span>
+                                <span>Head of Procurement, FreshMart Logistics, Delhi NCR</span>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial text-left left-border-green">
-                        <p class="quote">"The pricing is always transparent. I know exactly what I'm paying for and the farmers get exactly what they deserve."</p>
+                        <p class="quote">"The pricing is always transparent. I know exactly what I'm paying for and our partner farmers get the fair value they deserve."</p>
                         <div class="author">
                             <div class="avatar bg-blue-light"><i data-lucide="user"></i></div>
                             <div>
                                 <strong>Suchismita Singh</strong>
-                                <span>Organic Retailer, Nairobi</span>
+                                <span>Founder, Fresh Roots Organics, Bengaluru</span>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial text-left left-border-blue">
-                        <p class="quote">"Getting consistent orders every week means I can finally plan my harvests without worrying about waste."</p>
+                        <p class="quote">"Getting consistent orders every week means I can plan harvests without worrying about distress sales or crop waste."</p>
                         <div class="author">
                             <div class="avatar bg-blue-light"><i data-lucide="user"></i></div>
                             <div>
                                 <strong>Pratikshya Rath</strong>
-                                <span>Tomato Farmer, Kajiado</span>
+                                <span>Commercial Tomato Grower, Kolar, Karnataka</span>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial text-left left-border-green">
-                        <p class="quote">"KhetSe’s logistics integration is seamless. Produce arrives on time and fresh, every single morning."</p>
+                        <p class="quote">"KhetSe’s integrated logistics is seamless. Produce arrives on time and fresh, directly from vetted farms every morning."</p>
                         <div class="author">
                             <div class="avatar bg-blue-light"><i data-lucide="user"></i></div>
                             <div>
                                 <strong>Abhishek Mishra</strong>
-                                <span>Restaurant Owner, Mombasa</span>
+                                <span>Sourcing Director, Coastal HORECA, Mumbai</span>
                             </div>
                         </div>
                     </div>
                     <!-- Duplicated 5 for seamless scroll -->
                     <div class="testimonial text-left left-border-green">
-                        <p class="quote">"For the first time I sell direct to a supermarket chain and get paid in two days. My margin went up 28% in one season."</p>
+                        <p class="quote">"For the first time I sell direct to retail chains and get paid in two days. My realized margin went up 28% in one season."</p>
                         <div class="author">
                             <div class="avatar bg-blue-light"><i data-lucide="user"></i></div>
                             <div>
                                 <strong>Pratyush Kanungo</strong>
-                                <span>Maize Farmer, Nakuru</span>
+                                <span>Wheat &amp; Maize Farmer, Ludhiana, Punjab</span>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial text-left left-border-blue">
-                        <p class="quote">"We source 80% of our fresh produce through KhetSe now. Consistent quality, full traceability, and no middleman markups."</p>
+                        <p class="quote">"We source 80% of our fresh produce through KhetSe now. Consistent quality, full traceability, and zero middleman markups."</p>
                         <div class="author">
                             <div class="avatar bg-blue-light"><i data-lucide="user"></i></div>
                             <div>
                                 <strong>Om Debadutta</strong>
-                                <span>Head of Procurement, FreshMart</span>
+                                <span>Head of Procurement, FreshMart Logistics, Delhi NCR</span>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial text-left left-border-green">
-                        <p class="quote">"The pricing is always transparent. I know exactly what I'm paying for and the farmers get exactly what they deserve."</p>
+                        <p class="quote">"The pricing is always transparent. I know exactly what I'm paying for and our partner farmers get the fair value they deserve."</p>
                         <div class="author">
                             <div class="avatar bg-blue-light"><i data-lucide="user"></i></div>
                             <div>
                                 <strong>Suchismita Singh</strong>
-                                <span>Organic Retailer, Nairobi</span>
+                                <span>Founder, Fresh Roots Organics, Bengaluru</span>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial text-left left-border-blue">
-                        <p class="quote">"Getting consistent orders every week means I can finally plan my harvests without worrying about waste."</p>
+                        <p class="quote">"Getting consistent orders every week means I can plan harvests without worrying about distress sales or crop waste."</p>
                         <div class="author">
                             <div class="avatar bg-blue-light"><i data-lucide="user"></i></div>
                             <div>
                                 <strong>Pratikshya Rath</strong>
-                                <span>Tomato Farmer, Kajiado</span>
+                                <span>Commercial Tomato Grower, Kolar, Karnataka</span>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial text-left left-border-green">
-                        <p class="quote">"KhetSe’s logistics integration is seamless. Produce arrives on time and fresh, every single morning."</p>
+                        <p class="quote">"KhetSe’s integrated logistics is seamless. Produce arrives on time and fresh, directly from vetted farms every morning."</p>
                         <div class="author">
                             <div class="avatar bg-blue-light"><i data-lucide="user"></i></div>
                             <div>
                                 <strong>Abhishek Mishra</strong>
-                                <span>Restaurant Owner, Mombasa</span>
+                                <span>Sourcing Director, Coastal HORECA, Mumbai</span>
                             </div>
                         </div>
                     </div>
@@ -303,11 +337,11 @@
     </section>
 
     <section class="cta container text-center">
-        <h2>Ready to Trade Direct?</h2>
-        <p>Join thousands of farmers and buyers already cutting out the middleman.</p>
+        <h2>Ready to Trade Directly?</h2>
+        <p>Join thousands of farmers, FPOs, and bulk buyers eliminating middlemen and securing fairer margins today.</p>
         <div class="cta-buttons">
             <a href="signup.html" class="btn btn-green">Start Selling</a>
-            <a href="signup.html" class="btn btn-outline-yellow">Start Buying</a>
+            <a href="buyerMarketplace.html" class="btn btn-outline-yellow">Start Buying</a>
         </div>
     </section>
 
@@ -318,13 +352,13 @@
                     <img src="new_logo.png" alt="KhetSe Logo" class="brand-logo-img">
                     <span>Khet<strong>Se</strong></span>
                 </div>
-                <p>Connecting farmers directly with buyers for fairer, faster, and more transparent agricultural trade.</p>
+                <p>Connecting farmers directly with buyers for fairer, faster, and more transparent agricultural trade across India.</p>
             </div>
             <div class="footer-col">
                 <h4>Company</h4>
                 <ul>
                     <li><a href="#why-choose">About Us</a></li>
-                    <li><a href="sellerDashboard.html">Marketplace</a></li>
+                    <li><a href="buyerMarketplace.html">Marketplace</a></li>
                     <li><a href="orders.html">Orders</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                 </ul>
@@ -342,6 +376,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

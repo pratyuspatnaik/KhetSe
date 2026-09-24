@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartIcons = document.querySelectorAll('.cart-icon');
     cartIcons.forEach(cartIcon => {
         cartIcon.addEventListener('click', () => {
-            window.location.href = 'login.html';
+            window.location.href = 'cart.html';
         });
     });
 

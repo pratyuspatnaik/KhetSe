@@ -237,16 +237,16 @@ document.addEventListener('DOMContentLoaded', async function() {
     const billBtn = document.getElementById('download-bill-btn');
     if (billBtn) {
         billBtn.addEventListener('click', () => {
-            const billText = `KRISHIMANDI DIRECT FARMER MARKETPLACE
+            const billText = `KHETSE DIRECT FARMER MARKETPLACE
 ----------------------------------------
-Proforma Invoice: #KM-INV-2026-904
+Proforma Invoice: #KS-INV-2026-904
 Customer: ${userData?.full_name || 'Farmer Customer'}
 Contact: +91-${userData?.mobile_number || '9876543210'}
 Item: Organic Basmati Rice (A-Grade) - 20 kg
 Subtotal: ₹1,200.00
 Delivery / Logistics: ₹50.00
 Total: ₹1,250.00
-Escrow Status: Protected by SIH 2026 Direct Payment Guarantee
+Escrow Status: Protected by KhetSe Direct Payment Guarantee
 ----------------------------------------
 Thank you for supporting Indian Farmers!`;
             
@@ -254,7 +254,7 @@ Thank you for supporting Indian Farmers!`;
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `KrishiMandi_Invoice_KM904.txt`;
+            a.download = `KhetSe_Invoice_KS904.txt`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
