@@ -12,35 +12,69 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <script src="script.js" defer></script>
-</head>
+<script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>`n</head>
 <body>
     <!-- Persistent Navbar -->
-    <div class="navbar-wrapper">
-        <nav class="navbar">
-            <div class="logo">
-                <img src="new_logo.png" alt="KhetSe Logo" class="brand-logo-img">
-                <span><strong class="text-dark-blue">Khet</strong><strong class="text-green">Se</strong></span>
+        <!-- STANDARDIZED NAVBAR -->
+  <style>
+      .navbar-std {
+          background: white; border-radius: 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
+          padding: 10px 20px; max-width: 1100px; margin: 0 auto; display: flex; 
+          justify-content: space-between; align-items: center; border: 1px solid #eee;
+      }
+      .navbar-std-links { list-style:none; display:flex; gap:24px; margin:0; padding:0; align-items: center; }
+      @media (max-width: 768px) {
+          .navbar-std {
+              border-radius: 24px; padding: 10px 14px; display: grid; grid-template-columns: auto auto;
+              row-gap: 10px;
+          }
+          .navbar-std .logo { grid-row: 1; grid-column: 1; }
+          .navbar-std .nav-actions { grid-row: 1; grid-column: 2; gap: 12px; justify-self: end; }
+          .navbar-std-links {
+              grid-row: 2; grid-column: 1 / -1; width: 100%; display: flex; 
+              justify-content: center; gap: 16px; padding-top: 8px; border-top: 1px solid #eee; flex-wrap: wrap;
+          }
+          .navbar-std .nav-divider { display: none; }
+          .user-name-hide { display: none !important; }
+      }
+  </style>
+  <div class="navbar-wrapper" style="position: sticky; top: 10px; z-index: 1000; margin-bottom: 20px; padding: 0 16px;">
+    <nav class="navbar-std">
+        <div class="logo">
+            <a href="index.html" style="display:flex; align-items:center; gap:8px; text-decoration:none;">
+                <img src="new_logo.png" alt="KhetSe Logo" style="height: 32px; width: 32px; object-fit: contain;">
+                <span style="font-size: 1.25rem;"><strong style="color:#10243E; font-weight: 700;">Khet</strong><strong style="color:#2F9E44; font-weight: 700;">Se</strong></span>
+            </a>
+        </div>
+        <ul class="navbar-std-links">
+            <li><a href="buyerMarketplace.html" style="text-decoration:none; color:#10243E; font-weight:500; font-size:0.9rem;">Marketplace</a></li>
+            <li><a href="orders.html" style="text-decoration:none; color:#10243E; font-weight:500; font-size:0.9rem;">Orders</a></li>
+            <li><a href="contact.html" style="text-decoration:none; color:#10243E; font-weight:500; font-size:0.9rem;">Contact Us</a></li>
+        </ul>
+        <div class="nav-actions" style="display:flex; align-items:center; gap:16px;">
+            <a href="cart.html" title="Shopping Cart" style="position:relative; color:#666; cursor:pointer; text-decoration:none; display:flex; align-items:center;">
+                <iconify-icon icon="lucide:shopping-cart" style="font-size:22px;"></iconify-icon>
+                <span style="position:absolute; top:-6px; right:-8px; background:#2F9E44; color:white; font-size:10px; font-weight:bold; width:16px; height:16px; display:flex; align-items:center; justify-content:center; border-radius:50%;">2</span>
+            </a>
+            <a href="notification.html" title="Notifications" style="position:relative; color:#666; cursor:pointer; text-decoration:none; display:flex; align-items:center;">
+                <iconify-icon icon="lucide:bell" style="font-size:22px;"></iconify-icon>
+                <span style="position:absolute; top:-6px; right:-8px; background:#F2A93B; color:white; font-size:10px; font-weight:bold; width:16px; height:16px; display:flex; align-items:center; justify-content:center; border-radius:50%;">3</span>
+            </a>
+            <div class="nav-divider" style="width:1px; height:24px; background:#ddd; margin:0 4px;"></div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <a href="buyerProfile.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                    <img src="default-avatar.svg" alt="Vikram Malhotra" style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid #2F9E44; object-fit: cover;">
+                    <div class="user-name-hide" style="display: flex; flex-direction: column; text-align: left;">
+                        <span style="font-size: 0.85rem; font-weight: 600; line-height: 1.1; color: #10243E;">Vikram Malhotra</span>
+                    </div>
+                </a>
+                <button onclick="window.location.href='index.html'" style="background: transparent; border: none; font-size: 0.75rem; color: #888; font-weight: 500; cursor: pointer; padding: 4px 8px;">Log Out</button>
             </div>
-            <ul class="nav-links">
-                <li><a href="buyerMarketplace.html" class="nav-link">Marketplace</a></li>
-                <li><a href="orders.html" class="nav-link">Orders</a></li>
-                <li><a href="contact.html" class="nav-link active">Contact Us</a></li>
-            </ul>
-            <div class="nav-actions">
-                <div class="icon-badge cart-icon" title="Shopping Cart">
-                    <i data-lucide="shopping-cart"></i>
-                    <span class="badge green-badge">2</span>
-                </div>
-                <div class="icon-badge bell-icon" title="Notifications">
-                    <i data-lucide="bell"></i>
-                    <span class="badge yellow-badge">3</span>
-                </div>
-                <div class="nav-divider"></div>
-                <a href="login.html" class="login-link">Log In</a>
-                <a href="signup.html" class="btn btn-dark">Sign Up</a>
-            </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
+  </div>
+    </nav>
+  </div>
 
     <!-- Subpage Hero -->
     <header class="subpage-hero" style="padding-bottom: 20px;">
