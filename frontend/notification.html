@@ -7,13 +7,15 @@
     <link rel="icon" type="image/png" href="new_logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="notification.css">
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <script src="script.js" defer></script>
-    
+    <script src="notification.js" defer></script>
 </head>
 <body class="notification-page">
+    <!-- Navbar -->
     <div class="navbar-wrapper">
         <nav class="navbar">
             <div class="logo">
@@ -23,6 +25,7 @@
             <ul class="nav-links">
                 <li><a href="buyerMarketplace.html" class="nav-link">Marketplace</a></li>
                 <li><a href="orders.html" class="nav-link">Orders</a></li>
+                <li><a href="buyerProfile.html" class="nav-link">Profile</a></li>
                 <li><a href="contact.html" class="nav-link">Contact Us</a></li>
             </ul>
             <div class="nav-actions">
@@ -32,68 +35,362 @@
                 </a>
                 <div class="icon-badge bell-icon active" title="Notifications">
                     <i data-lucide="bell"></i>
-                    <span class="badge yellow-badge">3</span>
+                    <span class="badge yellow-badge" id="navNotifBadge">3</span>
                 </div>
                 <div class="nav-divider"></div>
-                <a href="login.html" class="login-link">Log In</a>
-                <a href="signup.html" class="btn btn-dark">Sign Up</a>
+                <div class="user-profile-nav" style="display: flex; align-items: center; gap: 12px;">
+                    <a href="buyerProfile.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;" class="user-details">
+                        <img src="default-avatar.svg" alt="Vikram Malhotra" style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--color-green, #2F9E44); object-fit: cover;">
+                        <div style="display: flex; flex-direction: column; text-align: left;">
+                            <span style="font-size: 0.8rem; font-weight: 600; line-height: 1.1; color: var(--color-dark-blue, #10243E);">Vikram Malhotra</span>
+                            <span style="font-size: 0.65rem; color: var(--color-green, #2F9E44); font-weight: 500;">Bulk Buyer</span>
+                        </div>
+                    </a>
+                    <button onclick="window.location.href='index.html'" class="btn-logout" style="background: transparent; border: none; font-size: 0.75rem; color: #888; font-weight: 500; cursor: pointer; margin-left: 6px; transition: color 0.2s;" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='#888'">Log Out</button>
+                </div>
             </div>
         </nav>
     </div>
 
-    <div class="notifications-container">
-        <div class="notifications-header">
-            <h1>Notifications</h1>
+    <!-- Main Container -->
+    <main class="notifications-container">
+        <!-- Header -->
+        <header class="notifications-header">
+            <div class="header-title-area">
+                <h1>
+                    <span>Notifications</span>
+                    <span class="header-unread-count" id="headerUnreadCount">3 unread</span>
+                </h1>
+            </div>
+            <button class="btn-mark-all-read" id="markAllReadBtn" title="Mark all as read">
+                <i data-lucide="check-check"></i>
+                <span>Mark all as read</span>
+            </button>
+        </header>
+
+        <!-- Search Bar (Left) and Day Filter (Right) -->
+        <div class="notifications-filter-bar">
+            <!-- Left: Search Bar -->
+            <div class="filter-search-left">
+                <i data-lucide="search" class="search-icon"></i>
+                <input type="text" id="searchNotifications" class="search-filter-input" placeholder="Search notifications...">
+                <button class="search-clear-btn" id="searchClearBtn" title="Clear search">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+
+            <!-- Right: Filter Option with Scroll Menu -->
+            <div class="filter-menu-right" id="filterMenuWrapper">
+                <button class="filter-trigger-btn" id="filterTriggerBtn" aria-haspopup="true" aria-expanded="false">
+                    <i data-lucide="sliders-horizontal" class="filter-icon"></i>
+                    <span id="currentFilterLabel">All Time</span>
+                    <i data-lucide="chevron-down" class="chevron-icon"></i>
+                </button>
+
+                <!-- Scrollable Menu -->
+                <div class="filter-scroll-menu" id="filterScrollMenu">
+                    <div class="menu-header">Filter by Days</div>
+                    <div class="menu-items-scroll">
+                        <button class="menu-item active" data-filter="all">
+                            <span>All Time</span>
+                            <i data-lucide="check" class="check-icon"></i>
+                        </button>
+                        <button class="menu-item" data-filter="today">
+                            <span>Today</span>
+                            <i data-lucide="check" class="check-icon"></i>
+                        </button>
+                        <button class="menu-item" data-filter="7">
+                            <span>Last 7 Days</span>
+                            <i data-lucide="check" class="check-icon"></i>
+                        </button>
+                        <button class="menu-item" data-filter="30">
+                            <span>Last 30 Days</span>
+                            <i data-lucide="check" class="check-icon"></i>
+                        </button>
+                        <button class="menu-item" data-filter="90">
+                            <span>Last 3 Months</span>
+                            <i data-lucide="check" class="check-icon"></i>
+                        </button>
+                        <button class="menu-item" data-filter="180">
+                            <span>Last 6 Months</span>
+                            <i data-lucide="check" class="check-icon"></i>
+                        </button>
+                        <button class="menu-item" data-filter="2026">
+                            <span>2026</span>
+                            <i data-lucide="check" class="check-icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="notification-card unread">
-            <div class="notification-icon icon-success">
-                <i data-lucide="check-circle-2"></i>
-            </div>
-            <div class="notification-content">
-                <div class="notification-title">Order Confirmed</div>
-                <div class="notification-message">Your order for 500kg Premium Wheat has been confirmed by the seller. It is now being prepared for dispatch.</div>
-                <div class="notification-time">10 minutes ago</div>
-            </div>
+        <!-- Notifications List -->
+        <div class="notifications-list" id="notificationsList">
+
+            <!-- Card 1: 10 mins ago (Today, Days: 0) -->
+            <article class="notification-card unread" data-days="0" data-year="2026">
+                <div class="notification-icon icon-success">
+                    <i data-lucide="check-circle-2"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-top-row">
+                        <span class="notification-title">Order Confirmed: #AG-98421</span>
+                        <span class="notification-time-badge">
+                            <i data-lucide="clock"></i> 10 minutes ago
+                        </span>
+                    </div>
+                    <p class="notification-message">
+                        Your order for 500kg Premium Sharbati Wheat has been confirmed by farmer Sukhdev Singh. It is now being prepared for dispatch.
+                    </p>
+                    <div class="notification-card-footer">
+                        <a href="orders.html" class="notification-action-link">
+                            <span>View Order</span>
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                        <button class="btn-card-read-toggle">Mark as read</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 2: 2 hours ago (Today, Days: 0) -->
+            <article class="notification-card unread" data-days="0" data-year="2026">
+                <div class="notification-icon icon-warning">
+                    <i data-lucide="truck"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-top-row">
+                        <span class="notification-title">Delivery Update</span>
+                        <span class="notification-time-badge">
+                            <i data-lucide="clock"></i> 2 hours ago
+                        </span>
+                    </div>
+                    <p class="notification-message">
+                        Your shipment #AG-98421 is out for delivery and will arrive at your warehouse by 4:00 PM today.
+                    </p>
+                    <div class="notification-card-footer">
+                        <a href="orders.html" class="notification-action-link">
+                            <span>Track Shipment</span>
+                            <i data-lucide="navigation"></i>
+                        </a>
+                        <button class="btn-card-read-toggle">Mark as read</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3: Yesterday (Days: 1) -->
+            <article class="notification-card unread" data-days="1" data-year="2026">
+                <div class="notification-icon icon-info">
+                    <i data-lucide="tag"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-top-row">
+                        <span class="notification-title">New Harvest Listed</span>
+                        <span class="notification-time-badge">
+                            <i data-lucide="clock"></i> Yesterday
+                        </span>
+                    </div>
+                    <p class="notification-message">
+                        A new batch of organic Tomatoes has just been listed in your area at competitive wholesale prices.
+                    </p>
+                    <div class="notification-card-footer">
+                        <a href="buyerMarketplace.html" class="notification-action-link">
+                            <span>View Marketplace</span>
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                        <button class="btn-card-read-toggle">Mark as read</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 4: 3 days ago (Days: 3) -->
+            <article class="notification-card" data-days="3" data-year="2026">
+                <div class="notification-icon icon-success">
+                    <i data-lucide="wallet"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-top-row">
+                        <span class="notification-title">Payment Received</span>
+                        <span class="notification-time-badge">
+                            <i data-lucide="clock"></i> 3 days ago
+                        </span>
+                    </div>
+                    <p class="notification-message">
+                        We've successfully processed your payment of Rs. 25,000 for Order #AG-97305. Your tax invoice is available for download.
+                    </p>
+                    <div class="notification-card-footer">
+                        <a href="javascript:void(0)" onclick="window.print()" class="notification-action-link">
+                            <span>Download Invoice</span>
+                            <i data-lucide="file-text"></i>
+                        </a>
+                        <button class="btn-card-read-toggle">Mark unread</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 5: 6 days ago (Days: 6) -->
+            <article class="notification-card" data-days="6" data-year="2026">
+                <div class="notification-icon icon-warning">
+                    <i data-lucide="trending-down"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-top-row">
+                        <span class="notification-title">Price Drop Alert: Ratnagiri Mangoes</span>
+                        <span class="notification-time-badge">
+                            <i data-lucide="clock"></i> 6 days ago
+                        </span>
+                    </div>
+                    <p class="notification-message">
+                        Ratnagiri Alphonso Mango crates are now 12% off for wholesale buyers this week due to peak harvesting surplus.
+                    </p>
+                    <div class="notification-card-footer">
+                        <a href="buyerMarketplace.html" class="notification-action-link">
+                            <span>Explore Deal</span>
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                        <button class="btn-card-read-toggle">Mark unread</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 6: 15 days ago (Days: 15) -->
+            <article class="notification-card" data-days="15" data-year="2026">
+                <div class="notification-icon icon-success">
+                    <i data-lucide="package-check"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-top-row">
+                        <span class="notification-title">Order Delivered: #AG-97305</span>
+                        <span class="notification-time-badge">
+                            <i data-lucide="clock"></i> 15 days ago
+                        </span>
+                    </div>
+                    <p class="notification-message">
+                        500kg Raw Wildflower Honey and Heirloom Carrots was successfully delivered and verified at Central Hub.
+                    </p>
+                    <div class="notification-card-footer">
+                        <a href="orders.html" class="notification-action-link">
+                            <span>View Order</span>
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                        <button class="btn-card-read-toggle">Mark unread</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 7: 28 days ago (Days: 28) -->
+            <article class="notification-card" data-days="28" data-year="2026">
+                <div class="notification-icon icon-info">
+                    <i data-lucide="check-check"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-top-row">
+                        <span class="notification-title">Delivery Completed: #AG-96112</span>
+                        <span class="notification-time-badge">
+                            <i data-lucide="clock"></i> 28 days ago
+                        </span>
+                    </div>
+                    <p class="notification-message">
+                        Fresh Organic Strawberries (Crate) delivered by Berry Ridge Farm. Temperature cold-chain logs checked out intact.
+                    </p>
+                    <div class="notification-card-footer">
+                        <a href="orders.html" class="notification-action-link">
+                            <span>Re-order Batch</span>
+                            <i data-lucide="rotate-cw"></i>
+                        </a>
+                        <button class="btn-card-read-toggle">Mark unread</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 8: 52 days ago (Days: 52) -->
+            <article class="notification-card" data-days="52" data-year="2026">
+                <div class="notification-icon icon-purple">
+                    <i data-lucide="calendar-check"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-top-row">
+                        <span class="notification-title">Automated Mandate Renewed: Basmati Rice</span>
+                        <span class="notification-time-badge">
+                            <i data-lucide="clock"></i> 52 days ago
+                        </span>
+                    </div>
+                    <p class="notification-message">
+                        Your standing purchase agreement for 1,200kg Organic Basmati Rice has been scheduled for procurement in the upcoming Kharif cycle.
+                    </p>
+                    <div class="notification-card-footer">
+                        <a href="buyerProfile.html" class="notification-action-link">
+                            <span>Manage Mandates</span>
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                        <button class="btn-card-read-toggle">Mark unread</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 9: 78 days ago (Days: 78) -->
+            <article class="notification-card" data-days="78" data-year="2026">
+                <div class="notification-icon icon-success">
+                    <i data-lucide="refresh-cw"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-top-row">
+                        <span class="notification-title">Refund Credited: Rs. 1,850</span>
+                        <span class="notification-time-badge">
+                            <i data-lucide="clock"></i> 78 days ago
+                        </span>
+                    </div>
+                    <p class="notification-message">
+                        A credit refund for 2 damaged crate units in order #AG-94210 has been approved and deposited into your KhetSe Buyer Wallet.
+                    </p>
+                    <div class="notification-card-footer">
+                        <a href="buyerProfile.html" class="notification-action-link">
+                            <span>Check Balance</span>
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                        <button class="btn-card-read-toggle">Mark unread</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 10: 135 days ago (Days: 135) -->
+            <article class="notification-card" data-days="135" data-year="2026">
+                <div class="notification-icon icon-info">
+                    <i data-lucide="shield-check"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-top-row">
+                        <span class="notification-title">Wholesale Buyer Verification Approved</span>
+                        <span class="notification-time-badge">
+                            <i data-lucide="clock"></i> 4 months ago
+                        </span>
+                    </div>
+                    <p class="notification-message">
+                        Welcome to KhetSe! Your business GSTIN and APMC wholesale buyer license have been successfully authenticated by our compliance desk.
+                    </p>
+                    <div class="notification-card-footer">
+                        <a href="buyerProfile.html" class="notification-action-link">
+                            <span>View Profile</span>
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                        <button class="btn-card-read-toggle">Mark unread</button>
+                    </div>
+                </div>
+            </article>
+
         </div>
 
-        <div class="notification-card unread">
-            <div class="notification-icon icon-warning">
-                <i data-lucide="truck"></i>
+        <!-- Empty State -->
+        <div class="notifications-empty-state" id="notificationsEmptyState">
+            <div class="empty-state-icon">
+                <i data-lucide="calendar-x"></i>
             </div>
-            <div class="notification-content">
-                <div class="notification-title">Delivery Update</div>
-                <div class="notification-message">Your shipment is out for delivery and will arrive at your warehouse by 4:00 PM today.</div>
-                <div class="notification-time">2 hours ago</div>
-            </div>
+            <h3>No notifications found</h3>
+            <p>We couldn't find any notifications matching your selected time period or search criteria.</p>
+            <button class="btn-empty-reset" id="emptyResetBtn">
+                <i data-lucide="rotate-ccw"></i>
+                <span>Reset Filters</span>
+            </button>
         </div>
-
-        <div class="notification-card">
-            <div class="notification-icon icon-info">
-                <i data-lucide="tag"></i>
-            </div>
-            <div class="notification-content">
-                <div class="notification-title">New Harvest Listed</div>
-                <div class="notification-message">A new batch of organic Tomatoes has just been listed in your area at competitive prices.</div>
-                <div class="notification-time">Yesterday</div>
-            </div>
-        </div>
-        
-        <div class="notification-card">
-            <div class="notification-icon icon-success">
-                <i data-lucide="wallet"></i>
-            </div>
-            <div class="notification-content">
-                <div class="notification-title">Payment Received</div>
-                <div class="notification-message">We've successfully processed your payment of Rs. 25,000. Your invoice is available for download.</div>
-                <div class="notification-time">3 days ago</div>
-            </div>
-        </div>
-    </div>
+    </main>
 </body>
 </html>
-
-
-
-
-
