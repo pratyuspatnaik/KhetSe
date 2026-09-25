@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KhetSe - Notifications</title>
+    <link rel="icon" type="image/png" href="new_logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="script.js" defer></script>
+    
+</head>
+<body class="notification-page">
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="new_logo.png" alt="KhetSe Logo" class="brand-logo-img">
+                <span><strong class="text-dark-blue">Khet</strong><strong class="text-green">Se</strong></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="buyerMarketplace.html" class="nav-link">Marketplace</a></li>
+                <li><a href="orders.html" class="nav-link">Orders</a></li>
+                <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="cart.html" class="icon-badge cart-icon" title="Shopping Cart">
+                    <i data-lucide="shopping-cart"></i>
+                    <span class="badge green-badge">2</span>
+                </a>
+                <div class="icon-badge bell-icon active" title="Notifications">
+                    <i data-lucide="bell"></i>
+                    <span class="badge yellow-badge">3</span>
+                </div>
+                <div class="nav-divider"></div>
+                <a href="login.html" class="login-link">Log In</a>
+                <a href="signup.html" class="btn btn-dark">Sign Up</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="notifications-container">
+        <div class="notifications-header">
+            <h1>Notifications</h1>
+        </div>
+
+        <div class="notification-card unread">
+            <div class="notification-icon icon-success">
+                <i data-lucide="check-circle-2"></i>
+            </div>
+            <div class="notification-content">
+                <div class="notification-title">Order Confirmed</div>
+                <div class="notification-message">Your order for 500kg Premium Wheat has been confirmed by the seller. It is now being prepared for dispatch.</div>
+                <div class="notification-time">10 minutes ago</div>
+            </div>
+        </div>
+
+        <div class="notification-card unread">
+            <div class="notification-icon icon-warning">
+                <i data-lucide="truck"></i>
+            </div>
+            <div class="notification-content">
+                <div class="notification-title">Delivery Update</div>
+                <div class="notification-message">Your shipment is out for delivery and will arrive at your warehouse by 4:00 PM today.</div>
+                <div class="notification-time">2 hours ago</div>
+            </div>
+        </div>
+
+        <div class="notification-card">
+            <div class="notification-icon icon-info">
+                <i data-lucide="tag"></i>
+            </div>
+            <div class="notification-content">
+                <div class="notification-title">New Harvest Listed</div>
+                <div class="notification-message">A new batch of organic Tomatoes has just been listed in your area at competitive prices.</div>
+                <div class="notification-time">Yesterday</div>
+            </div>
+        </div>
+        
+        <div class="notification-card">
+            <div class="notification-icon icon-success">
+                <i data-lucide="wallet"></i>
+            </div>
+            <div class="notification-content">
+                <div class="notification-title">Payment Received</div>
+                <div class="notification-message">We've successfully processed your payment of ?25,000. Your invoice is available for download.</div>
+                <div class="notification-time">3 days ago</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+

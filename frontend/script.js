@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const bellIcons = document.querySelectorAll('.bell-icon');
     bellIcons.forEach(bellIcon => {
         bellIcon.addEventListener('click', () => {
-            bellIcon.classList.toggle('active');
+            window.location.href = 'notification.html';
         });
     });
 
@@ -330,4 +330,17 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = 'transporterProfile.html';
         }
     });
+
+    // ========================================================
+    // HERO SLIDESHOW
+    // ========================================================
+    const slides = document.querySelectorAll('.hero-slideshow .slide');
+    if (slides.length > 0) {
+        let currentSlide = 0;
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 4000);
+    }
 });
