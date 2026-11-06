@@ -43,9 +43,47 @@ document.addEventListener("DOMContentLoaded", () => {
     // ========================================================
     // PERSISTENT NAVBAR & ACTIVE STATE MANAGEMENT
     // ========================================================
-    const navLinks = document.querySelectorAll('.nav-link');
     const currentPath = window.location.pathname.toLowerCase();
 
+    // 1. Role-based Navigation Customization (Seller & Transporter)
+    let storedUser = null;
+    try {
+        storedUser = sessionStorage.getItem('khetse_user');
+    } catch (e) {}
+
+    let currentUser = null;
+    if (storedUser) {
+        try {
+            currentUser = JSON.parse(storedUser);
+        } catch (e) {}
+    }
+
+    let isSeller = false;
+    let isTransporter = false;
+
+    if (currentUser && currentUser.isLoggedIn) {
+        if (currentUser.role === 'seller' || currentUser.role === 'farmer') isSeller = true;
+        if (currentUser.role === 'transporter') isTransporter = true;
+    } else {
+        // Fallback for direct page visits
+        if (currentPath.includes('seller') || currentPath.includes('farmer')) isSeller = true;
+        if (currentPath.includes('transporter')) isTransporter = true;
+    }
+
+    if (isSeller || isTransporter) {
+        const dashboardUrl = isTransporter ? 'transporterDashboard.html' : 'sellerDashboard.html';
+        document.querySelectorAll('.nav-links').forEach(navGroup => {
+            const firstLink = navGroup.querySelector('li:first-child a.nav-link') || 
+                              navGroup.querySelector('a.nav-link');
+            if (firstLink) {
+                firstLink.textContent = 'Dashboard';
+                firstLink.setAttribute('href', dashboardUrl);
+            }
+        });
+    }
+
+    // 2. Dynamic Active State Highlighting
+    const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (!href) return;
@@ -55,8 +93,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // Auto mark active based on filename in URL
         if (cleanHref && currentPath.endsWith(cleanHref)) {
             link.classList.add('active');
-        } else if ((currentPath.endsWith('index.html') || currentPath.endsWith('/') || currentPath === '') && (cleanHref === 'index.html' || cleanHref === '#')) {
-            // home
+        } else if ((currentPath.endsWith('sellerdashboard.html') || currentPath.includes('sellerdashboard')) && cleanHref === 'sellerdashboard.html') {
+            link.classList.add('active');
+        } else if ((currentPath.endsWith('transporterdashboard.html') || currentPath.includes('transporterdashboard')) && cleanHref === 'transporterdashboard.html') {
+            link.classList.add('active');
+        } else if ((currentPath.endsWith('buyermarketplace.html') || currentPath.includes('buyermarketplace')) && cleanHref === 'buyermarketplace.html') {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
         }
 
         link.addEventListener('click', (e) => {
