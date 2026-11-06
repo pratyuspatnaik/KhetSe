@@ -1163,53 +1163,373 @@
 }
 
 
-/* Layout & Element Fixes */
-.relative > .absolute.inset-y-0 {
-  top: 0;
-  bottom: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
+/* ==========================================================================
+   SELLER DASHBOARD UI/UX POLISH & BREATHING ROOM OVERRIDES
+   ========================================================================== */
+
+:root {
+  --primary: #2F9E44;
+  --foreground: #10243E;
+  --background: #F4F1EA;
+  --secondary: #F2A93B;
+  --secondary-foreground: #091C36;
+  --secondary-text: #875306;
+  --muted: #E2E8F0;
+  --muted-foreground: #64748B;
+  --accent: #D4E4CF;
+  --accent-foreground: #1E3A2F;
+  --destructive: #EF4444;
+  --border: #E2E8F0;
+  --card: #FFFFFF;
 }
 
-.bg-primary {
+/* Main Workspace Gutters */
+main.max-w-7xl,
+main[class*="max-w-7xl"] {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  padding-top: 2rem !important;
+  padding-bottom: 4rem !important;
+  gap: 2rem !important;
+}
+
+@media (min-width: 768px) {
+  main.max-w-7xl,
+  main[class*="max-w-7xl"] {
+    padding-left: 2.25rem !important;
+    padding-right: 2.25rem !important;
+  }
+}
+
+/* 1. LEFT SIDEBAR BOX: Live APMC Prices */
+aside.bg-card,
+aside.lg\:col-span-3,
+aside[class*="lg:col-span-3"] {
+  padding: 1.5rem !important;
+  border-radius: 1.25rem !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(16, 36, 62, 0.08) !important;
+  box-shadow: 0 4px 20px -2px rgba(16, 36, 62, 0.05) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.25rem !important;
+}
+
+aside.bg-card .border-b {
+  padding-bottom: 0.85rem !important;
+  border-bottom: 1px solid rgba(16, 36, 62, 0.08) !important;
+}
+
+aside.bg-card input[type="text"] {
+  height: 38px !important;
+  padding: 0.5rem 0.85rem 0.5rem 2.25rem !important;
+  border-radius: 0.625rem !important;
+  border: 1.5px solid #E2E8F0 !important;
+  background-color: #FFFFFF !important;
+  font-size: 0.75rem !important;
+  color: #10243E !important;
+  width: 100% !important;
+  outline: none !important;
+}
+
+aside.bg-card input[type="text"]:focus {
+  border-color: #2F9E44 !important;
+  box-shadow: 0 0 0 3px rgba(47, 158, 68, 0.15) !important;
+}
+
+/* Price items inside sidebar */
+aside.bg-card .flex.items-center.justify-between.p-2\.5 {
+  padding: 0.75rem 0.85rem !important;
+  border-radius: 0.75rem !important;
+  border: 1px solid transparent !important;
+  transition: all 0.2s ease !important;
+}
+
+aside.bg-card .flex.items-center.justify-between.p-2\.5:hover {
+  background-color: #F8F9FA !important;
+  border-color: rgba(16, 36, 62, 0.06) !important;
+}
+
+/* Mandi Insight Box in sidebar */
+aside.bg-card .bg-accent\/30 {
+  padding: 1rem 1.15rem !important;
+  border-radius: 0.875rem !important;
+  margin-top: 0.5rem !important;
+  background-color: rgba(212, 228, 207, 0.35) !important;
+  border: 1px solid rgba(47, 158, 68, 0.2) !important;
+}
+
+/* 2. WORKSPACE HEADER & ACTION BUTTONS */
+#trackIncomeBtn {
+  height: 44px !important;
+  padding: 0.65rem 1.25rem !important;
+  border-radius: 0.75rem !important;
+  border: 1.5px solid #E2E8F0 !important;
+  background-color: #FFFFFF !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+#trackIncomeBtn:hover {
+  background-color: #F8F9FA !important;
+  border-color: #CBD5E1 !important;
+}
+
+#listNewCropBtn {
+  height: 44px !important;
+  padding: 0.65rem 1.5rem !important;
+  border-radius: 0.75rem !important;
+  background-color: #2F9E44 !important;
   color: #FFFFFF !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(47, 158, 68, 0.25) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
 }
 
-.bg-primary iconify-icon,
-.bg-primary span {
-  color: #FFFFFF;
+#listNewCropBtn:hover {
+  background-color: #27863a !important;
+  box-shadow: 0 4px 12px rgba(47, 158, 68, 0.35) !important;
+}
+
+/* 3. EXPANDABLE BOXES: New Crop Form & Income Tracker */
+#newCropForm,
+#incomeTrackerCard {
+  padding: 1.75rem 2rem !important;
+  margin-top: 1rem !important;
+  margin-bottom: 2rem !important;
+  border-radius: 1.25rem !important;
+  background-color: #FFFFFF !important;
+  border: 2px solid #2F9E44 !important;
+  box-shadow: 0 8px 30px -4px rgba(16, 36, 62, 0.08) !important;
+}
+
+@media (max-width: 640px) {
+  #newCropForm,
+  #incomeTrackerCard {
+    padding: 1.25rem !important;
+  }
+}
+
+#newCropForm input,
+#newCropForm select {
+  height: 42px !important;
+  padding: 0.55rem 0.875rem !important;
+  border-radius: 0.625rem !important;
+  border: 1.5px solid #E2E8F0 !important;
+  background-color: #FFFFFF !important;
+  font-size: 0.875rem !important;
+  color: #10243E !important;
+  outline: none !important;
+}
+
+#newCropForm input:focus,
+#newCropForm select:focus {
+  border-color: #2F9E44 !important;
+  box-shadow: 0 0 0 3px rgba(47, 158, 68, 0.15) !important;
+}
+
+/* 4. TABS ROW */
+.border-b.border-border.flex.items-center.gap-2 {
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 0 !important;
+  gap: 0.75rem !important;
+}
+
+.border-b.border-border.flex.items-center.gap-2 a {
+  padding: 0.75rem 1.25rem !important;
+  font-size: 0.875rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+/* 5. CROP LISTING BOXES: Main Cards on Dashboard */
+#listedCropsView .bg-card,
+.bg-card.rounded-xl.border.border-border.shadow-sm.overflow-hidden,
+.bg-card.rounded-2xl.border.border-border.shadow-sm.overflow-hidden {
+  margin-bottom: 2rem !important;
+  border-radius: 1.25rem !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(16, 36, 62, 0.08) !important;
+  box-shadow: 0 4px 20px -2px rgba(16, 36, 62, 0.05) !important;
+  overflow: hidden !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+#listedCropsView .bg-card:hover,
+.bg-card.rounded-xl.border.border-border.shadow-sm.overflow-hidden:hover {
+  box-shadow: 0 8px 30px -4px rgba(16, 36, 62, 0.08) !important;
+}
+
+/* Crop image wrapper on left */
+.crop-img-wrapper {
+  position: relative !important;
+  overflow: hidden !important;
 }
 
 .crop-img-wrapper img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  display: block;
-}
-
-.pl-8 {
-  padding-left: 2rem !important;
-}
-
-.pl-9 {
-  padding-left: 2.25rem !important;
-}
-
-.pl-11 {
-  padding-left: 2.75rem !important;
-}
-
-.pr-9 {
-  padding-right: 2.25rem !important;
+  display: block !important;
 }
 
 @media (min-width: 768px) {
   .crop-img-wrapper {
     width: 32% !important;
-    min-width: 200px !important;
+    min-width: 220px !important;
     height: auto !important;
     min-height: 100% !important;
     align-self: stretch !important;
   }
 }
+
+/* Crop Details area on right of image */
+.bg-card .md\:w-2\/3.p-4,
+.bg-card .p-4.flex.flex-col {
+  padding: 1.5rem 1.75rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+@media (max-width: 640px) {
+  .bg-card .md\:w-2\/3.p-4,
+  .bg-card .p-4.flex.flex-col {
+    padding: 1.25rem !important;
+  }
+}
+
+/* Expected Price & Sourcing Spec sub-card */
+.bg-card .grid.grid-cols-2.bg-background\/50.p-3 {
+  padding: 0.85rem 1.15rem !important;
+  border-radius: 0.875rem !important;
+  background-color: #F8F9FA !important;
+  border: 1px solid rgba(16, 36, 62, 0.06) !important;
+  margin-top: 0.5rem !important;
+}
+
+/* Buyer Offers Container at bottom of Card */
+.buyer-offers-container {
+  padding: 1rem 1.75rem 1.5rem 1.75rem !important;
+  border-top: 1px solid rgba(16, 36, 62, 0.08) !important;
+  background-color: #FCFCFB !important;
+}
+
+@media (max-width: 640px) {
+  .buyer-offers-container {
+    padding: 1rem 1.25rem !important;
+  }
+}
+
+/* Individual Buyer Offer Item */
+.buyer-offers-list .border.border-border.rounded-lg.p-3 {
+  padding: 1rem 1.25rem !important;
+  border-radius: 0.875rem !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(16, 36, 62, 0.08) !important;
+  margin-bottom: 0.65rem !important;
+  box-shadow: 0 1px 3px rgba(16, 36, 62, 0.03) !important;
+  transition: all 0.2s ease !important;
+}
+
+.buyer-offers-list .border.border-border.rounded-lg.p-3:hover {
+  border-color: #2F9E44 !important;
+  box-shadow: 0 4px 12px rgba(16, 36, 62, 0.06) !important;
+}
+
+/* Buyer avatar inside offer */
+.buyer-offers-list img.rounded-full {
+  width: 36px !important;
+  min-width: 36px !important;
+  max-width: 36px !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  border-radius: 9999px !important;
+  object-fit: cover !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+}
+
+/* Buttons inside offer */
+.buyer-offers-list button.bg-primary {
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.625rem !important;
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
+  cursor: pointer !important;
+}
+
+/* Universal Spacing Safeguards */
+.p-1 { padding: 0.25rem !important; }
+.p-2 { padding: 0.5rem !important; }
+.p-2\.5 { padding: 0.625rem !important; }
+.p-3 { padding: 0.75rem 1rem !important; }
+.p-4 { padding: 1rem 1.25rem !important; }
+.p-5 { padding: 1.5rem 1.75rem !important; }
+.p-6 { padding: 1.75rem 2rem !important; }
+
+.px-2 { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+.px-2\.5 { padding-left: 0.625rem !important; padding-right: 0.625rem !important; }
+.px-3 { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+.px-4 { padding-left: 1rem !important; padding-right: 1rem !important; }
+.px-5 { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+.px-6 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+
+.py-0\.5 { padding-top: 0.125rem !important; padding-bottom: 0.125rem !important; }
+.py-1 { padding-top: 0.25rem !important; padding-bottom: 0.25rem !important; }
+.py-1\.5 { padding-top: 0.375rem !important; padding-bottom: 0.375rem !important; }
+.py-2 { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+.py-2\.5 { padding-top: 0.625rem !important; padding-bottom: 0.625rem !important; }
+.py-3 { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+.py-4 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+.py-6 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+
+.pt-2 { padding-top: 0.5rem !important; }
+.pt-3 { padding-top: 0.75rem !important; }
+.pt-4 { padding-top: 1rem !important; }
+.pb-2 { padding-bottom: 0.5rem !important; }
+.pb-3 { padding-bottom: 0.75rem !important; }
+.pb-5 { padding-bottom: 1.25rem !important; }
+
+.mb-1 { margin-bottom: 0.25rem !important; }
+.mb-2 { margin-bottom: 0.5rem !important; }
+.mb-3 { margin-bottom: 0.75rem !important; }
+.mb-4 { margin-bottom: 1rem !important; }
+.mb-6 { margin-bottom: 1.5rem !important; }
+
+.mt-1 { margin-top: 0.25rem !important; }
+.mt-2 { margin-top: 0.5rem !important; }
+.mt-4 { margin-top: 1rem !important; }
+.mt-6 { margin-top: 1.5rem !important; }
+
+.gap-1 { gap: 0.25rem !important; }
+.gap-1\.5 { gap: 0.375rem !important; }
+.gap-2 { gap: 0.5rem !important; }
+.gap-2\.5 { gap: 0.625rem !important; }
+.gap-3 { gap: 0.75rem !important; }
+.gap-4 { gap: 1rem !important; }
+.gap-5 { gap: 1.25rem !important; }
+.gap-6 { gap: 1.5rem !important; }
+
+.pl-8 { padding-left: 2rem !important; }
+.pl-9 { padding-left: 2.25rem !important; }
+.pl-11 { padding-left: 2.75rem !important; }
+.pr-9 { padding-right: 2.25rem !important; }
+
+.bg-primary { color: #FFFFFF !important; }
+.bg-primary iconify-icon, .bg-primary span { color: #FFFFFF !important; }
