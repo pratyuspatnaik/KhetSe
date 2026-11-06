@@ -1,4 +1,26 @@
+// ========================================================
+// GLOBAL AUTHENTICATION & LOGOUT HANDLER
+// ========================================================
+window.handleLogout = function() {
+    try {
+        localStorage.removeItem('khetse_user');
+        sessionStorage.clear();
+    } catch (e) {
+        console.warn('Error clearing storage on logout', e);
+    }
+    window.location.href = 'index.html';
+};
+
 document.addEventListener("DOMContentLoaded", () => {
+    // Delegated click listener for any logout triggers
+    document.addEventListener('click', function(e) {
+        const logoutTrigger = e.target.closest('.logout-btn, #logoutBtn, [data-action="logout"]');
+        if (logoutTrigger) {
+            e.preventDefault();
+            window.handleLogout();
+        }
+    });
+
     // Initialize Lucide icons if available
     if (typeof lucide !== 'undefined' && lucide.createIcons) {
         lucide.createIcons();
