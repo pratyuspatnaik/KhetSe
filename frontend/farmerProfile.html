@@ -11,52 +11,40 @@
     <link id="theme-fonts" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="farmerProfile.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="script.js" defer></script>
     <script src="farmerProfile.js"></script></head>
   <body>
-<div class="min-h-screen w-full bg-background flex flex-col relative font-sans text-foreground pb-16">
-  <!-- Top Floating Navigation Bar -->
-  <div class="w-full max-w-7xl mx-auto px-4 pt-6 pb-2 sticky top-0 z-50">
-    <div class="bg-card shadow-lg rounded-3xl md:rounded-full px-4 md:px-6 py-3 flex flex-wrap items-center justify-between border border-border/40 backdrop-blur-md bg-opacity-95 transition-all">
-      <!-- Logo -->
-      <a href="index.html" class="flex items-center gap-2 cursor-pointer order-1 text-inherit no-underline" data-uxm-link="Cart">
-        <img src="new_logo.png" alt="KhetSe Logo" class="h-9 w-9 object-contain">
-        <span class="font-heading font-bold text-xl tracking-tight text-foreground">Khet<span class="text-primary">Se</span></span>
-      </a>
-
-      <!-- Navigation Links -->
-      <div class="flex items-center justify-center gap-4 md:gap-8 w-full md:w-auto order-3 md:order-2 mt-3 md:mt-0 pt-3 md:pt-0 border-t md:border-t-0 border-border/50 overflow-x-auto">
-        <a href="sellerDashboard.html" data-uxm-link="Cart" class="text-sm font-medium text-foreground hover:text-primary transition-colors shrink-0">Dashboard</a>
-        <a href="farmerProfile.html" class="text-sm font-medium text-primary hover:text-primary/80 transition-colors border-b-2 border-primary pb-1 shrink-0">Profile</a>
-        <a href="contact.html" data-uxm-link="Orders" class="text-sm font-medium text-foreground hover:text-primary transition-colors shrink-0">Contact Us</a>
-      </div>
-
-      <!-- Actions, Icons & Auth -->
-      <div class="flex items-center gap-3 md:gap-6 order-2 md:order-3">
-        
-        
-
-        <!-- Notification Bell with Badge -->
-        <div class="relative cursor-pointer hover:text-primary transition-colors">
-          <iconify-icon icon="lucide:bell" class="text-2xl text-foreground/80"></iconify-icon>
-          <span class="absolute -top-1.5 -right-1.5 bg-secondary text-foreground text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-card">0</span>
-        </div>
-
-        <!-- Vertical Divider -->
-        <div class="h-6 w-px bg-border hidden sm:block"></div>
-
-        <!-- User Profile Avatar and Sign Out -->
-          <div class="flex items-center gap-3">
-          <div class="text-right hidden sm:block cursor-pointer" onclick="window.location.href='farmerProfile.html'">
-            <p class="text-xs font-semibold text-foreground leading-tight">Sukhdev Singh</p>
-            <p class="text-[10px] text-primary font-medium">Verified Farmer</p>
-          </div>
-          <img src="default-avatar.svg" alt="Sukhdev Singh" class="h-9 w-9 rounded-full border-2 border-primary object-cover cursor-pointer" onclick="window.location.href='farmerProfile.html'">
-          <button onclick="window.location.href='index.html'" class="text-xs text-muted-foreground hover:text-destructive transition-colors ml-2 hidden sm:block cursor-pointer">Log Out</button>
-        </div>
-      </div>
+<div class="min-h-screen w-full bg-background flex flex-col relative font-sans text-foreground pb-16" style="padding-top: 110px;">
+    <!-- Persistent Navbar -->
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="new_logo.png" alt="KhetSe Logo" class="brand-logo-img">
+                <span><strong class="text-dark-blue">Khet</strong><strong class="text-green">Se</strong></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="buyerMarketplace.html" class="nav-link">Marketplace</a></li>
+                <li><a href="orders.html" class="nav-link">Orders</a></li>
+                <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="cart.html" class="icon-badge cart-icon" title="Shopping Cart">
+                    <i data-lucide="shopping-cart"></i>
+                    <span class="badge green-badge">2</span>
+                </a>
+                <div class="icon-badge bell-icon" title="Notifications">
+                    <i data-lucide="bell"></i>
+                    <span class="badge yellow-badge">0</span>
+                </div>
+                <div class="nav-divider"></div>
+                <a href="login.html" class="login-link">Log In</a>
+                <a href="signup.html" class="btn btn-dark">Sign Up</a>
+            </div>
+        </nav>
     </div>
-  </div>
 
   <!-- Main Content Wrapper -->
   <main class="w-full max-w-7xl mx-auto px-4 mt-8 flex-grow">

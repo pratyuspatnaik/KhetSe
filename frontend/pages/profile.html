@@ -4,29 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Profile – KhetSe</title>
+    <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../style/style.css" />
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="../script.js" defer></script>
     <link rel="stylesheet" href="../style/profile.css" />
 </head>
 <body>
-    <header class="header">
-        <div class="header-container header-content">
-            <a href="../index.html" class="logo">KhetSe</a>
-            <div class="header-right">
-                <nav class="nav-links">
-                    <a href="../index.html#home">Home</a>
-                    <a href="../index.html#features">Features</a>
-                    <a href="../index.html#logistics">Logistics</a>
-                    <a href="payment.html">Checkout</a>
-                </nav>
-                <div class="header-actions" style="display: flex; align-items: center; gap: 12px;">
-                    <a href="payment.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.9rem;">Cart / Pay</a>
-                    <button id="logout-btn" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem; cursor: pointer;">Log Out</button>
-                </div>
+        <!-- Persistent Navbar -->
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../new_logo.png" alt="KhetSe Logo" class="brand-logo-img">
+                <span><strong class="text-dark-blue">Khet</strong><strong class="text-green">Se</strong></span>
             </div>
-        </div>
-    </header>
+            <ul class="nav-links">
+                <li><a href="../buyerMarketplace.html" class="nav-link">Marketplace</a></li>
+                <li><a href="../orders.html" class="nav-link">Orders</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="../cart.html" class="icon-badge cart-icon" title="Shopping Cart">
+                    <i data-lucide="shopping-cart"></i>
+                    <span class="badge green-badge">2</span>
+                </a>
+                <div class="icon-badge bell-icon" title="Notifications">
+                    <i data-lucide="bell"></i>
+                    <span class="badge yellow-badge">0</span>
+                </div>
+                <div class="nav-divider"></div>
+                <a href="../login.html" class="login-link">Log In</a>
+                <a href="../signup.html" class="btn btn-dark">Sign Up</a>
+            </div>
+        </nav>
+    </div>
 
-    <main class="profile-main">
+    <main class="profile-main" style="padding-top: 120px;">
         <div class="profile-header-banner">
             <div>
                 <h1>Account & Farmer Profile</h1>
