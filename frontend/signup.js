@@ -697,7 +697,8 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            localStorage.setItem("khetse_user", JSON.stringify(userData));
+            localStorage.removeItem("khetse_user");
+            sessionStorage.setItem("khetse_user", JSON.stringify(userData));
         } catch (err) {
             console.warn("Could not save auth state", err);
         }

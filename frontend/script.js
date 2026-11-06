@@ -1,10 +1,24 @@
 // ========================================================
 // GLOBAL AUTHENTICATION & LOGOUT HANDLER
 // ========================================================
+// Clear legacy persistent localStorage so visits always start logged out
+try {
+    localStorage.removeItem('khetse_user');
+} catch (e) {}
+
+// If visiting website root or index.html, always reset to logged out state
+const currentPathInit = window.location.pathname.toLowerCase();
+if (currentPathInit.endsWith('index.html') || currentPathInit.endsWith('/') || currentPathInit === '' || !currentPathInit.includes('.html')) {
+    try {
+        sessionStorage.removeItem('khetse_user');
+    } catch (e) {}
+}
+
 window.handleLogout = function() {
     try {
-        localStorage.removeItem('khetse_user');
+        sessionStorage.removeItem('khetse_user');
         sessionStorage.clear();
+        localStorage.removeItem('khetse_user');
     } catch (e) {
         console.warn('Error clearing storage on logout', e);
     }
@@ -79,14 +93,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ========================================================
-    // AUTHENTICATED NAVBAR USER PROFILE
+    // AUTHENTICATED NAVBAR USER PROFILE (SESSION-BASED)
     // ========================================================
     function updateNavbarAuthState() {
         let storedUser = null;
         try {
-            storedUser = localStorage.getItem('khetse_user');
+            storedUser = sessionStorage.getItem('khetse_user');
         } catch (e) {
-            console.warn('localStorage not accessible', e);
+            console.warn('sessionStorage not accessible', e);
         }
 
         if (!storedUser) return;
@@ -394,6 +408,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (logoutEl) {
             e.preventDefault();
             try {
+                sessionStorage.removeItem('khetse_user');
+                sessionStorage.clear();
                 localStorage.removeItem('khetse_user');
             } catch (err) {}
             window.location.href = 'index.html';
