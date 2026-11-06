@@ -399,7 +399,7 @@ ul {
     height: 380px;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 24px 45px rgba(16, 36, 62, 0.22);
+    box-shadow: none;
     border: 2px solid rgba(255, 255, 255, 0.8);
     transform: translateX(+25px);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -407,7 +407,7 @@ ul {
 
 .hero-showcase-container:hover {
     transform: translateX(+25px) translateY(-4px);
-    box-shadow: 0 28px 55px rgba(16, 36, 62, 0.28);
+    box-shadow: none;
 }
 
 .hero-showcase-bg, .hero-image img {
@@ -420,7 +420,7 @@ ul {
 .hero-showcase-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(16, 36, 62, 0.35) 0%, rgba(16, 36, 62, 0.05) 45%, rgba(16, 36, 62, 0.8) 100%);
+    display: none;
     pointer-events: none;
 }
 
