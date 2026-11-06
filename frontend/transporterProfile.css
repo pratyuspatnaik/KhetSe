@@ -1459,15 +1459,17 @@ textarea:focus {
 .w-12 { width: 3rem !important; }
 .h-12 { height: 3rem !important; }
 
-/* Bottom Sticky Actions Bar */
-div.sticky.bottom-6,
-.bg-card.p-4.shadow-md {
-  padding: 1.25rem 2rem !important;
-  margin-top: 2.5rem !important;
-  background-color: #FFFFFF !important;
-  border: 1px solid rgba(16, 36, 62, 0.08) !important;
-  border-radius: 1.25rem !important;
-  box-shadow: 0 8px 30px -4px rgba(16, 36, 62, 0.12) !important;
+/* Bottom Actions */
+div.flex.items-center.justify-end {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  padding-top: 1rem !important;
+  padding-bottom: 2rem !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Universal Spacing & Utility Unlayered Safeguards */
