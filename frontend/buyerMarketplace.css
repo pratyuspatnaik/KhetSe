@@ -1133,6 +1133,22 @@
   padding-left: 2.25rem !important;
 }
 
+.pl-10 {
+  padding-left: 2.5rem !important;
+}
+
+.pr-10 {
+  padding-right: 2.5rem !important;
+}
+
+.h-\[42px\] {
+  height: 42px !important;
+}
+
+.h-\[38px\] {
+  height: 38px !important;
+}
+
 @media (min-width: 768px) {
   .deal-card-img-wrapper,
   .bg-card > .relative.md\:w-72 {

@@ -1655,3 +1655,19 @@
 .bg-primary span {
   color: #FFFFFF;
 }
+
+.text-white {
+  color: #FFFFFF !important;
+}
+
+.pl-9 {
+  padding-left: 2.25rem !important;
+}
+
+.pl-10 {
+  padding-left: 2.5rem !important;
+}
+
+.pr-10 {
+  padding-right: 2.5rem !important;
+}

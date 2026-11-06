@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const inactiveTabClasses = ['border-b-2', 'border-transparent', 'text-muted-foreground', 'hover:text-foreground', 'font-medium'];
     
     // Classes for badges
-    const activeBadgeClasses = ['bg-primary/10', 'text-primary-foreground'];
+    const activeBadgeClasses = ['bg-primary', 'text-white'];
     const inactiveBadgeClasses = ['bg-muted', 'text-muted-foreground'];
 
     function updateTabStyles(activeTab, inactiveTabs) {
