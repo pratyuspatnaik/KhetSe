@@ -1693,9 +1693,16 @@
   --card: #FFFFFF;
 }
 
-/* Main Workspace Gutters */
+/* Main Workspace Gutters & Center Alignment */
 main.max-w-7xl,
-main[class*="max-w-7xl"] {
+main[class*="max-w-7xl"],
+main[class*="max-w-[1400px]"],
+main.w-full,
+main {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 1400px !important;
+  width: 100% !important;
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
   padding-top: 2rem !important;
@@ -1705,9 +1712,24 @@ main[class*="max-w-7xl"] {
 
 @media (min-width: 768px) {
   main.max-w-7xl,
-  main[class*="max-w-7xl"] {
+  main[class*="max-w-7xl"],
+  main[class*="max-w-[1400px]"],
+  main.w-full,
+  main {
     padding-left: 2.25rem !important;
     padding-right: 2.25rem !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  main.max-w-7xl,
+  main[class*="max-w-7xl"],
+  main[class*="max-w-[1400px]"],
+  main.w-full,
+  main {
+    max-width: 1440px !important;
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
   }
 }
 
@@ -1870,12 +1892,13 @@ main[class*="max-w-7xl"] {
 }
 
 .flex.flex-col.gap-4 > .bg-card.border.border-border.rounded-2xl {
-  padding: 1.5rem 1.75rem !important;
+  width: 100% !important;
+  padding: 1.5rem 2rem !important;
   border-radius: 1.25rem !important;
   border: 1px solid rgba(16, 36, 62, 0.08) !important;
   box-shadow: 0 4px 16px -2px rgba(16, 36, 62, 0.04) !important;
   background-color: #FFFFFF !important;
-  margin-bottom: 0.75rem !important;
+  margin-bottom: 1rem !important;
   transition: all 0.2s ease !important;
 }
 
@@ -1954,3 +1977,16 @@ main[class*="max-w-7xl"] {
 .gap-5 { gap: 1.25rem !important; }
 .gap-6 { gap: 1.5rem !important; }
 .gap-12 { gap: 2.5rem !important; }
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.w-full {
+  width: 100% !important;
+}
+
+.flex-1 {
+  flex: 1 1 0% !important;
+}
