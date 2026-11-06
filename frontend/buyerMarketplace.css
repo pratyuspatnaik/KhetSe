@@ -1097,69 +1097,269 @@
 }
 
 
-/* Layout & Element Fixes */
-.relative > .absolute.inset-y-0 {
-  top: 0;
-  bottom: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
+/* ==========================================================================
+   BUYER MARKETPLACE UI/UX POLISH & BREATHING ROOM OVERRIDES
+   ========================================================================== */
+
+:root {
+  --primary: #2F9E44;
+  --foreground: #10243E;
+  --background: #F4F1EA;
+  --secondary: #F2A93B;
+  --secondary-foreground: #091C36;
+  --secondary-text: #875306;
+  --muted: #E2E8F0;
+  --muted-foreground: #64748B;
+  --accent: #D4E4CF;
+  --accent-foreground: #1E3A2F;
+  --destructive: #EF4444;
+  --border: #E2E8F0;
+  --card: #FFFFFF;
 }
 
-.relative > .absolute.inset-y-0 iconify-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
+/* Main Container Gutters */
+main.max-w-7xl,
+main[class*="max-w-7xl"] {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  padding-top: 2rem !important;
+  padding-bottom: 4rem !important;
+  gap: 2rem !important;
+}
+
+@media (min-width: 768px) {
+  main.max-w-7xl,
+  main[class*="max-w-7xl"] {
+    padding-left: 2.25rem !important;
+    padding-right: 2.25rem !important;
+  }
+}
+
+/* 1. TOP BIGGER BOX: Responsive Search Space */
+.bg-card.rounded-2xl.border.p-4.md\:p-6,
+main > .bg-card:first-child,
+div.bg-card[class*="p-4"][class*="md:p-6"] {
+  padding: 1.75rem 2rem !important;
+  margin-bottom: 2rem !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(16, 36, 62, 0.08) !important;
+  border-radius: 1.25rem !important;
+  box-shadow: 0 4px 24px -2px rgba(16, 36, 62, 0.05) !important;
+}
+
+@media (max-width: 640px) {
+  .bg-card.rounded-2xl.border.p-4.md\:p-6,
+  main > .bg-card:first-child,
+  div.bg-card[class*="p-4"][class*="md:p-6"] {
+    padding: 1.25rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+.bg-card h2 {
+  margin-bottom: 1rem !important;
+  font-size: 0.8125rem !important;
+  letter-spacing: 0.05em !important;
+  color: #64748B !important;
+}
+
+.bg-card label {
+  display: block !important;
+  margin-bottom: 0.45rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  color: #4A5568 !important;
+}
+
+/* Search inputs, selects, and text fields */
+.bg-card input[type="text"],
+.bg-card input[type="number"],
+.bg-card select {
+  height: 44px !important;
+  padding: 0.65rem 1rem !important;
+  border-radius: 0.75rem !important;
+  border: 1.5px solid #E2E8F0 !important;
+  background-color: #FFFFFF !important;
+  font-size: 0.875rem !important;
+  color: #10243E !important;
+  box-shadow: 0 1px 2px rgba(16, 36, 62, 0.03) !important;
+  outline: none !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.bg-card input:focus,
+.bg-card select:focus {
+  border-color: #2F9E44 !important;
+  box-shadow: 0 0 0 3px rgba(47, 158, 68, 0.15) !important;
+}
+
+.bg-card input.pl-10 {
+  padding-left: 2.5rem !important;
+}
+
+.bg-card select.pl-3\.5 {
+  padding-left: 0.875rem !important;
+  padding-right: 2.5rem !important;
+}
+
+/* Search CTA Button */
+button.bg-primary {
+  background-color: #2F9E44 !important;
+  color: #FFFFFF !important;
+  border-radius: 0.75rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  border: none !important;
+}
+
+button.bg-primary:hover {
+  background-color: #27863a !important;
+  box-shadow: 0 4px 12px rgba(47, 158, 68, 0.25) !important;
+}
+
+button.bg-primary iconify-icon,
+button.bg-primary span {
+  color: #FFFFFF !important;
+}
+
+/* 2. SIDEBAR BIGGER BOX: Live Mandi Prices Sidebar */
+.lg\:col-span-1 .bg-card,
+div[class*="lg:col-span-1"] .bg-card {
+  padding: 1.5rem !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(16, 36, 62, 0.08) !important;
+  border-radius: 1.25rem !important;
+  box-shadow: 0 4px 24px -2px rgba(16, 36, 62, 0.05) !important;
+}
+
+.lg\:col-span-1 input[type="text"] {
+  height: 38px !important;
+  padding: 0.5rem 0.875rem 0.5rem 2.5rem !important;
+  border-radius: 0.625rem !important;
+  border: 1.5px solid #E2E8F0 !important;
+  background-color: #FFFFFF !important;
+  font-size: 0.75rem !important;
+}
+
+/* Mandi Price Item Cards */
+.lg\:col-span-1 .bg-background.rounded-xl.border {
+  padding: 0.85rem 1rem !important;
+  margin-bottom: 0.65rem !important;
+  border-radius: 0.875rem !important;
+  border: 1px solid rgba(16, 36, 62, 0.08) !important;
+  background-color: #F8F9FA !important;
+  transition: all 0.2s ease !important;
+}
+
+.lg\:col-span-1 .bg-background.rounded-xl.border:hover {
+  border-color: #2F9E44 !important;
+  background-color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(16, 36, 62, 0.04) !important;
+}
+
+/* Mandi Insight Card */
+.lg\:col-span-1 .bg-accent.bg-opacity-30,
+.lg\:col-span-1 .bg-accent\/30 {
+  padding: 1rem 1.15rem !important;
+  margin-top: 1.25rem !important;
+  border-radius: 0.875rem !important;
+  background-color: rgba(212, 228, 207, 0.35) !important;
+  border: 1px solid rgba(47, 158, 68, 0.2) !important;
+}
+
+/* 3. PRODUCT LISTING BIGGER BOXES: Deal Cards */
+.lg\:col-span-3 .flex.flex-col.gap-6 > .bg-card,
+.bg-card.rounded-2xl.border.border-border.shadow-sm.overflow-hidden {
+  margin-bottom: 1.75rem !important;
+  border-radius: 1.25rem !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(16, 36, 62, 0.08) !important;
+  box-shadow: 0 4px 20px -2px rgba(16, 36, 62, 0.05) !important;
+  overflow: hidden !important;
+  display: flex !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.bg-card.rounded-2xl.border.border-border.shadow-sm.overflow-hidden:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 30px -4px rgba(16, 36, 62, 0.08) !important;
+}
+
+/* Image container */
+@media (min-width: 768px) {
+  .bg-card > .relative.md\:w-72 {
+    width: 288px !important;
+    min-width: 288px !important;
+    max-width: 288px !important;
+    min-height: 230px !important;
+    flex-shrink: 0 !important;
+  }
 }
 
 .bg-card img.object-cover {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  display: block;
+  display: block !important;
 }
 
-.bg-primary {
-  color: #FFFFFF !important;
+/* Content Area inside Deal Card */
+.bg-card > .p-5,
+.p-5.flex.flex-col.flex-1 {
+  padding: 1.5rem 1.75rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  gap: 1.15rem !important;
 }
 
-.bg-primary iconify-icon,
-.bg-primary span {
-  color: #FFFFFF;
-}
-
-.pl-9 {
-  padding-left: 2.25rem !important;
-}
-
-.pl-10 {
-  padding-left: 2.5rem !important;
-}
-
-.pr-10 {
-  padding-right: 2.5rem !important;
-}
-
-.h-\[42px\] {
-  height: 42px !important;
-}
-
-.h-\[38px\] {
-  height: 38px !important;
-}
-
-@media (min-width: 768px) {
-  .deal-card-img-wrapper,
-  .bg-card > .relative.md\:w-72 {
-    width: 288px !important;
-    min-width: 288px !important;
-    max-width: 288px !important;
-    min-height: 220px !important;
-    flex-shrink: 0 !important;
+@media (max-width: 640px) {
+  .bg-card > .p-5,
+  .p-5.flex.flex-col.flex-1 {
+    padding: 1.25rem !important;
   }
 }
 
+/* Farmer Info & Review Box inside Deal Card */
+.bg-card .bg-background.rounded-xl.p-3 {
+  padding: 0.85rem 1.15rem !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  border-radius: 0.875rem !important;
+  background-color: #F8F9FA !important;
+  border: 1px solid rgba(16, 36, 62, 0.06) !important;
+}
+
+/* Quantity & Price & Actions footer row */
+.bg-card .border-t.border-border {
+  padding-top: 1rem !important;
+  margin-top: 0.5rem !important;
+  border-top: 1px solid rgba(16, 36, 62, 0.08) !important;
+}
+
+/* Deal Card Action Buttons */
+.bg-card button[data-uxm-link="Cart"],
+.bg-card button.bg-primary {
+  padding: 0.6rem 1.25rem !important;
+  border-radius: 0.75rem !important;
+  font-weight: 600 !important;
+  font-size: 0.8125rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.bg-card button.bg-background {
+  border: 1.5px solid #E2E8F0 !important;
+  background-color: #FFFFFF !important;
+}
+
+.bg-card button.bg-background:hover {
+  background-color: #F8F9FA !important;
+  border-color: #CBD5E1 !important;
+}
+
+/* Status Badges */
 .bg-secondary[class*="bg-opacity-20"],
 .bg-secondary\/20 {
   background-color: rgba(242, 169, 59, 0.2) !important;
@@ -1169,3 +1369,92 @@
 .bg-accent\/30 {
   background-color: rgba(212, 228, 207, 0.35) !important;
 }
+
+/* Icon positioning */
+.relative > .absolute.inset-y-0 {
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.relative > .absolute.inset-y-0.left-3 {
+  left: 0.85rem !important;
+}
+
+.relative > .absolute.inset-y-0.right-3 {
+  right: 0.85rem !important;
+}
+
+.relative > .absolute.inset-y-0 iconify-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Load More Button */
+.flex.justify-center.py-4 button {
+  padding: 0.75rem 1.75rem !important;
+  border-radius: 0.75rem !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 3px rgba(16, 36, 62, 0.04) !important;
+}
+
+.flex.justify-center.py-4 button:hover {
+  background-color: #F8F9FA !important;
+  border-color: #2F9E44 !important;
+  color: #2F9E44 !important;
+}
+
+/* Universal Spacing Safeguards */
+.p-1 { padding: 0.25rem !important; }
+.p-2 { padding: 0.5rem !important; }
+.p-2\.5 { padding: 0.625rem !important; }
+.p-3 { padding: 0.75rem 1rem !important; }
+.p-4 { padding: 1rem 1.25rem !important; }
+.p-5 { padding: 1.5rem 1.75rem !important; }
+.p-6 { padding: 1.75rem 2rem !important; }
+
+.px-2 { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+.px-2\.5 { padding-left: 0.625rem !important; padding-right: 0.625rem !important; }
+.px-3 { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+.px-3\.5 { padding-left: 0.875rem !important; padding-right: 0.875rem !important; }
+.px-4 { padding-left: 1rem !important; padding-right: 1rem !important; }
+.px-5 { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+.px-6 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+
+.py-0\.5 { padding-top: 0.125rem !important; padding-bottom: 0.125rem !important; }
+.py-1 { padding-top: 0.25rem !important; padding-bottom: 0.25rem !important; }
+.py-2 { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+.py-2\.5 { padding-top: 0.625rem !important; padding-bottom: 0.625rem !important; }
+.py-3 { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+.py-4 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+.py-6 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+
+.pt-2 { padding-top: 0.5rem !important; }
+.pt-3 { padding-top: 0.75rem !important; }
+.pt-4 { padding-top: 1rem !important; }
+
+.mb-1 { margin-bottom: 0.25rem !important; }
+.mb-2 { margin-bottom: 0.5rem !important; }
+.mb-3 { margin-bottom: 0.75rem !important; }
+.mb-4 { margin-bottom: 1rem !important; }
+.mb-6 { margin-bottom: 1.5rem !important; }
+
+.mt-1 { margin-top: 0.25rem !important; }
+.mt-2 { margin-top: 0.5rem !important; }
+.mt-4 { margin-top: 1rem !important; }
+.mt-6 { margin-top: 1.5rem !important; }
+
+.gap-1 { gap: 0.25rem !important; }
+.gap-1\.5 { gap: 0.375rem !important; }
+.gap-2 { gap: 0.5rem !important; }
+.gap-3 { gap: 0.75rem !important; }
+.gap-4 { gap: 1rem !important; }
+.gap-6 { gap: 1.5rem !important; }
