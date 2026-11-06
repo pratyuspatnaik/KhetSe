@@ -1272,7 +1272,11 @@ aside.bg-card .bg-accent\/30 {
   transition: all 0.2s ease !important;
   display: inline-flex !important;
   align-items: center !important;
+  justify-content: center !important;
   gap: 0.5rem !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  word-break: keep-all !important;
 }
 
 #trackIncomeBtn:hover {
@@ -1294,7 +1298,11 @@ aside.bg-card .bg-accent\/30 {
   box-shadow: 0 2px 8px rgba(47, 158, 68, 0.25) !important;
   display: inline-flex !important;
   align-items: center !important;
+  justify-content: center !important;
   gap: 0.5rem !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  word-break: keep-all !important;
 }
 
 #listNewCropBtn:hover {
