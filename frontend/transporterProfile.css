@@ -1548,6 +1548,8 @@ div.flex.items-center.justify-end {
 .space-y-8 > * + * { margin-top: 2rem !important; }
 /* Log Out Button Styling */
 .logout-btn {
+  position: relative !important;
+  top: -5px !important;
   color: #DC2626 !important;
   background-color: transparent !important;
   border: 1.5px solid rgba(220, 38, 38, 0.3) !important;
