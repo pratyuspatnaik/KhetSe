@@ -56,6 +56,69 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // ========================================================
+    // AUTHENTICATED NAVBAR USER PROFILE
+    // ========================================================
+    function updateNavbarAuthState() {
+        let storedUser = null;
+        try {
+            storedUser = localStorage.getItem('khetse_user');
+        } catch (e) {
+            console.warn('localStorage not accessible', e);
+        }
+
+        if (!storedUser) return;
+
+        let user;
+        try {
+            user = JSON.parse(storedUser);
+        } catch (e) {
+            return;
+        }
+
+        if (!user || !user.isLoggedIn) return;
+
+        const navActionsList = document.querySelectorAll('.nav-actions');
+        navActionsList.forEach(actions => {
+            if (actions.querySelector('.nav-profile-link')) return;
+
+            const loginLink = actions.querySelector('.login-link');
+            const signupBtn = actions.querySelector('.btn-dark, a[href="signup.html"]');
+
+            if (loginLink || signupBtn) {
+                let profileUrl = user.profileUrl;
+                if (!profileUrl) {
+                    if (user.role === 'seller' || user.role === 'farmer') {
+                        profileUrl = 'sellerProfile.html';
+                    } else if (user.role === 'transporter') {
+                        profileUrl = 'transporterProfile.html';
+                    } else {
+                        profileUrl = 'buyerProfile.html';
+                    }
+                }
+
+                const avatarUrl = user.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80';
+                const userName = user.name || 'Vikram Malhotra';
+
+                const profileLink = document.createElement('a');
+                profileLink.href = profileUrl;
+                profileLink.className = 'nav-profile-link';
+                profileLink.title = 'View Profile (' + userName + ')';
+                profileLink.innerHTML = `
+                    <img src="${avatarUrl}" alt="${userName}" class="nav-profile-img" onerror="this.onerror=null; this.src='default-avatar.svg';">
+                    <span class="nav-profile-name">${userName}</span>
+                `;
+
+                if (loginLink) loginLink.remove();
+                if (signupBtn) signupBtn.remove();
+
+                actions.appendChild(profileLink);
+            }
+        });
+    }
+
+    updateNavbarAuthState();
+
     // Hero Buttons Redirection
     const signupButtons = document.querySelectorAll('.btn-farmer, .btn-buyer');
     signupButtons.forEach(btn => {
@@ -305,9 +368,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Global Log Out Redirection
     document.addEventListener('click', (e) => {
-        const logoutEl = e.target.closest('#logoutBtn, .logout-btn, [data-uxm-link="Login"]');
+        const logoutEl = e.target.closest('#logoutBtn, .logout-btn, [data-uxm-link="Login"], .logout-link');
         if (logoutEl) {
             e.preventDefault();
+            try {
+                localStorage.removeItem('khetse_user');
+            } catch (err) {}
             window.location.href = 'index.html';
             return;
         }

@@ -663,6 +663,45 @@ document.addEventListener("DOMContentLoaded", () => {
         successContent.style.display = "flex";
         lucide.createIcons();
 
+        // Non-AI generated authentic circular portraits and random profile names
+        const randomProfiles = [
+            { name: "Vikram Malhotra", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" },
+            { name: "Ananya Sharma", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" },
+            { name: "Rajesh Patel", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" },
+            { name: "Pooja Verma", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" },
+            { name: "Arjun Mehta", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80" },
+            { name: "Sunita Rao", avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80" },
+            { name: "Devendra Joshi", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80" },
+            { name: "Kavita Reddy", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" }
+        ];
+
+        const chosen = randomProfiles[Math.floor(Math.random() * randomProfiles.length)];
+
+        let profileUrl = "buyerProfile.html";
+        if (selectedRole === "farmer" || selectedRole === "seller") {
+            profileUrl = "sellerProfile.html";
+        } else if (selectedRole === "transporter") {
+            profileUrl = "transporterProfile.html";
+        }
+
+        const firstName = document.getElementById("firstNameInput")?.value?.trim();
+        const lastName = document.getElementById("lastNameInput")?.value?.trim();
+        const profileName = (firstName && lastName) ? `${firstName} ${lastName}` : (firstName || chosen.name);
+
+        const userData = {
+            isLoggedIn: true,
+            name: profileName,
+            avatar: chosen.avatar,
+            role: selectedRole,
+            profileUrl: profileUrl
+        };
+
+        try {
+            localStorage.setItem("khetse_user", JSON.stringify(userData));
+        } catch (err) {
+            console.warn("Could not save auth state", err);
+        }
+
         // Redirect after showing Account Created success message
         setTimeout(() => {
             if (selectedRole === "farmer" || selectedRole === "seller") {

@@ -227,6 +227,63 @@ ul {
     color: var(--color-green);
 }
 
+/* Authenticated User Profile in Navbar */
+.nav-profile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--color-dark-blue);
+    padding: 4px 12px 4px 4px;
+    border-radius: 50px;
+    background: rgba(16, 36, 62, 0.04);
+    border: 1px solid rgba(16, 36, 62, 0.1);
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.nav-profile-link:hover {
+    background: rgba(47, 158, 68, 0.12);
+    border-color: var(--color-green);
+    transform: translateY(-1px);
+}
+
+.nav-profile-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-green);
+    display: block;
+    flex-shrink: 0;
+}
+
+.nav-profile-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-dark-blue);
+    white-space: nowrap;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+    .nav-profile-name {
+        display: none;
+    }
+    .nav-profile-link {
+        padding: 2px;
+        background: transparent;
+        border: none;
+    }
+    .nav-profile-img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
 /* Hero Section */
 .hero {
     position: relative;
